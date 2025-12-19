@@ -1,0 +1,121 @@
+{
+    "nav": {
+        "expertise": "Expertise",
+        "solutions": "Solutions",
+        "process": "Process",
+        "contact": "Contact",
+        "cta": "Get Started"
+    },
+    "hero": {
+        "badge": "SIRA Certified & UniFi Enterprise",
+        "title_start": "The Invisible",
+        "title_highlight": "Infrastructure",
+        "title_end": "Protecting Your Projects",
+        "subtitle": "Cybersecurity Expertise • Premium UniFi Integration • Smart Maintenance. For luxury developers and smart cities in Dubai.",
+        "cta_primary": "Explore Solutions",
+        "cta_secondary": "Request Audit",
+        "trust_design": "Secure Design",
+        "trust_uptime": "99.9% Uptime",
+        "scroll": "Scroll"
+    },
+    "expertise": {
+        "title": "Our Expertise",
+        "subtitle": "Three pillars for uncompromising technological excellence.",
+        "cyber_title": "Advanced Cybersecurity",
+        "cyber_desc": "Proactive and impermeable protection for your critical infrastructure.",
+        "cyber_items": [
+            "Master in Cybersecurity",
+            "VLAN Segmentation",
+            "IPS/IDS",
+            "Zero Trust Architecture"
+        ],
+        "unifi_title": "UniFi Infrastructure",
+        "unifi_desc": "The pinnacle of unified connectivity, deployed with surgical precision.",
+        "unifi_items": [
+            "Dream Machine Enterprise",
+            "WiFi 7 Ready (U7 Pro)",
+            "Access Control",
+            "Building Bridge"
+        ],
+        "maint_title": "Smart Maintenance",
+        "maint_desc": "Your network optimizes itself continuously without your intervention.",
+        "maint_items": [
+            "24/7 Monitoring",
+            "Automatic Updates",
+            "Proactive Support",
+            "Monthly Reports"
+        ]
+    },
+    "solutions": {
+        "label": "Our Solutions",
+        "title": "Designed for Excellence",
+        "subtitle": "Bespoke network architectures adapted to the requirements of Dubai's most ambitious projects.",
+        "res_title": "Premium Residential",
+        "res_cat": "Villas & Palaces",
+        "res_features": [
+            "100% WiFi Coverage (No Dead Zones)",
+            "Invisible Design (In-Wall AP)",
+            "AI Perimeter Security"
+        ],
+        "tower_title": "Towers & Buildings",
+        "tower_cat": "Hospitality & Commercial",
+        "tower_features": [
+            "Multi-Site Centralized Management",
+            "Premium Captive Portal",
+            "Failover Redundancy"
+        ],
+        "access_title": "Smart Access",
+        "access_cat": "Smart Security",
+        "access_features": [
+            "NFC/Mobile Unlock",
+            "Real-time Logs",
+            "G2 Reader Integration"
+        ],
+        "learn_more": "Learn More"
+    },
+    "process": {
+        "title": "Our Process",
+        "subtitle": "A proven methodology for guaranteed results.",
+        "audit_title": "Audit & Design",
+        "audit_desc": "On-site analysis and predictive coverage modeling (Heatmaps).",
+        "sira_title": "SIRA Integration",
+        "sira_desc": "Full compliance with Dubai security regulations.",
+        "install_title": "Turnkey Installation",
+        "install_desc": "Meticulous physical deployment, invisible cabling, and rack management.",
+        "config_title": "Secure Configuration",
+        "config_desc": "VLANs, IDS/IPS Firewall, and strict network segmentation.",
+        "maint_title": "Ongoing Maintenance",
+        "maint_desc": "24/7 proactive monitoring and OTA updates."
+    },
+    "why": {
+        "title": "Why Choose Welwitech?",
+        "subtitle": "Technical excellence at the service of your peace of mind.",
+        "stats_1_title": "Military Grade Security",
+        "stats_1_desc": "Proactive protection against intrusions.",
+        "stats_2_title": "Delivered Projects",
+        "stats_2_desc": "In the most prestigious districts of Dubai.",
+        "stats_3_title": "Managed Access Points",
+        "stats_3_desc": "Invisible and robust infrastructure.",
+        "stats_4_title": "Proactive Support",
+        "stats_4_desc": "Intervention before you even know it."
+    },
+    "contact": {
+        "title_start": "Ready to Secure",
+        "title_highlight": "Your Next Project?",
+        "subtitle": "Let's discuss your network infrastructure and cybersecurity needs. Free audit for projects over 500m².",
+        "name_label": "Full Name",
+        "email_label": "Business Email",
+        "message_label": "Message",
+        "submit": "Send Request",
+        "phone_label": "Phone",
+        "email_contact_label": "Email",
+        "office_label": "Office"
+    },
+    "footer": {
+        "desc": "Empowering luxury properties and smart cities with secure, invisible network infrastructure. The intersection of cybersecurity and premium integration.",
+        "company_title": "Company",
+        "contact_title": "Contact",
+        "rights": "All rights reserved.",
+        "built_with": "Built with expertise"
+    }
+}

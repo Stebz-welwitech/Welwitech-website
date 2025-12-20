@@ -55,7 +55,7 @@ export function Footer() {
                     WELWITECH
                 </h1>
                 <div className="text-center text-gray-500 text-sm mt-8 pb-8 font-medium">
-                    © 2024 Welwitech Smart Solutions. All rights reserved.
+                    © 2025 Welwitech Smart Solutions. All rights reserved.
                 </div>
             </div>
         </footer>

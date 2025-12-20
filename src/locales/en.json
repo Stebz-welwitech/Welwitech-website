@@ -18,6 +18,9 @@
         "trust_uptime": "99.9% Uptime",
         "scroll": "Scroll"
     },
+    "partners": {
+        "label": "Powered by Official Ecosystem"
+    },
     "expertise": {
         "title": "Our Expertise",
         "subtitle": "Three pillars for uncompromising technological excellence.",
@@ -36,6 +39,14 @@
             "WiFi 7 Ready (U7 Pro)",
             "Access Control",
             "Building Bridge"
+        ],
+        "access_title": "Access Control",
+        "access_desc": "Seamless and intelligent physical security for your spaces.",
+        "access_items": [
+            "Facial Recognition",
+            "Mobile Unlock (NFC)",
+            "Video Intercom",
+            "Visitor Management"
         ],
         "maint_title": "Smart Maintenance",
         "maint_desc": "Your network optimizes itself continuously without your intervention.",

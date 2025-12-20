@@ -1,66 +1,74 @@
 "use client";
 
-import { useRef, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial } from "@react-three/drei";
-import { EffectComposer, Bloom } from "@react-three/postprocessing";
+import { useMemo, useRef } from "react";
 import * as THREE from "three";
 
-function NetworkParticles(props: any) {
-    const ref = useRef<THREE.Points>(null!);
+function ParticleField() {
+    const ref = useRef<THREE.Points>(null);
 
-    const sphere = useMemo(() => {
-        const coords = new Float32Array(4000 * 3);
-        for (let i = 0; i < 4000; i++) {
-            const u = Math.random();
-            const v = Math.random();
-            const theta = 2 * Math.PI * u;
-            const phi = Math.acos(2 * v - 1);
-            const r = 1.3 + Math.random() * 0.2;
+    // Generate 2000 random particles
+    const count = 2000;
+    const [positions, colors] = useMemo(() => {
+        const positions = new Float32Array(count * 3);
+        const colors = new Float32Array(count * 3);
 
-            const x = r * Math.sin(phi) * Math.cos(theta);
-            const y = r * Math.sin(phi) * Math.sin(theta);
-            const z = r * Math.cos(phi);
+        // Blinkpath Colors
+        const colorA = new THREE.Color("#ED4C22"); // Orange
+        const colorB = new THREE.Color("#121212"); // Black
+        const colorC = new THREE.Color("#CCCCCC"); // Light Grey (for visibility)
 
-            coords[i * 3] = x;
-            coords[i * 3 + 1] = y;
-            coords[i * 3 + 2] = z;
+        for (let i = 0; i < count; i++) {
+            // Position: Spread widely across the screen
+            positions[i * 3] = (Math.random() - 0.5) * 25;     // x
+            positions[i * 3 + 1] = (Math.random() - 0.5) * 15; // y
+            positions[i * 3 + 2] = (Math.random() - 0.5) * 10; // z
+
+            // Color: Mix of Orange (20%), Black (40%), Grey (40%)
+            const r = Math.random();
+            let color;
+            if (r < 0.2) color = colorA;
+            else if (r < 0.6) color = colorB;
+            else color = colorC;
+
+            colors[i * 3] = color.r;
+            colors[i * 3 + 1] = color.g;
+            colors[i * 3 + 2] = color.b;
         }
-        return coords;
+
+        return [positions, colors];
     }, []);
 
-    useFrame((state, delta) => {
+    useFrame((state) => {
         if (ref.current) {
-            ref.current.rotation.y -= delta / 25;
-            ref.current.rotation.x -= delta / 40;
+            // Gentle floating rotation
+            ref.current.rotation.x = state.clock.getElapsedTime() * 0.05;
+            ref.current.rotation.y = state.clock.getElapsedTime() * 0.03;
+
+            // Subtle wave effect on Y position (optional, keeping it simple for now)
         }
     });
 
     return (
-        <group rotation={[0, 0, Math.PI / 4]}>
-            <Points ref={ref} positions={sphere} stride={3} frustumCulled={false} {...props}>
-                <PointMaterial
-                    transparent
-                    color="#0066FF" // Electric Blue for visibility on White
-                    size={0.005}
-                    sizeAttenuation={true}
-                    depthWrite={false}
-                    opacity={0.8}
-                />
-            </Points>
-        </group>
+        <Points ref={ref} positions={positions} colors={colors} stride={3} frustumCulled={false}>
+            <PointMaterial
+                transparent
+                vertexColors
+                size={0.08}
+                sizeAttenuation={true}
+                depthWrite={false}
+                opacity={0.8}
+            />
+        </Points>
     );
 }
 
 export function HeroScene() {
     return (
-        <div className="absolute inset-0 z-0 h-full w-full opacity-70 pointer-events-none">
-            <Canvas camera={{ position: [0, 0, 2.2] }} gl={{ antialias: false, powerPreference: "high-performance" }}>
-                <NetworkParticles />
-                {/* Simplified Bloom for Light Mode - subtle glow */}
-                <EffectComposer>
-                    <Bloom luminanceThreshold={0} mipmapBlur intensity={0.5} radius={0.4} />
-                </EffectComposer>
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-60">
+            <Canvas camera={{ position: [0, 0, 10], fov: 45 }}>
+                <ParticleField />
             </Canvas>
         </div>
     );

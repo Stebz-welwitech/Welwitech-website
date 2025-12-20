@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google"; // Import Monospace
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-// Components will be enabled as they are restored
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { CustomCursor } from "@/components/ui/CustomCursor";
 
 const inter = Inter({
     subsets: ["latin"],
@@ -31,6 +31,8 @@ export default function RootLayout({
         <html lang="en">
             <body className={`${inter.variable} ${jetbrains.variable} font-sans`}>
                 <LanguageProvider>
+                    <div className="noise-overlay"></div>
+                    <CustomCursor />
                     <SmoothScroll>
                         <Navbar />
                         {children}

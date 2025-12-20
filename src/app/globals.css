@@ -1,30 +1,30 @@
 @import "tailwindcss";
 
 :root {
-    /* UI.com Inspired Palette */
-    --ui-blue: #006FFF;
-    /* Primary Action */
-    --ui-black: #191919;
+    /* Studio Minimal Palette (Blinkpath) */
+    --blink-orange: #ED4C22;
+    /* Primary Accent */
+    --blink-bg: #E9E9E9;
+    /* Off-White Background */
+    --blink-black: #121212;
+    /* Dark Mode Sections */
+    --blink-text: #121212;
     /* Primary Text */
-    --ui-gray: #737373;
+    --blink-gray: #737373;
     /* Secondary Text */
-    --ui-light-gray: #F5F5F7;
-    /* Section Backgrounds */
-    --pure-white: #FFFFFF;
 
     /* Semantic Colors */
-    --background: var(--pure-white);
-    --foreground: var(--ui-black);
+    --background: var(--blink-bg);
+    --foreground: var(--blink-text);
 
     /* Fonts */
     --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 @theme inline {
-    --color-ui-blue: var(--ui-blue);
-    --color-ui-black: var(--ui-black);
-    --color-ui-gray: var(--ui-gray);
-    --color-ui-light-gray: var(--ui-light-gray);
+    --color-blink-orange: var(--blink-orange);
+    --color-blink-bg: var(--blink-bg);
+    --color-blink-black: var(--blink-black);
 
     --color-background: var(--background);
     --color-foreground: var(--foreground);
@@ -38,30 +38,33 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* UI.com Button Styles */
-.btn-primary {
-    background-color: var(--ui-blue);
-    color: white;
-    border-radius: 4px;
-    /* Slightly rounded, almost square */
-    font-weight: 500;
-    transition: all 0.2s ease;
-}
-
-.btn-primary:hover {
-    background-color: #005AD1;
-}
-
-/* Glass Navbar */
-.nav-glass {
-    background: rgba(255, 255, 255, 0.85);
+/* Floating Pill Navbar */
+.nav-pill {
+    background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
-/* Feature Strip Layouts */
-.feature-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
+/* Section Numbering */
+.section-number {
+    font-family: var(--font-sans);
+    color: var(--blink-orange);
+    font-size: 14px;
+}
+
+/* Text Shimmer Animation */
+@keyframes shimmer {
+    0% {
+        background-position: 200% center;
+    }
+
+    100% {
+        background-position: -200% center;
+    }
+}
+
+.animate-shimmer {
+    background-size: 200% auto;
+    animation: shimmer 5s linear infinite;
 }

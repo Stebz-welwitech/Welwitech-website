@@ -1,58 +1,61 @@
 "use client";
 
 import { useLanguage } from "@/context/LanguageContext";
-import { Shield } from "lucide-react";
-import Link from "next/link";
+import { ArrowUp } from "lucide-react";
 
 export function Footer() {
     const { t } = useLanguage();
 
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
     return (
-        <footer className="bg-white pt-24 pb-12 border-t border-ui-light-gray">
-            <div className="container mx-auto px-6 max-w-[1200px]">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
-                    {/* Brand Column */}
-                    <div className="col-span-1">
-                        <Link href="/" className="flex items-center gap-2 mb-6">
-                            <Shield className="w-6 h-6 text-ui-blue" />
-                            <span className="font-semibold text-lg tracking-tight text-ui-black">Welwitech</span>
-                        </Link>
-                        <p className="text-sm text-ui-gray leading-relaxed max-w-xs">
-                            {t("footer.desc")}
-                        </p>
-                    </div>
-
-                    {/* Links - Sitemap Style */}
-                    <div className="col-span-1">
-                        <h4 className="font-semibold text-ui-black mb-6">Company</h4>
-                        <ul className="space-y-4 text-sm text-ui-gray">
-                            <li><Link href="#expertise" className="hover:text-ui-blue transition-colors">Expertise</Link></li>
-                            <li><Link href="#solutions" className="hover:text-ui-blue transition-colors">Solutions</Link></li>
-                            <li><Link href="#process" className="hover:text-ui-blue transition-colors">Process</Link></li>
+        <footer className="bg-blink-black text-white pt-24 pb-0 overflow-hidden relative">
+            <div className="container mx-auto px-6 max-w-[1400px] mb-20">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+                    <div>
+                        <h4 className="text-blink-orange font-bold uppercase tracking-wider mb-6 text-sm">{t("footer.sitemap")}</h4>
+                        <ul className="space-y-4 text-gray-400">
+                            <li><a href="#expertise" className="hover:text-white transition-colors">Expertise</a></li>
+                            <li><a href="#solutions" className="hover:text-white transition-colors">Solutions</a></li>
+                            <li><a href="#process" className="hover:text-white transition-colors">Process</a></li>
                         </ul>
                     </div>
-
-                    <div className="col-span-1">
-                        <h4 className="font-semibold text-ui-black mb-6">Context</h4>
-                        <ul className="space-y-4 text-sm text-ui-gray">
-                            <li><a href="#" className="hover:text-ui-blue transition-colors">Privacy Policy</a></li>
-                            <li><a href="#" className="hover:text-ui-blue transition-colors">Terms of Service</a></li>
-                        </ul>
-                    </div>
-
-                    <div className="col-span-1">
-                        <h4 className="font-semibold text-ui-black mb-6">Dubai Office</h4>
-                        <ul className="space-y-4 text-sm text-ui-gray">
-                            <li>Business Bay</li>
-                            <li>Dubai, UAE</li>
+                    <div>
+                        <h4 className="text-blink-orange font-bold uppercase tracking-wider mb-6 text-sm">{t("footer.contact")}</h4>
+                        <ul className="space-y-4 text-gray-400">
+                            <li>contact@welwitech.com</li>
                             <li>+971 50 123 4567</li>
+                            <li>Business Bay, Dubai</li>
                         </ul>
+                    </div>
+                    <div>
+                        <h4 className="text-blink-orange font-bold uppercase tracking-wider mb-6 text-sm">{t("footer.social")}</h4>
+                        <ul className="space-y-4 text-gray-400">
+                            <li><a href="#" className="hover:text-white transition-colors">LinkedIn</a></li>
+                            <li><a href="#" className="hover:text-white transition-colors">Instagram</a></li>
+                            <li><a href="#" className="hover:text-white transition-colors">Twitter</a></li>
+                        </ul>
+                    </div>
+                    <div className="flex justify-end items-start">
+                        <button
+                            onClick={scrollToTop}
+                            className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center hover:bg-blink-orange hover:border-blink-orange transition-all duration-300 group"
+                        >
+                            <ArrowUp className="w-6 h-6 text-white group-hover:-translate-y-1 transition-transform" />
+                        </button>
                     </div>
                 </div>
+            </div>
 
-                <div className="border-t border-ui-light-gray pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-ui-gray">
-                    <p>© {new Date().getFullYear()} Welwitech Systems. {t("footer.rights")}</p>
-                    <p>{t("footer.built_with")}</p>
+            {/* Massive Statement Typography */}
+            <div className="w-full border-t border-white/10 pt-10 pb-4">
+                <h1 className="text-[18vw] leading-[0.8] font-bold text-center tracking-tighter text-white select-none pointer-events-none opacity-90">
+                    WELWITECH
+                </h1>
+                <div className="text-center text-gray-500 text-sm mt-8 pb-8 font-medium">
+                    © 2024 Welwitech Smart Solutions. All rights reserved.
                 </div>
             </div>
         </footer>

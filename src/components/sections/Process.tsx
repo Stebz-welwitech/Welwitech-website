@@ -1,73 +1,36 @@
 "use client";
 
 import { useLanguage } from "@/context/LanguageContext";
-import { Search, ShieldCheck, Hammer, Settings, Activity } from "lucide-react";
-import { motion, Variants } from "framer-motion";
 
 export function Process() {
     const { t } = useLanguage();
 
     const steps = [
-        { key: "audit", icon: Search, title: t("process.audit_title"), desc: t("process.audit_desc") },
-        { key: "sira", icon: ShieldCheck, title: t("process.sira_title"), desc: t("process.sira_desc") },
-        { key: "install", icon: Hammer, title: t("process.install_title"), desc: t("process.install_desc") },
-        { key: "config", icon: Settings, title: t("process.config_title"), desc: t("process.config_desc") },
-        { key: "maint", icon: Activity, title: t("process.maint_title"), desc: t("process.maint_desc") }
+        { key: "audit", title: t("process.audit_title"), desc: t("process.audit_desc") },
+        { key: "sira", title: t("process.sira_title"), desc: t("process.sira_desc") },
+        { key: "install", title: t("process.install_title"), desc: t("process.install_desc") },
+        { key: "config", title: t("process.config_title"), desc: t("process.config_desc") },
+        { key: "maint", title: t("process.maint_title"), desc: t("process.maint_desc") }
     ];
 
-    const container: Variants = {
-        hidden: { opacity: 0 },
-        show: {
-            opacity: 1,
-            transition: { staggerChildren: 0.15 }
-        }
-    };
-
-    const item: Variants = {
-        hidden: { opacity: 0, y: 20 },
-        show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
-    };
-
     return (
-        <section id="process" className="py-24 bg-white">
-            <div className="container mx-auto px-6 max-w-[800px]">
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl font-semibold text-ui-black mb-4">{t("process.title")}</h2>
-                    <p className="text-ui-gray max-w-lg mx-auto">{t("process.subtitle")}</p>
+        <section id="process" className="py-32 bg-blink-bg">
+            <div className="container mx-auto px-6 max-w-[1400px]">
+                <div className="flex flex-col md:flex-row justify-between items-start mb-24">
+                    <div className="text-blink-orange font-bold text-xl mb-4 md:mb-0">(03)</div>
+                    <div className="max-w-2xl">
+                        <h2 className="text-4xl md:text-5xl font-bold text-blink-black mb-6 leading-tight">{t("process.title")}</h2>
+                    </div>
                 </div>
 
-                <div className="relative">
-                    {/* Animated Vertical Line */}
-                    <motion.div
-                        initial={{ height: 0 }}
-                        whileInView={{ height: "100%" }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1.5, ease: "easeInOut" }}
-                        className="absolute left-[27px] top-6 bottom-6 w-[2px] bg-ui-light-gray origin-top"
-                    />
-
-                    <motion.div
-                        variants={container}
-                        initial="hidden"
-                        whileInView="show"
-                        viewport={{ once: true, margin: "-100px" }}
-                        className="space-y-12"
-                    >
-                        {steps.map((step, index) => (
-                            <motion.div variants={item} key={step.key} className="relative flex gap-8 items-start group">
-                                <div className="relative z-10 w-14 h-14 rounded-full bg-white border border-ui-light-gray flex items-center justify-center text-ui-blue shadow-sm group-hover:border-ui-blue transition-colors duration-300">
-                                    <step.icon className="w-6 h-6" />
-                                </div>
-                                <div className="pt-3">
-                                    <span className="text-xs font-bold text-ui-blue uppercase tracking-wider mb-1 block">Step 0{index + 1}</span>
-                                    <h3 className="text-xl font-semibold text-ui-black mb-2">{step.title}</h3>
-                                    <p className="text-ui-gray leading-relaxed text-sm">
-                                        {step.desc}
-                                    </p>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </motion.div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {steps.map((step, index) => (
+                        <div key={step.key} className="border-l-2 border-gray-200 pl-8 py-4 hover:border-blink-orange transition-colors duration-300 group">
+                            <div className="text-gray-400 font-bold text-4xl mb-4 group-hover:text-blink-orange transition-colors">0{index + 1}</div>
+                            <h3 className="text-2xl font-bold text-blink-black mb-3">{step.title}</h3>
+                            <p className="text-gray-600 leading-relaxed">{step.desc}</p>
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>

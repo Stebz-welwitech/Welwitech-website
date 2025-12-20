@@ -33,7 +33,7 @@ export function WhyWelwitech() {
     const stats = [
         { value: 99.9, suffix: "%", label: t("why.stats_1_title"), desc: t("why.stats_1_desc") },
         { value: 25, suffix: "+", label: t("why.stats_2_title"), desc: t("why.stats_2_desc") },
-        { value: 350, suffix: "+", label: t("why.stats_3_title"), desc: t("why.stats_3_desc") },
+        { value: 300, suffix: "+", label: t("why.stats_3_title"), desc: t("why.stats_3_desc") },
         { value: 24, suffix: "/7", label: t("why.stats_4_title"), desc: t("why.stats_4_desc") }
     ];
 

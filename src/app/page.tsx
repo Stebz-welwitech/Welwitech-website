@@ -1,21 +1,20 @@
 import { Hero } from "@/components/sections/Hero";
-import { Partners } from "@/components/sections/Partners";
 import { Expertise } from "@/components/sections/Expertise";
-import { Solutions } from "@/components/sections/Solutions";
-import { Process } from "@/components/sections/Process";
-import { WhyWelwitech } from "@/components/sections/WhyWelwitech";
+import { ProductShowcase } from "@/components/sections/ProductShowcase";
+import { DetailGallery } from "@/components/sections/DetailGallery";
+import { AccessSection } from "@/components/sections/AccessSection";
 import { Contact } from "@/components/sections/Contact";
 
 export default function Home() {
   return (
-    <main>
+    <main className="bg-white">
       <Hero />
-      <Partners />
+      <ProductShowcase />
+      <DetailGallery />
+      <AccessSection />
       <Expertise />
-      <Solutions />
-      <Process />
-      <WhyWelwitech />
       <Contact />
     </main>
   );
 }
+

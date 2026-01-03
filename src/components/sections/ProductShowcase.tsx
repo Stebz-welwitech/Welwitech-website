@@ -16,9 +16,9 @@ interface ProductStripProps {
 
 export function ProductStrip({ title, subtitle, description, image, align = "left", index }: ProductStripProps) {
     return (
-        <section className="py-24 md:py-32 border-b border-zinc-100 last:border-0 overflow-hidden">
-            <div className="container mx-auto px-6">
-                <div className={`flex flex-col md:flex-row items-center gap-16 ${align === "right" ? "md:flex-row-reverse" : ""}`}>
+        <section className="py-16 md:py-24 lg:py-32 border-b border-zinc-100 last:border-0 overflow-hidden">
+            <div className="container mx-auto px-4 sm:px-6">
+                <div className={`flex flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-16 ${align === "right" ? "md:flex-row-reverse" : ""}`}>
 
                     {/* Visual Side */}
                     <motion.div
@@ -26,36 +26,36 @@ export function ProductStrip({ title, subtitle, description, image, align = "lef
                         whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="flex-1 relative w-full aspect-square md:aspect-[4/3] bg-zinc-50 rounded-3xl overflow-hidden flex items-center justify-center group"
+                        className="flex-1 relative w-full aspect-square md:aspect-[4/3] bg-zinc-50 rounded-2xl md:rounded-3xl overflow-hidden flex items-center justify-center group"
                     >
                         <div className="absolute inset-0 bg-gradient-to-br from-zinc-50 to-zinc-100/50" />
                         <Image
                             src={image}
                             alt={title}
                             fill
-                            className="object-contain p-12 transition-transform duration-700 group-hover:scale-105"
+                            className="object-contain p-6 sm:p-8 md:p-12 transition-transform duration-700 group-hover:scale-105"
                         />
                     </motion.div>
 
                     {/* Content Side */}
-                    <div className="flex-1 space-y-8">
+                    <div className="flex-1 space-y-4 md:space-y-6 lg:space-y-8">
                         <motion.div
                             initial={{ opacity: 0, x: align === "left" ? 50 : -50 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.2 }}
                         >
-                            <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 
+                            <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3 md:mb-4 
                                 ${index % 3 === 0 ? "bg-orange-50 text-w-orange" :
                                     index % 3 === 1 ? "bg-pink-50 text-w-magenta" :
                                         "bg-violet-50 text-w-violet"}`}
                             >
                                 {subtitle}
                             </span>
-                            <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 leading-tight">
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold text-black mb-4 md:mb-6 leading-tight">
                                 {title}
                             </h2>
-                            <p className="text-lg text-zinc-500 leading-relaxed mb-8">
+                            <p className="text-base sm:text-lg md:text-lg text-zinc-500 leading-relaxed mb-6 md:mb-8">
                                 {description}
                             </p>
 

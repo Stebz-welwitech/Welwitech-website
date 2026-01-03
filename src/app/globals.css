@@ -39,6 +39,18 @@ body {
     font-family: var(--font-sans), system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Prevent horizontal scroll on mobile */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 /* Glassmorphism Utilities */
@@ -58,7 +70,13 @@ body {
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-    width: 6px;
+    width: 4px;
+}
+
+@media (min-width: 768px) {
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
 }
 
 ::-webkit-scrollbar-track {
@@ -72,4 +90,40 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #A1A1AA;
+}
+
+/* Mobile touch improvements */
+@media (max-width: 767px) {
+    * {
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0.05);
+    }
+    
+    /* Better button touch targets */
+    button, a {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
+
+/* Responsive container improvements */
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+    .container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
 }

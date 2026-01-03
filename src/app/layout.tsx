@@ -20,6 +20,7 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
     title: "Welwitech | Secure Smart Infrastructure",
     description: "Premier network infrastructure and cybersecurity solutions for luxury properties in Dubai.",
+    viewport: "width=device-width, initial-scale=1, maximum-scale=5",
 };
 
 export default function RootLayout({

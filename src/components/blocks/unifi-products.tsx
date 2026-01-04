@@ -47,13 +47,13 @@ export function UniFiProducts() {
                             <div className="flex flex-row justify-between gap-2 md:grid md:grid-cols-3 md:gap-4 mb-4">
                                 <div className="space-y-1 text-center md:text-left">
                                     <div className="flex items-center justify-center md:justify-start text-lg md:text-2xl font-bold text-black dark:text-white">
-                                        <CountUp value={5.7} decimalPlaces={1} />
+                                        5.7
                                     </div>
                                     <p className="text-[10px] md:text-xs text-zinc-500 whitespace-nowrap">Gbps Max</p>
                                 </div>
                                 <div className="space-y-1 text-center md:text-left">
                                     <div className="flex items-center justify-center md:justify-start text-lg md:text-2xl font-bold text-black dark:text-white">
-                                        <CountUp value={500} suffix="+" />
+                                        500+
                                     </div>
                                     <p className="text-[10px] md:text-xs text-zinc-500">Clients</p>
                                 </div>

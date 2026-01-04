@@ -49,9 +49,9 @@ export function HeroSection() {
     }, []);
 
     return (
-        <main className="overflow-hidden bg-white dark:bg-zinc-950">
+        <main className="relative overflow-hidden bg-white dark:bg-zinc-950">
             {/* Ambient Background Mesh - Welwitech Style */}
-            <div className="absolute top-[-20%] right-[-10%] w-[500px] md:w-[800px] h-[500px] md:h-[800px] bg-gradient-to-br from-w-orange/20 via-w-magenta/10 to-transparent rounded-full blur-[100px] -z-10 pointer-events-none" />
+            <div className="absolute top-[-10%] right-0 md:top-[-20%] md:right-[-10%] w-[500px] md:w-[800px] h-[500px] md:h-[800px] bg-gradient-to-br from-w-orange/20 via-w-magenta/10 to-transparent rounded-full blur-[100px] -z-10 pointer-events-none" />
             <div className="absolute bottom-[-10%] left-[-10%] w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-gradient-to-tr from-w-blue/10 via-w-violet/10 to-transparent rounded-full blur-[80px] -z-10 pointer-events-none" />
 
             <section className="relative pt-24 md:pt-36 pb-16 md:pb-24">

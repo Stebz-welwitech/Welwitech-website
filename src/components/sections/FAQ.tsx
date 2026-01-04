@@ -41,7 +41,7 @@ export function FAQ() {
                         >
                             <button
                                 onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
-                                className="w-full py-6 flex items-center justify-between text-left group hover:bg-zinc-50/50 dark:hover:bg-zinc-900/50 transition-colors rounded-lg px-4 -mx-4"
+                                className="w-full py-6 flex items-center justify-between text-left group hover:bg-zinc-50/50 dark:hover:bg-zinc-900/50 transition-colors rounded-lg px-2 sm:px-4"
                             >
                                 <span className={`text-lg font-medium transition-colors ${openIndex === idx ? "text-welwitech-orange" : "text-black dark:text-white group-hover:text-black dark:group-hover:text-white"}`}>
                                     {t(item.q)}
@@ -59,7 +59,7 @@ export function FAQ() {
                                         transition={{ duration: 0.3, ease: "easeInOut" }}
                                         className="overflow-hidden"
                                     >
-                                        <p className="pb-8 text-zinc-500 dark:text-zinc-400 leading-relaxed px-4 -mx-4">
+                                        <p className="pb-8 text-zinc-500 dark:text-zinc-400 leading-relaxed px-2 sm:px-4">
                                             {t(item.a)}
                                         </p>
                                     </motion.div>

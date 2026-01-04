@@ -74,7 +74,7 @@ export function Footer() {
             </div>
 
             {/* Massive Watermark - Full Width Visible */}
-            <div className="absolute bottom-0 left-0 right-0 pointer-events-none select-none overflow-hidden flex items-center justify-center px-4" style={{ height: '25vh' }}>
+            <div className="absolute bottom-0 left-0 right-0 pointer-events-none select-none overflow-hidden flex items-center justify-center px-4 z-0" style={{ height: '25vh' }}>
                 <h1 className="text-[18vw] sm:text-[16vw] md:text-[14vw] lg:text-[12vw] xl:text-[11vw] leading-none font-bold text-center tracking-tighter text-black opacity-[0.03] w-full">
                     WELWITECH
                 </h1>

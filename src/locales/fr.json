@@ -16,7 +16,13 @@
         "cta_secondary": "Demander un audit",
         "trust_design": "Design Sécurisé",
         "trust_uptime": "99.9% Uptime",
-        "scroll": "Dérouler"
+        "scroll": "Dérouler",
+        "rotating": {
+            "connectivity": "Connectivité.",
+            "engagement": "Expérience Client.",
+            "security": "Sécurité.",
+            "performance": "Performance."
+        }
     },
     "partners": {
         "label": "Propulsé par l'écosystème officiel"
@@ -61,6 +67,29 @@
         "label": "Nos Solutions",
         "title": "Conçu pour l'Excellence",
         "subtitle": "Des architectures réseau sur-mesure adaptées aux exigences des projets les plus ambitieux de Dubaï.",
+        "network_desc": "Infrastructure réseau enterprise avec Wi-Fi 7, roaming seamless et gestion centralisée",
+        "access_desc": "Contrôle d'accès intelligent avec smart locks et gestion centralisée",
+        "access_f1": "Smart Locks NFC",
+        "access_f2": "Codes temporaires",
+        "access_f3": "Audit logs complets",
+        "protect_desc": "Surveillance vidéo professionnelle avec détection AI",
+        "protect_f1": "Détection AI",
+        "protect_f2": "Stockage local",
+        "protect_f3": "Enregistrement 4K",
+        "talk_desc": "Téléphonie VoIP enterprise avec UCaaS intégré",
+        "talk_f1": "VoIP HD",
+        "talk_f2": "Auto-attendant",
+        "talk_f3": "Enregistrement d'appels",
+        "connect_desc": "Écrans digitaux pour affichage et dashboards",
+        "connect_f1": "Digital Signage",
+        "connect_f2": "Dashboards temps réel",
+        "connect_f3": "PoE Display",
+        "perf_title": "Performance",
+        "perf_desc": "99.99% uptime, <1ms latence, bande passante garantie",
+        "sec_title": "Sécurité",
+        "sec_desc": "WPA3, Firewall enterprise, IPS/IDS, conformité TRA UAE",
+        "console_title": "Unified Console",
+        "console_desc": "Une seule interface pour gérer toute votre infrastructure",
         "res_title": "Résidentiel Premium",
         "res_cat": "Villas & Palaces",
         "res_features": [
@@ -122,11 +151,28 @@
         "email_contact_label": "Email",
         "office_label": "Bureau"
     },
+    "faq": {
+        "title": "Questions Fréquentes",
+        "subtitle": "Votre infrastructure réseau, simplifiée.",
+        "description": "Tout ce que vous devez savoir sur nos solutions UniFi pour propriétés de luxe à Dubai.",
+        "q1": "Quelles solutions UniFi proposez-vous ?",
+        "a1": "Nous proposons l'écosystème complet UniFi : Network (Wi-Fi 7 enterprise), Access (contrôle d'accès intelligent), et Protect (surveillance vidéo AI). Chaque solution s'intègre parfaitement pour une gestion centralisée et une sécurité renforcée.",
+        "q2": "Comment se déroule l'installation dans une propriété de luxe ?",
+        "a2": "Notre équipe effectue une analyse réseau complète, conçoit un plan sur mesure, puis installe l'infrastructure sans endommager l'esthétique. Installation discrète, tests rigoureux, et formation complète de vos équipes incluses.",
+        "q3": "Proposez-vous un support et une maintenance continue ?",
+        "a3": "Oui. Support technique 24/7 à Dubai, mises à jour firmware automatiques, monitoring proactif, et interventions sur site sous 4h pour nos clients premium. Votre infrastructure reste optimale en permanence.",
+        "q4": "Vos solutions sont-elles conformes aux normes UAE ?",
+        "a4": "Absolument. Toutes nos installations respectent les réglementations TRA (Telecommunications Regulatory Authority) des Émirats Arabes Unis, avec chiffrement enterprise et conformité GDPR pour la protection des données."
+    },
     "footer": {
         "desc": "Empowering luxury properties and smart cities with secure, invisible network infrastructure. The intersection of cybersecurity and premium integration.",
         "company_title": "Entreprise",
         "contact_title": "Contact",
         "rights": "Tous droits réservés.",
         "built_with": "Conçu avec expertise"
+    },
+    "banner": {
+        "title": "Demander votre audit gratuit maintenant",
+        "cta": "C'est parti"
     }
 }

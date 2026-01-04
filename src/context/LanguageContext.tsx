@@ -3,9 +3,10 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import en from "@/locales/en.json";
 import fr from "@/locales/fr.json";
+import ar from "@/locales/ar.json";
 
-type Language = "en" | "fr";
-type Content = typeof fr;
+type Language = "en" | "fr" | "ar";
+type Content = typeof en;
 
 interface LanguageContextType {
     language: Language;
@@ -16,11 +17,23 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-    const [language, setLanguage] = useState<Language>("fr");
-    const [content, setContent] = useState<Content>(fr);
+    const [language, setLanguage] = useState<Language>("en");
+    const [content, setContent] = useState<Content>(en);
 
     useEffect(() => {
-        setContent(language === "en" ? en : fr);
+        switch (language) {
+            case "en":
+                setContent(en);
+                break;
+            case "fr":
+                setContent(fr);
+                break;
+            case "ar":
+                setContent(ar);
+                break;
+            default:
+                setContent(en);
+        }
     }, [language]);
 
     const t = (path: string) => {

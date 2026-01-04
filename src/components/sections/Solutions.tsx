@@ -111,7 +111,7 @@ export function Solutions() {
                             <motion.div
                                 whileHover={{ scale: 1.05, rotate: -2 }}
                                 transition={{ type: "spring", stiffness: 300 }}
-                                className="w-[300px] md:w-[400px] h-[300px] md:h-[400px] bg-white/5 rounded-2xl flex items-center justify-center overflow-hidden cursor-pointer"
+                                className="w-[300px] md:w-[400px] h-[300px] md:h-[400px] bg-white/5 dark:bg-white/5 rounded-2xl flex items-center justify-center overflow-hidden cursor-pointer"
                                 onClick={() => handleOpen(sol)}
                             >
                                 {/* eslint-disable-next-line @next/next/no-img-element */}

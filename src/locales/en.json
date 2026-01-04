@@ -16,7 +16,13 @@
         "cta_secondary": "Request Audit",
         "trust_design": "Secure Design",
         "trust_uptime": "99.9% Uptime",
-        "scroll": "Scroll"
+        "scroll": "Scroll",
+        "rotating": {
+            "connectivity": "Connectivity.",
+            "engagement": "Customer Engagement.",
+            "security": "Security.",
+            "performance": "Performance."
+        }
     },
     "partners": {
         "label": "Powered by Official Ecosystem"
@@ -61,6 +67,29 @@
         "label": "Our Solutions",
         "title": "Designed for Excellence",
         "subtitle": "Bespoke network architectures adapted to the requirements of Dubai's most ambitious projects.",
+        "network_desc": "Enterprise network infrastructure with Wi-Fi 7, seamless roaming and centralized management",
+        "access_desc": "Smart access control with smart locks and centralized management",
+        "access_f1": "Smart Locks NFC",
+        "access_f2": "Temporary Codes",
+        "access_f3": "Complete Audit Logs",
+        "protect_desc": "Professional video surveillance with AI detection",
+        "protect_f1": "AI Detection",
+        "protect_f2": "Local Storage",
+        "protect_f3": "4K Recording",
+        "talk_desc": "Enterprise VoIP telephony with integrated UCaaS",
+        "talk_f1": "VoIP HD",
+        "talk_f2": "Auto-attendant",
+        "talk_f3": "Call Recording",
+        "connect_desc": "Digital screens for display and dashboards",
+        "connect_f1": "Digital Signage",
+        "connect_f2": "Real-time Dashboards",
+        "connect_f3": "PoE Display",
+        "perf_title": "Performance",
+        "perf_desc": "99.99% uptime, <1ms latency, guaranteed bandwidth",
+        "sec_title": "Security",
+        "sec_desc": "WPA3, Enterprise Firewall, IPS/IDS, UAE TRA compliance",
+        "console_title": "Unified Console",
+        "console_desc": "A single interface to manage your entire infrastructure",
         "res_title": "Premium Residential",
         "res_cat": "Villas & Palaces",
         "res_features": [
@@ -122,11 +151,28 @@
         "email_contact_label": "Email",
         "office_label": "Office"
     },
+    "faq": {
+        "title": "Frequently Asked Questions",
+        "subtitle": "Your network infrastructure, simplified.",
+        "description": "Everything you need to know about our UniFi solutions for luxury properties in Dubai.",
+        "q1": "What UniFi solutions do you offer?",
+        "a1": "We offer the complete UniFi ecosystem: Network (Enterprise Wi-Fi 7), Access (smart access control), and Protect (AI video surveillance). Each solution integrates seamlessly for centralized management and enhanced security.",
+        "q2": "How does installation work in a luxury property?",
+        "a2": "Our team performs a complete network analysis, designs a bespoke plan, and installs the infrastructure without compromising aesthetics. Discrete installation, rigorous testing, and full team training included.",
+        "q3": "Do you offer support and ongoing maintenance?",
+        "a3": "Yes. 24/7 technical support in Dubai, automatic firmware updates, proactive monitoring, and on-site interventions within 4 hours for our premium clients. Your infrastructure remains optimal at all times.",
+        "q4": "Are your solutions compliant with UAE regulations?",
+        "a4": "Absolutely. All our installations comply with UAE TRA (Telecommunications Regulatory Authority) regulations, featuring enterprise encryption and GDPR compliance for data protection."
+    },
     "footer": {
         "desc": "Empowering luxury properties and smart cities with secure, invisible network infrastructure. The intersection of cybersecurity and premium integration.",
         "company_title": "Company",
         "contact_title": "Contact",
         "rights": "All rights reserved.",
         "built_with": "Built with expertise"
+    },
+    "banner": {
+        "title": "Request your free audit now",
+        "cta": "Let's go"
     }
 }

@@ -7,9 +7,9 @@ export function Partners() {
     const { t } = useLanguage();
 
     return (
-        <section className="py-10 bg-blink-black border-y border-white/5 relative overflow-hidden">
+        <section className="py-10 bg-white dark:bg-zinc-950 border-y border-zinc-100 dark:border-zinc-800 relative overflow-hidden">
             {/* Subtle background glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[100px] bg-blink-orange/10 blur-[100px] rounded-full pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[100px] bg-welwitech-orange/5 blur-[100px] rounded-full pointer-events-none" />
 
             <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-16 relative z-10">
                 <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500">
@@ -19,8 +19,8 @@ export function Partners() {
                 <div className="h-8 w-px bg-white/10 hidden md:block" />
 
                 <motion.div
-                    initial={{ opacity: 0.5, filter: "brightness(0) invert(1)" }}
-                    whileHover={{ opacity: 1, filter: "brightness(1) invert(0)" }}
+                    initial={{ opacity: 0.5, filter: "grayscale(1)" }}
+                    whileHover={{ opacity: 1, filter: "grayscale(0)" }}
                     transition={{ duration: 0.4 }}
                     className="cursor-pointer"
                 >

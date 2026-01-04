@@ -77,7 +77,7 @@ export function ProductStrip({ title, subtitle, description, image, align = "lef
 
 export function ProductShowcase() {
     return (
-        <div className="bg-white">
+        <div className="bg-white dark:bg-zinc-950">
             <ProductStrip
                 index={0}
                 title="Massive Tri-Band Performance."

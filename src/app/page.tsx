@@ -1,20 +1,18 @@
-import { Hero } from "@/components/sections/Hero";
+import { HeroSection } from "@/components/blocks/hero-section-1";
+import { UniFiProducts } from "@/components/blocks/unifi-products";
 import { Expertise } from "@/components/sections/Expertise";
-import { ProductShowcase } from "@/components/sections/ProductShowcase";
-import { DetailGallery } from "@/components/sections/DetailGallery";
-import { AccessSection } from "@/components/sections/AccessSection";
 import { Contact } from "@/components/sections/Contact";
+import { FAQ } from "@/components/sections/FAQ";
 
 export default function Home() {
   return (
-    <main className="bg-white">
-      <Hero />
-      <ProductShowcase />
-      <DetailGallery />
-      <AccessSection />
+    <>
+      <HeroSection />
+      <UniFiProducts />
       <Expertise />
+      <FAQ />
       <Contact />
-    </main>
+    </>
   );
 }
 

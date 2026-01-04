@@ -25,7 +25,7 @@ export function DetailGallery() {
                         whileInView={{ opacity: 1, x: 0, rotate: 0 }}
                         transition={{ duration: 0.8, ease: "backOut" }}
                         viewport={{ once: true }}
-                        className="relative w-full aspect-square md:aspect-[4/3] bg-white rounded-2xl md:rounded-3xl shadow-sm border border-zinc-100 overflow-hidden p-4 sm:p-6 md:p-8 group"
+                        className="relative w-full aspect-square md:aspect-[4/3] bg-white dark:bg-zinc-900 rounded-2xl md:rounded-3xl shadow-sm border border-zinc-100 dark:border-zinc-800 overflow-hidden p-4 sm:p-6 md:p-8 group"
                     >
                         <Image
                             src="/images/udr7-1.png"
@@ -40,7 +40,7 @@ export function DetailGallery() {
                         whileInView={{ opacity: 1, x: 0, rotate: 0 }}
                         transition={{ duration: 0.8, ease: "backOut", delay: 0.2 }}
                         viewport={{ once: true }}
-                        className="relative w-full aspect-square md:aspect-[4/3] bg-white rounded-2xl md:rounded-3xl shadow-sm border border-zinc-100 overflow-hidden p-4 sm:p-6 md:p-8 group"
+                        className="relative w-full aspect-square md:aspect-[4/3] bg-white dark:bg-zinc-900 rounded-2xl md:rounded-3xl shadow-sm border border-zinc-100 dark:border-zinc-800 overflow-hidden p-4 sm:p-6 md:p-8 group"
                     >
                         <Image
                             src="/images/udr7-3.png"

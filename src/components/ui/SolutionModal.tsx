@@ -47,7 +47,7 @@ export function SolutionModal({ isOpen, onClose, solution }: SolutionModalProps)
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={onClose}
-                        className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-md flex items-center justify-center p-4 md:p-8"
+                        className="fixed inset-0 z-[100] bg-zinc-950/60 backdrop-blur-md flex items-center justify-center p-4 md:p-8"
                     />
 
                     {/* Modal */}
@@ -57,10 +57,10 @@ export function SolutionModal({ isOpen, onClose, solution }: SolutionModalProps)
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.9, y: 20 }}
                             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                            className="w-full max-w-5xl bg-blink-black border border-white/10 rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row pointer-events-auto max-h-[90vh]"
+                            className="w-full max-w-5xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row pointer-events-auto max-h-[90vh]"
                         >
                             {/* Image Section */}
-                            <div className="w-full md:w-1/2 bg-gradient-to-br from-gray-900 to-black relative flex items-center justify-center p-12 overflow-hidden">
+                            <div className="w-full md:w-1/2 bg-zinc-50 dark:bg-zinc-950 relative flex items-center justify-center p-12 overflow-hidden">
                                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(237,76,34,0.1)_0%,transparent_70%)] opacity-50" />
                                 {/* eslint-disable-next-line @next/next/no-img-element */}
                                 <img
@@ -71,40 +71,40 @@ export function SolutionModal({ isOpen, onClose, solution }: SolutionModalProps)
                             </div>
 
                             {/* Content Section */}
-                            <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col relative bg-blink-black overflow-y-auto">
+                            <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col relative bg-white dark:bg-zinc-900 overflow-y-auto">
                                 <button
                                     onClick={onClose}
-                                    className="absolute top-6 right-6 p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors text-white z-10"
+                                    className="absolute top-6 right-6 p-2 rounded-full bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors text-zinc-500 dark:text-zinc-400 z-10"
                                 >
                                     <X className="w-5 h-5" />
                                 </button>
 
-                                <div className="text-blink-orange text-sm font-bold uppercase tracking-wider mb-4">
+                                <div className="text-welwitech-orange text-sm font-bold uppercase tracking-wider mb-4">
                                     {solution.category}
                                 </div>
 
-                                <h2 className="text-3xl md:text-5xl font-bold text-white mb-8 leading-tight">
+                                <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white mb-8 leading-tight">
                                     {solution.title}
                                 </h2>
 
                                 <div className="flex-1">
-                                    <h3 className="text-lg font-medium text-gray-400 mb-6">Key Capabilities</h3>
+                                    <h3 className="text-lg font-medium text-zinc-500 dark:text-zinc-400 mb-6">Key Capabilities</h3>
                                     <ul className="space-y-4">
                                         {solution.features.map((feature, idx) => (
                                             <li key={idx} className="flex items-start gap-4">
-                                                <div className="mt-1 min-w-[20px] h-5 rounded-full bg-blink-orange/20 flex items-center justify-center">
-                                                    <Check className="w-3 h-3 text-blink-orange" />
+                                                <div className="mt-1 min-w-[20px] h-5 rounded-full bg-welwitech-orange/20 flex items-center justify-center">
+                                                    <Check className="w-3 h-3 text-welwitech-orange" />
                                                 </div>
-                                                <span className="text-gray-300 font-medium">{feature}</span>
+                                                <span className="text-zinc-700 dark:text-zinc-300 font-medium">{feature}</span>
                                             </li>
                                         ))}
                                     </ul>
                                 </div>
 
-                                <div className="mt-8 pt-6 border-t border-white/10">
+                                <div className="mt-8 pt-6 border-t border-zinc-100 dark:border-zinc-800">
                                     <button
                                         onClick={onClose}
-                                        className="w-full py-4 bg-blink-orange text-white rounded-xl font-bold uppercase tracking-wide hover:bg-orange-600 transition-colors"
+                                        className="w-full py-4 bg-welwitech-orange text-white rounded-xl font-bold uppercase tracking-wide hover:bg-orange-600 transition-colors"
                                     >
                                         Close Details
                                     </button>

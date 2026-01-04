@@ -55,7 +55,7 @@ export function AccessSection() {
                             transition={{ duration: 0.5, delay: 0.3 }}
                             viewport={{ once: true }}
                         >
-                            <Link href="/contact" className="inline-flex items-center px-6 sm:px-8 py-2.5 sm:py-3 rounded-full bg-white text-black font-semibold hover:bg-zinc-200 transition-colors group text-sm sm:text-base">
+                            <Link href="/contact" className="inline-flex items-center px-6 sm:px-8 py-2.5 sm:py-3 rounded-full bg-white dark:bg-zinc-800 text-black dark:text-white font-semibold hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors group text-sm sm:text-base">
                                 Get Secured
                                 <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
                             </Link>

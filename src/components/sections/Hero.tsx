@@ -1,12 +1,30 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
+import { useLanguage } from "@/context/LanguageContext";
+
+const ROTATING_WORDS = [
+    "hero.rotating.connectivity",
+    "hero.rotating.engagement",
+    "hero.rotating.security",
+    "hero.rotating.performance"
+];
 
 export function Hero() {
+    const { t } = useLanguage();
+    const [index, setIndex] = useState(0);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setIndex((prev) => (prev + 1) % ROTATING_WORDS.length);
+        }, 3000);
+        return () => clearInterval(timer);
+    }, []);
+
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -39,7 +57,7 @@ export function Hero() {
     return (
         <section
             ref={containerRef}
-            className="relative w-full min-h-screen flex items-center overflow-hidden bg-white pt-20 md:pt-24 pb-8 md:pb-12"
+            className="relative w-full min-h-screen flex items-center overflow-hidden bg-white dark:bg-zinc-950 pt-20 md:pt-24 pb-8 md:pb-12"
         >
             {/* Ambient Background Mesh */}
             <div className="absolute top-[-20%] right-[-10%] w-[500px] md:w-[800px] h-[500px] md:h-[800px] bg-gradient-to-br from-w-orange/20 via-w-magenta/10 to-transparent rounded-full blur-[100px] -z-10 pointer-events-none" />
@@ -58,7 +76,7 @@ export function Hero() {
                             transition={{ duration: 0.8 }}
                             className="mb-6 md:mb-8"
                         >
-                            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-zinc-200 bg-white/50 backdrop-blur-sm shadow-sm group cursor-default">
+                            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm shadow-sm group cursor-default">
                                 <span className="w-2 h-2 rounded-full bg-[image:var(--image-gradient-primary)] animate-pulse" />
                                 <span className="text-xs font-semibold uppercase tracking-wider text-zinc-600">
                                     Next Gen Wi-Fi 7
@@ -81,13 +99,22 @@ export function Hero() {
                                     Redefining
                                 </motion.h1>
                             </div>
-                            <div className="overflow-hidden">
-                                <motion.h1
-                                    variants={revealVariant}
-                                    className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tighter text-transparent bg-clip-text bg-[image:var(--image-gradient-primary)] leading-[1.1] pb-2"
-                                >
-                                    Connectivity.
-                                </motion.h1>
+                            <div className="relative h-[1.1em] overflow-visible">
+                                <AnimatePresence mode="wait">
+                                    <motion.h1
+                                        key={ROTATING_WORDS[index]}
+                                        initial={{ y: 20, opacity: 0, filter: "blur(4px)" }}
+                                        animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
+                                        exit={{ y: -20, opacity: 0, filter: "blur(4px)" }}
+                                        transition={{
+                                            duration: 0.5,
+                                            ease: "easeOut"
+                                        }}
+                                        className="absolute top-0 left-0 w-full text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tighter text-transparent bg-clip-text bg-[image:var(--image-gradient-primary)] leading-[1.1] pb-2 origin-left"
+                                    >
+                                        {t(ROTATING_WORDS[index])}
+                                    </motion.h1>
+                                </AnimatePresence>
                             </div>
                         </motion.div>
 

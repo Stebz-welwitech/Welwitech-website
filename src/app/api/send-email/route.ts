@@ -1,5 +1,7 @@
 import { Resend } from 'resend';
 import { NextRequest, NextResponse } from 'next/server';
+import { ClientConfirmationEmail } from '@/emails/ClientConfirmationEmail';
+import { SalesNotificationEmail } from '@/emails/SalesNotificationEmail';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -15,29 +17,33 @@ export async function POST(req: NextRequest) {
             );
         }
 
-        const { data, error } = await resend.emails.send({
-            from: 'Welwitech Contact <onboarding@resend.dev>',
-            to: ['maurice@welwitech.com'], // TIP: Change this to your verified email for testing!
-            subject: `New message from ${name}`,
-            replyTo: email,
-            html: `
-        <div style="font-family: sans-serif; padding: 20px; color: #333;">
-          <h1 style="color: #FF4F00;">New Contact Form Submission</h1>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <div style="margin-top: 20px; padding: 15px; border-left: 4px solid #FF4F00; background-color: #f9f9f9;">
-            <p style="margin: 0;">${message}</p>
-          </div>
-        </div>
-      `,
-        });
+        const date = new Date().toLocaleString("en-US", { timeZone: "Asia/Dubai" });
+
+        // Send emails in parallel
+        const { data, error } = await resend.batch.send([
+            // 1. Email to the Sales Team (You)
+            {
+                from: 'Welwitech Leads <onboarding@resend.dev>', // Update to verified domain in prod
+                to: ['maurice@welwitech.com'],
+                subject: `New Lead: ${name} 🔥`,
+                replyTo: email,
+                react: SalesNotificationEmail({ name, email, message, date }),
+            },
+            // 2. Email to the Client (Confirmation)
+            {
+                from: 'Welwitech <onboarding@resend.dev>', // Update to verified domain in prod
+                to: [email],
+                subject: 'We received your request - Welwitech',
+                react: ClientConfirmationEmail({ name }),
+            },
+        ]);
 
         if (error) {
             console.error('Resend API Error:', error);
             return NextResponse.json({ error }, { status: 500 });
         }
 
-        return NextResponse.json(data);
+        return NextResponse.json({ success: true, data });
     } catch (error) {
         console.error('Server Internal Error:', error);
         return NextResponse.json(

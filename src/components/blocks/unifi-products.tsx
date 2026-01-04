@@ -9,7 +9,7 @@ export function UniFiProducts() {
     const { t } = useLanguage();
 
     return (
-        <section id="solutions" className="bg-zinc-50 py-16 md:py-32 dark:bg-zinc-950">
+        <section id="solutions" className="bg-zinc-50 py-16 md:py-32 dark:bg-zinc-950 overflow-hidden">
             <div className="mx-auto max-w-7xl px-6">
                 {/* Header */}
                 <div className="text-center mb-16">

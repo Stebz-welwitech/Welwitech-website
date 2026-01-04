@@ -37,7 +37,7 @@ export default function RootLayout({
             <head>
                 <ThemeScript />
             </head>
-            <body className={`${inter.variable} ${jetbrains.variable} font-sans`}>
+            <body className={`${inter.variable} ${jetbrains.variable} font-sans overflow-x-hidden antialiased`}>
                 <ThemeProvider>
                     <LanguageProvider>
                         <LoadingScreen />

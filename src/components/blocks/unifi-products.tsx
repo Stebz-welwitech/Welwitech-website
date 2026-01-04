@@ -44,22 +44,22 @@ export function UniFiProducts() {
                             </CardDescription>
                         </CardHeader>
                         <CardContent>
-                            <div className="grid grid-cols-3 gap-4 mb-4">
-                                <div className="space-y-1">
-                                    <div className="flex items-center text-2xl font-bold text-black dark:text-white">
+                            <div className="flex flex-row justify-between gap-2 md:grid md:grid-cols-3 md:gap-4 mb-4">
+                                <div className="space-y-1 text-center md:text-left">
+                                    <div className="flex items-center justify-center md:justify-start text-lg md:text-2xl font-bold text-black dark:text-white">
                                         <CountUp value={5.7} decimalPlaces={1} />
                                     </div>
-                                    <p className="text-xs text-zinc-500">Gbps Max</p>
+                                    <p className="text-[10px] md:text-xs text-zinc-500 whitespace-nowrap">Gbps Max</p>
                                 </div>
-                                <div className="space-y-1">
-                                    <div className="flex items-center text-2xl font-bold text-black dark:text-white">
+                                <div className="space-y-1 text-center md:text-left">
+                                    <div className="flex items-center justify-center md:justify-start text-lg md:text-2xl font-bold text-black dark:text-white">
                                         <CountUp value={500} suffix="+" />
                                     </div>
-                                    <p className="text-xs text-zinc-500">Clients</p>
+                                    <p className="text-[10px] md:text-xs text-zinc-500">Clients</p>
                                 </div>
-                                <div className="space-y-1">
-                                    <p className="text-2xl font-bold text-black dark:text-white">PoE++</p>
-                                    <p className="text-xs text-zinc-500">Power</p>
+                                <div className="space-y-1 text-center md:text-left">
+                                    <p className="text-lg md:text-2xl font-bold text-black dark:text-white">PoE++</p>
+                                    <p className="text-[10px] md:text-xs text-zinc-500">Power</p>
                                 </div>
                             </div>
                             <div className="flex flex-wrap gap-2">

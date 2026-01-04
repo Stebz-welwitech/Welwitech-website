@@ -10,6 +10,7 @@ import { useLanguage } from "@/context/LanguageContext";
 export const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [langMenuOpen, setLangMenuOpen] = useState(false);
     const { theme, toggleTheme } = useTheme();
     const { language, setLanguage, t } = useLanguage();
 
@@ -43,6 +44,12 @@ export const Navbar = () => {
         setMobileMenuOpen(false);
     };
 
+    const handleLanguageChange = (lang: 'en' | 'fr' | 'ar') => {
+        setLanguage(lang);
+        setLangMenuOpen(false);
+        setMobileMenuOpen(false);
+    };
+
     return (
         <>
             <motion.nav
@@ -53,8 +60,8 @@ export const Navbar = () => {
             >
                 <div
                     className={`pointer-events-auto flex items-center justify-between px-4 md:px-5 py-2.5 rounded-full transition-all duration-500 ease-out ${scrolled
-                        ? "glass shadow-sm border border-black/5 dark:border-white/10 w-full max-w-4xl"
-                        : "bg-white/80 dark:bg-black/80 backdrop-blur-md shadow-sm border border-black/5 dark:border-white/10 w-full max-w-7xl"
+                        ? "glass shadow-sm border border-black/5 dark:border-white/10 w-full max-w-4xl bg-white/95 dark:bg-black/95 backdrop-blur-xl"
+                        : "bg-white/90 dark:bg-black/90 backdrop-blur-md shadow-sm border border-black/5 dark:border-white/10 w-full max-w-7xl"
                         }`}
                 >
                     {/* Logo */}
@@ -87,33 +94,48 @@ export const Navbar = () => {
 
                     {/* CTA & Buttons */}
                     <div className="flex items-center gap-2 md:gap-3">
-                        {/* Language Selector */}
-                        <div className="relative group">
-                            <button className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                        {/* Language Selector - Click based */}
+                        <div className="relative">
+                            <button
+                                onClick={() => setLangMenuOpen(!langMenuOpen)}
+                                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors text-sm font-medium text-zinc-700 dark:text-zinc-300"
+                            >
                                 <Globe className="w-4 h-4" />
                                 <span className="uppercase hidden sm:inline">{language}</span>
                             </button>
 
-                            <div className="absolute right-0 top-full mt-2 w-36 py-1 bg-white dark:bg-zinc-900 rounded-xl shadow-lg border border-zinc-100 dark:border-zinc-800 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
-                                <button
-                                    onClick={() => setLanguage('en')}
-                                    className={`w-full text-left px-4 py-2 text-sm hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors ${language === 'en' ? 'text-welwitech-orange font-medium' : 'text-zinc-600 dark:text-zinc-400'}`}
-                                >
-                                    🇬🇧 English
-                                </button>
-                                <button
-                                    onClick={() => setLanguage('ar')}
-                                    className={`w-full text-left px-4 py-2 text-sm hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors ${language === 'ar' ? 'text-welwitech-orange font-medium' : 'text-zinc-600 dark:text-zinc-400'}`}
-                                >
-                                    🇦🇪 العربية
-                                </button>
-                                <button
-                                    onClick={() => setLanguage('fr')}
-                                    className={`w-full text-left px-4 py-2 text-sm hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors ${language === 'fr' ? 'text-welwitech-orange font-medium' : 'text-zinc-600 dark:text-zinc-400'}`}
-                                >
-                                    🇫🇷 Français
-                                </button>
-                            </div>
+                            <AnimatePresence>
+                                {langMenuOpen && (
+                                    <>
+                                        <div className="fixed inset-0 z-10" onClick={() => setLangMenuOpen(false)} />
+                                        <motion.div
+                                            initial={{ opacity: 0, y: 10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{ opacity: 0, y: 10 }}
+                                            className="absolute right-0 top-full mt-2 w-36 py-1 bg-white dark:bg-zinc-900 rounded-xl shadow-lg border border-zinc-100 dark:border-zinc-800 z-20"
+                                        >
+                                            <button
+                                                onClick={() => handleLanguageChange('en')}
+                                                className={`w-full text-left px-4 py-2 text-sm hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors ${language === 'en' ? 'text-welwitech-orange font-medium' : 'text-zinc-600 dark:text-zinc-400'}`}
+                                            >
+                                                🇬🇧 English
+                                            </button>
+                                            <button
+                                                onClick={() => handleLanguageChange('ar')}
+                                                className={`w-full text-left px-4 py-2 text-sm hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors ${language === 'ar' ? 'text-welwitech-orange font-medium' : 'text-zinc-600 dark:text-zinc-400'}`}
+                                            >
+                                                🇦🇪 العربية
+                                            </button>
+                                            <button
+                                                onClick={() => handleLanguageChange('fr')}
+                                                className={`w-full text-left px-4 py-2 text-sm hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors ${language === 'fr' ? 'text-welwitech-orange font-medium' : 'text-zinc-600 dark:text-zinc-400'}`}
+                                            >
+                                                🇫🇷 Français
+                                            </button>
+                                        </motion.div>
+                                    </>
+                                )}
+                            </AnimatePresence>
                         </div>
 
                         {/* Theme Toggle */}
@@ -162,9 +184,9 @@ export const Navbar = () => {
                             animate={{ x: 0 }}
                             exit={{ x: "100%" }}
                             transition={{ type: "spring", damping: 30, stiffness: 300 }}
-                            className="fixed top-0 right-0 bottom-0 w-[85%] max-w-sm bg-white dark:bg-zinc-900 z-50 md:hidden shadow-2xl"
+                            className="fixed top-0 right-0 bottom-0 w-[85%] max-w-sm bg-white dark:bg-zinc-900 z-50 md:hidden shadow-2xl overflow-y-auto"
                         >
-                            <div className="flex flex-col h-full">
+                            <div className="flex flex-col min-h-full">
                                 {/* Header */}
                                 <div className="flex items-center justify-between p-6 border-b border-zinc-100 dark:border-zinc-800">
                                     <div className="flex items-center gap-2">
@@ -189,7 +211,7 @@ export const Navbar = () => {
                                 </div>
 
                                 {/* Menu Items */}
-                                <nav className="flex-1 px-6 py-8">
+                                <nav className="flex-1 px-6 py-6">
                                     <ul className="space-y-2">
                                         {menuItems.map((item, index) => (
                                             <motion.li
@@ -208,6 +230,33 @@ export const Navbar = () => {
                                             </motion.li>
                                         ))}
                                     </ul>
+
+                                    <div className="my-6 border-t border-zinc-100 dark:border-zinc-800" />
+
+                                    {/* Mobile Language Selector */}
+                                    <div className="grid grid-cols-3 gap-2">
+                                        <button
+                                            onClick={() => handleLanguageChange('en')}
+                                            className={`p-2 rounded-lg text-sm font-medium flex flex-col items-center gap-1 transition-colors ${language === 'en' ? 'bg-welwitech-orange/10 text-welwitech-orange' : 'text-zinc-500 bg-zinc-50 dark:bg-zinc-800'}`}
+                                        >
+                                            <span className="text-xl">🇬🇧</span>
+                                            English
+                                        </button>
+                                        <button
+                                            onClick={() => handleLanguageChange('ar')}
+                                            className={`p-2 rounded-lg text-sm font-medium flex flex-col items-center gap-1 transition-colors ${language === 'ar' ? 'bg-welwitech-orange/10 text-welwitech-orange' : 'text-zinc-500 bg-zinc-50 dark:bg-zinc-800'}`}
+                                        >
+                                            <span className="text-xl">🇦🇪</span>
+                                            العربية
+                                        </button>
+                                        <button
+                                            onClick={() => handleLanguageChange('fr')}
+                                            className={`p-2 rounded-lg text-sm font-medium flex flex-col items-center gap-1 transition-colors ${language === 'fr' ? 'bg-welwitech-orange/10 text-welwitech-orange' : 'text-zinc-500 bg-zinc-50 bg-zinc-50 dark:bg-zinc-800'}`}
+                                        >
+                                            <span className="text-xl">🇫🇷</span>
+                                            Français
+                                        </button>
+                                    </div>
                                 </nav>
 
                                 {/* Footer CTA */}

@@ -11,8 +11,8 @@ export default async (req: Request) => {
         const { name, email, message } = await req.json();
 
         const { data, error } = await resend.emails.send({
-            from: 'Welwitech Contact <onboarding@resend.dev>',
-            to: ['maurice@welwitech.com'], // Defaulting to a placeholder, ideally user configures this
+            from: 'Welwitech Contact <contact@welwitech.com>',
+            to: ['maurice@welwitech.com'],
             subject: `New message from ${name}`,
             html: `
         <div style="font-family: sans-serif; padding: 20px; color: #333;">

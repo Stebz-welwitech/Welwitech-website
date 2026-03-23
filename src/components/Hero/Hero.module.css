@@ -1,0 +1,67 @@
+.hero {
+  position: relative; width: 100%; min-height: 100vh;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  overflow: hidden;
+  padding: 120px var(--px) 64px;
+}
+
+/* Subtle dot grid */
+.hero::before {
+  content: ''; position: absolute; inset: 0; z-index: 0;
+  background-image: radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px);
+  background-size: 20px 20px;
+  mask-image: radial-gradient(ellipse 50% 45% at 50% 50%, black 20%, transparent 65%);
+  -webkit-mask-image: radial-gradient(ellipse 50% 45% at 50% 50%, black 20%, transparent 65%);
+}
+
+.content { position: relative; z-index: 2; max-width: 660px; }
+
+.tag {
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.12em; color: var(--text-3);
+  margin-bottom: 24px; display: inline-flex; align-items: center; gap: 8px;
+}
+.dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+
+.title {
+  font-size: clamp(52px, 10vw, 96px); font-weight: 800;
+  letter-spacing: -0.035em; line-height: 1;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #007aff, #af52de, #ff2d55);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sub {
+  font-size: clamp(16px, 1.8vw, 19px); font-weight: 400;
+  color: var(--text-2); margin-bottom: 8px; line-height: 1.5;
+}
+.loc {
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  color: var(--text-3); letter-spacing: 0.06em; margin-bottom: 36px;
+}
+
+.cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 14px; font-weight: 600;
+  padding: 14px 32px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 0.5px solid var(--glass-border);
+  border-radius: 100px;
+  box-shadow: var(--glass-shadow);
+  color: var(--text);
+  transition: all 0.35s var(--ease);
+}
+.cta:hover {
+  background: var(--glass-bg-hover);
+  box-shadow: var(--glass-shadow-hover);
+  transform: translateY(-2px) scale(1.02);
+}
+.cta svg { transition: transform 0.2s; }
+.cta:hover svg { transform: translateX(2px); }
+
+@media (max-width: 640px) {
+  .hero { min-height: auto; padding-top: 100px; padding-bottom: 64px; }
+}

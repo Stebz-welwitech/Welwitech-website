@@ -1,0 +1,4 @@
+.sub { margin-bottom: 56px; }
+.title { font-size: clamp(24px, 3vw, 30px); font-weight: 700; margin-bottom: 8px; color: var(--text); letter-spacing: -0.01em; }
+.desc { font-size: 15px; color: var(--text-2); max-width: 480px; margin-bottom: 24px; line-height: 1.65; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }

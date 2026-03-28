@@ -6,6 +6,7 @@ export const nav = {
     { label: 'Mobile', href: '#mobile' },
     { label: 'Web', href: '#web' },
     { label: 'IA', href: '#ai' },
+    { label: 'Projets', href: '#portfolio' },
     { label: 'Approche', href: '#approach' },
   ],
   cta: { label: 'Contact', href: '#contact' },

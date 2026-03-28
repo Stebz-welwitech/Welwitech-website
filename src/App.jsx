@@ -5,18 +5,24 @@ import Navbar from './components/Navbar/Navbar'
 import { CinematicHero } from './components/ui/cinematic-landing-hero'
 import ServicesOverview from './components/ServicesOverview/ServicesOverview'
 import PoleSection from './components/PoleSection/PoleSection'
+import Portfolio from './components/Portfolio/Portfolio'
 import ProcessSection from './components/ProcessSection/ProcessSection'
 import Contact from './components/Contact/Contact'
 import Footer from './components/Footer/Footer'
+import CustomCursor from './components/CustomCursor/CustomCursor'
+import Loader from './components/Loader/Loader'
+import BackToTop from './components/BackToTop/BackToTop'
 import { poles } from './data/content'
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('')
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const ids = ['services', 'design', 'mobile', 'web', 'ai', 'approach', 'contact']
+    if (loading) return
+    const ids = ['services', 'design', 'mobile', 'web', 'ai', 'portfolio', 'approach', 'contact']
     const triggers = ids.map(id => {
       const el = document.getElementById(id)
       if (!el) return null
@@ -28,28 +34,29 @@ export default function App() {
       })
     })
     return () => triggers.forEach(t => t?.kill())
-  }, [])
+  }, [loading])
+
+  if (loading) {
+    return <Loader onComplete={() => setLoading(false)} />
+  }
 
   return (
     <>
+      <CustomCursor />
       <Navbar activeSection={activeSection} />
-      <main>
+      <main id="main-content">
         <CinematicHero />
         <ServicesOverview />
-        <hr className="divider" />
-        <PoleSection data={poles.design} />
-        <hr className="divider" />
+        <PoleSection data={poles.design} elevated />
         <PoleSection data={poles.mobile} />
-        <hr className="divider" />
-        <PoleSection data={poles.web} />
-        <hr className="divider" />
+        <PoleSection data={poles.web} elevated />
         <PoleSection data={poles.ai} />
-        <hr className="divider" />
+        <Portfolio />
         <ProcessSection />
-        <hr className="divider" />
         <Contact />
       </main>
       <Footer />
+      <BackToTop />
     </>
   )
 }

@@ -1,0 +1,4 @@
+.reveal {
+  overflow: hidden;
+  will-change: clip-path;
+}

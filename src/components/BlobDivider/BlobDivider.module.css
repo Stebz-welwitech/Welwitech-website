@@ -1,0 +1,8 @@
+.divider {
+  position: relative; display: block; width: 100%;
+  height: 60px; overflow: visible;
+  pointer-events: none; user-select: none;
+  opacity: 0.5;
+}
+@media (min-width: 768px) { .divider { height: 80px; } }
+.flip { transform: scaleY(-1); }

@@ -1,14 +1,40 @@
-.section { padding: var(--section-y) var(--px); background: rgba(255,255,255,0.02); }
+.section { padding: var(--section-y) var(--px); background: #0a0a0a; }
 .inner { max-width: var(--max-w); margin: 0 auto; }
-.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-@media (max-width: 768px) { .grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 480px) { .grid { grid-template-columns: 1fr; } }
-.card {
-  padding: 28px 24px; border-radius: var(--radius);
-  background: var(--glass-bg); border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-shadow); transition: all 0.3s var(--ease);
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+
+.step { display: flex; flex-direction: column; align-items: center; position: relative; }
+
+.indicator {
+  display: flex; align-items: center; width: 100%;
+  margin-bottom: 28px; position: relative;
+  justify-content: center;
 }
-.card:hover { background: rgba(255,255,255,0.05); transform: translateY(-3px); box-shadow: var(--glass-shadow-hover); }
-.num { font-family: var(--mono); font-size: 11px; font-weight: 500; color: var(--accent); margin-bottom: 14px; display: block; }
-.cardTitle { font-size: 17px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.01em; }
-.cardDesc { font-size: 13px; color: var(--text-2); line-height: 1.55; }
+.dot {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: #1c1c1e; z-index: 1;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  color: var(--accent);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.line {
+  position: absolute; top: 50%; left: 55%; right: -45%;
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+}
+
+.card {
+  padding: 20px 16px; text-align: center;
+}
+.cardTitle { font-size: 17px; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.01em; }
+.cardDesc { font-size: 14px; color: var(--text-2); line-height: 1.47; }
+
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr 1fr; gap: 40px 0; }
+  .line { display: none; }
+}
+@media (max-width: 480px) {
+  .grid { grid-template-columns: 1fr; gap: 32px; }
+  .indicator { justify-content: flex-start; padding-left: 20px; }
+  .card { text-align: left; padding-left: 20px; }
+}

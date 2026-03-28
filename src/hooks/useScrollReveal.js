@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-gsap.registerPlugin(ScrollTrigger)
+// ScrollTrigger is registered in App.jsx — no need to re-register here
 
 export function useScrollReveal(opts = {}) {
   const ref = useRef(null)

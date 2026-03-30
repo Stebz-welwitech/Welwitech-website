@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import SectionHeader from '../SectionHeader/SectionHeader'
 import s from './Portfolio.module.css'
+import { useInteractionSound } from '../../hooks/useInteractionSound'
 
 const projects = [
   { id: 1, title: 'App Fintech', category: 'Mobile', gradient: 'linear-gradient(135deg, #ff9f0a 0%, #ff375f 100%)', desc: 'Application bancaire mobile avec authentification biométrique et paiements instantanés.' },
@@ -12,7 +13,7 @@ const projects = [
   { id: 5, title: 'CRM Immobilier', category: 'Web', gradient: 'linear-gradient(135deg, #2997ff 0%, #30d158 100%)', desc: 'CRM sur mesure pour la gestion de portefeuilles immobiliers premium.' },
 ]
 
-function ProjectCard({ project, index, onHover, onLeave }) {
+function ProjectCard({ project, index, onHover, onLeave, playHover, playClick }) {
   const cardRef = useRef(null)
 
   const handleMouseMove = useCallback((e) => {
@@ -39,14 +40,27 @@ function ProjectCard({ project, index, onHover, onLeave }) {
     onLeave()
   }, [onLeave])
 
+  const handleKeyDown = useCallback((e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      playClick();
+    }
+  }, [playClick]);
+
   return (
     <div
       ref={cardRef}
       className={s.card}
-      onMouseEnter={() => onHover(project.id)}
+      tabIndex="0"
+      onMouseEnter={() => { onHover(project.id); playHover(); }}
       onMouseLeave={handleMouseLeave}
       onMouseMove={handleMouseMove}
+      onFocus={() => { onHover(project.id); playHover(); }}
+      onBlur={handleMouseLeave}
+      onClick={() => playClick()}
+      onKeyDown={handleKeyDown}
       style={{ transformStyle: 'preserve-3d' }}
+      aria-label={`Projet ${project.title}, Catégorie ${project.category}`}
     >
       <div className={s.cardShine} />
       <div className={s.cardInner}>
@@ -58,7 +72,7 @@ function ProjectCard({ project, index, onHover, onLeave }) {
           <h3 className={s.cardTitle}>{project.title}</h3>
           <p className={s.cardDesc}>{project.desc}</p>
         </div>
-        <span className={s.cardArrow}>&rarr;</span>
+        <span className={s.cardArrow} aria-hidden="true">&rarr;</span>
       </div>
     </div>
   )
@@ -69,6 +83,7 @@ export default function Portfolio() {
   const trackRef = useRef(null)
   const [hoveredId, setHoveredId] = useState(null)
   const previewRef = useRef(null)
+  const { playHover, playClick } = useInteractionSound()
 
   useEffect(() => {
     const section = sectionRef.current
@@ -139,6 +154,8 @@ export default function Portfolio() {
             index={i}
             onHover={setHoveredId}
             onLeave={() => setHoveredId(null)}
+            playHover={playHover}
+            playClick={playClick}
           />
         ))}
       </div>

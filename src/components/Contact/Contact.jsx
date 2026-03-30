@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useScrollReveal } from '../../hooks/useScrollReveal'
 import { contact } from '../../data/content'
 import s from './Contact.module.css'
+import { useInteractionSound } from '../../hooks/useInteractionSound'
 
 export default function Contact() {
   const formRef = useScrollReveal({ delay: 0.2 })
@@ -12,6 +13,7 @@ export default function Contact() {
 
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [status, setStatus] = useState(null)
+  const { playHover, playClick } = useInteractionSound()
 
   useEffect(() => {
     const el = headingRef.current
@@ -34,6 +36,7 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    playClick()
     const subject = encodeURIComponent(`Nouveau projet — ${form.name}`)
     const body = encodeURIComponent(`Nom: ${form.name}\nEmail: ${form.email}\n\n${form.message}`)
     window.location.href = `mailto:${contact.email}?subject=${subject}&body=${body}`
@@ -56,6 +59,7 @@ export default function Contact() {
                 id="contact-name" name="name" type="text" required
                 placeholder="Votre nom" className={s.input}
                 value={form.name} onChange={handleChange}
+                onFocus={playHover}
               />
             </div>
             <div className={s.field}>
@@ -64,6 +68,7 @@ export default function Contact() {
                 id="contact-email" name="email" type="email" required
                 placeholder="vous@exemple.com" className={s.input}
                 value={form.email} onChange={handleChange}
+                onFocus={playHover}
               />
             </div>
           </div>
@@ -74,9 +79,10 @@ export default function Contact() {
               placeholder="Décrivez votre projet..."
               className={s.textarea}
               value={form.message} onChange={handleChange}
+              onFocus={playHover}
             />
           </div>
-          <button type="submit" className={s.cta}>
+          <button type="submit" className={s.cta} onMouseEnter={playHover}>
             {contact.cta} &rarr;
           </button>
           {status === 'sent' && (

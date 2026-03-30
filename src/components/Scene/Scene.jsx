@@ -1,109 +1,117 @@
-import { useRef, useMemo, useEffect, useState } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
+import { MeshTransmissionMaterial, Float, Environment, ContactShadows, useCursor, PerformanceMonitor } from '@react-three/drei'
 import * as THREE from 'three'
 
-function Particles({ count = 300 }) {
-  const ref = useRef()
-
-  const [positions, colors] = useMemo(() => {
-    const pos = new Float32Array(count * 3)
-    const col = new Float32Array(count * 3)
-    const palette = [
-      [0.15, 0.39, 0.92],  // blue
-      [0.49, 0.23, 0.93],  // violet
-      [0.88, 0.11, 0.28],  // rose
-      [0.02, 0.59, 0.41],  // emerald
-    ]
-    for (let i = 0; i < count; i++) {
-      pos[i * 3] = (Math.random() - 0.5) * 14
-      pos[i * 3 + 1] = (Math.random() - 0.5) * 10
-      pos[i * 3 + 2] = (Math.random() - 0.5) * 5 - 1
-      const c = palette[Math.floor(Math.random() * palette.length)]
-      col[i * 3] = c[0]
-      col[i * 3 + 1] = c[1]
-      col[i * 3 + 2] = c[2]
-    }
-    return [pos, col]
-  }, [count])
+function GlassBlob({ degraded }) {
+  const meshRef = useRef()
+  const [hovered, setHovered] = useState(false)
+  
+  useCursor(hovered)
 
   useFrame((state) => {
-    if (ref.current) {
-      ref.current.rotation.y = state.clock.elapsedTime * 0.012
-      ref.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.006) * 0.03
-    }
+    if (!meshRef.current) return
+    const t = state.clock.getElapsedTime()
+    meshRef.current.rotation.y = THREE.MathUtils.lerp(meshRef.current.rotation.y, hovered ? t * 0.5 : t * 0.1, 0.05)
+    meshRef.current.rotation.x = THREE.MathUtils.lerp(meshRef.current.rotation.x, hovered ? Math.sin(t) * 0.5 : Math.sin(t * 0.5) * 0.2, 0.05)
+    
+    const targetScale = hovered ? 1.2 : 1
+    meshRef.current.scale.x = THREE.MathUtils.lerp(meshRef.current.scale.x, targetScale, 0.1)
+    meshRef.current.scale.y = THREE.MathUtils.lerp(meshRef.current.scale.y, targetScale, 0.1)
+    meshRef.current.scale.z = THREE.MathUtils.lerp(meshRef.current.scale.z, targetScale, 0.1)
   })
 
   return (
-    <points ref={ref}>
-      <bufferGeometry>
-        <bufferAttribute attach="attributes-position" array={positions} count={count} itemSize={3} />
-        <bufferAttribute attach="attributes-color" array={colors} count={count} itemSize={3} />
-      </bufferGeometry>
-      <pointsMaterial
-        size={0.025}
-        vertexColors
-        transparent
-        opacity={0.5}
-        sizeAttenuation
-        depthWrite={false}
-      />
-    </points>
+    <Float speed={2} rotationIntensity={1.5} floatIntensity={2}>
+      <mesh
+        ref={meshRef}
+        onPointerOver={() => setHovered(true)}
+        onPointerOut={() => setHovered(false)}
+        position={[0, 0, 0]}
+      >
+        <icosahedronGeometry args={[2, degraded ? 12 : 20]} />
+        <MeshTransmissionMaterial
+          backside
+          samples={degraded ? 2 : 4}
+          resolution={degraded ? 256 : 512}
+          thickness={0.5}
+          chromaticAberration={degraded ? 0.2 : 0.4}
+          anisotropy={0.2}
+          distortion={0.5}
+          distortionScale={0.5}
+          temporalDistortion={0.1}
+          iridescence={1}
+          iridescenceIOR={1}
+          iridescenceThicknessRange={[0, 1400]}
+          clearcoat={1}
+          attenuationDistance={0.5}
+          attenuationColor="#ffffff"
+          color="#ffffff"
+        />
+      </mesh>
+    </Float>
   )
 }
 
-function Ring() {
+function FloatingCore() {
   const ref = useRef()
-  const count = 60
-
-  const positions = useMemo(() => {
-    const arr = new Float32Array(count * 3)
-    for (let i = 0; i < count; i++) {
-      const a = (i / count) * Math.PI * 2
-      const r = 2.8 + (Math.random() - 0.5) * 0.3
-      arr[i * 3] = Math.cos(a) * r
-      arr[i * 3 + 1] = (Math.random() - 0.5) * 0.3
-      arr[i * 3 + 2] = Math.sin(a) * r
-    }
-    return arr
-  }, [])
-
   useFrame((state) => {
     if (ref.current) {
-      ref.current.rotation.y = state.clock.elapsedTime * 0.06
-      ref.current.rotation.z = Math.sin(state.clock.elapsedTime * 0.04) * 0.08
+      ref.current.rotation.y += 0.01
+      ref.current.rotation.z += 0.005
     }
   })
-
   return (
-    <points ref={ref} position={[1.5, 0, 0]}>
-      <bufferGeometry>
-        <bufferAttribute attach="attributes-position" array={positions} count={count} itemSize={3} />
-      </bufferGeometry>
-      <pointsMaterial size={0.018} color="#7c3aed" transparent opacity={0.35} sizeAttenuation depthWrite={false} />
-    </points>
+    <mesh ref={ref}>
+      <torusKnotGeometry args={[0.8, 0.2, 100, 16]} />
+      <meshPhysicalMaterial color="#bf5af2" emissive="#bf5af2" emissiveIntensity={2} toneMapped={false} />
+    </mesh>
   )
 }
 
 export default function Scene() {
   const [visible, setVisible] = useState(true)
+  const [dpr, setDpr] = useState(1.5)
+  const [degraded, setDegraded] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY < window.innerHeight)
+    const onScroll = () => {
+      setVisible(window.scrollY < window.innerHeight * 1.5)
+    }
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   if (!visible) return null
 
+  // Baseline detection for heavy mobile devices
+  const isMobile = window.innerWidth < 768
+
   return (
-    <Canvas
-      camera={{ position: [0, 0, 5], fov: 45 }}
-      style={{ position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none' }}
-      gl={{ alpha: true, antialias: true }}
-      dpr={[1, 1.5]}
-    >
-      <Particles />
-      <Ring />
-    </Canvas>
+    <div className="absolute inset-0 z-1 pointer-events-none" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}>
+      <Canvas
+        camera={{ position: [0, 0, 6], fov: 45 }}
+        style={{ pointerEvents: 'auto' }}
+        gl={{ alpha: true, antialias: false, powerPreference: 'high-performance' }}
+        dpr={isMobile ? 1 : dpr}
+      >
+        <PerformanceMonitor 
+          onDecline={() => {
+            setDegraded(true)
+            setDpr(1)
+          }}
+          onIncline={() => {
+            setDegraded(false)
+            setDpr(2)
+          }}
+        />
+        <ambientLight intensity={0.5} />
+        <directionalLight position={[10, 10, 10]} intensity={1} />
+        <GlassBlob degraded={isMobile || degraded} />
+        <FloatingCore />
+        <Environment preset="city" />
+        <ContactShadows position={[0, -2.5, 0]} opacity={0.5} scale={10} blur={2} far={4} frames={degraded ? 1 : Infinity} />
+      </Canvas>
+    </div>
   )
 }

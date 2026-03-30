@@ -5,29 +5,37 @@
 
 .block {
   padding: 36px 32px; border-radius: var(--radius);
-  background: #1c1c1e;
-  transition: background 0.4s var(--ease);
+  background: rgba(28, 28, 30, 0.4);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 0 0 rgba(255, 255, 255, 0), 0 10px 30px -10px rgba(0,0,0,0.5);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative; overflow: hidden;
   will-change: transform;
 }
-.elevated .block { background: #161618; }
-.block:hover { background: #2c2c2e; }
-.elevated .block:hover { background: #222224; }
+.elevated .block { background: rgba(10, 10, 12, 0.5); }
+.block:hover { 
+  background: rgba(44, 44, 46, 0.6); 
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 30px 60px -15px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.2);
+}
+.elevated .block:hover { background: rgba(30, 30, 32, 0.7); }
 
 .blockShine {
-  position: absolute; inset: 0; z-index: 1; pointer-events: none; border-radius: inherit;
-  background: radial-gradient(500px circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.03), transparent 40%);
+  position: absolute; inset: -1px; z-index: 1; pointer-events: none; border-radius: inherit;
+  background: radial-gradient(600px circle at var(--mx, 50%) var(--my, 50%), rgba(41,151,255,0.15), transparent 40%);
   opacity: 0; transition: opacity 0.5s;
 }
 .block:hover .blockShine { opacity: 1; }
 
 .blockTitle {
-  font-size: 17px; font-weight: 600; letter-spacing: -0.01em;
+  font-size: 20px; font-weight: 700; letter-spacing: -0.02em;
   color: var(--text); margin-bottom: 8px;
   position: relative; z-index: 2;
 }
 .blockDesc {
-  font-size: 14px; color: var(--text-2); line-height: 1.47;
+  font-size: 15px; color: var(--text-2); line-height: 1.5;
   margin-bottom: 24px;
   position: relative; z-index: 2;
 }
@@ -37,16 +45,21 @@
   position: relative; z-index: 2;
 }
 .tag {
-  font-size: 13px; font-weight: 400; color: var(--text-2);
+  font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--text-2);
   padding: 8px 16px; border-radius: 980px;
-  background: rgba(255,255,255,0.06);
-  transition: background 0.3s, color 0.3s, transform 0.3s var(--ease);
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.03);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: default;
 }
 .tag:hover {
   background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.2);
   color: var(--text);
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
 @media (max-width: 640px) {

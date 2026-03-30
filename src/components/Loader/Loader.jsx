@@ -1,5 +1,6 @@
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
+import { useProgress } from '@react-three/drei';
 import styles from './Loader.module.css';
 
 const BRAND = 'WELWITECH';
@@ -12,54 +13,43 @@ export default function Loader({ onComplete }) {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        onComplete: () => {
-          if (onComplete) onComplete();
-        },
-      });
+      const tl = gsap.timeline();
 
-      // 1. Stagger letters in
+      // Animer l'apparition des lettres
       tl.to(lettersRef.current, {
         autoAlpha: 1,
         y: 0,
-        duration: 0.5,
+        duration: 0.8,
         stagger: 0.05,
         ease: 'power3.out',
       });
 
-      // 2. Progress bar fill + counter (overlapping with tail of letters)
-      tl.to(
-        fillRef.current,
-        {
-          width: '100%',
-          duration: 1.2,
-          ease: 'power2.inOut',
+      // Simuler une progression de chargement asynchrone bulletproof (2.5s)
+      const fakeProgress = { val: 0 };
+      
+      tl.to(fakeProgress, {
+        val: 100,
+        duration: 2.5,
+        ease: 'power2.inOut',
+        onUpdate: () => {
+          if (fillRef.current) fillRef.current.style.width = `${fakeProgress.val}%`;
+          if (counterRef.current) counterRef.current.innerHTML = Math.round(fakeProgress.val);
         },
-        '-=0.1'
-      );
+        onComplete: () => {
+          // Une fois à 100%, lancer l'exit animation
+          gsap.to(overlayRef.current, {
+            scale: 1.05,
+            filter: 'blur(20px)',
+            opacity: 0,
+            pointerEvents: 'none',
+            duration: 0.8,
+            ease: 'power3.inOut',
+            onComplete: onComplete
+          });
+        }
+      }, 0); // Démarre en même temps que les lettres
 
-      tl.to(
-        counterRef.current,
-        {
-          innerHTML: 100,
-          snap: { innerHTML: 1 },
-          duration: 1.2,
-          ease: 'power2.inOut',
-        },
-        '<'
-      );
-
-      // 3. Exit animation: scale, blur, clip-path slide up
-      tl.to(overlayRef.current, {
-        scale: 1.05,
-        filter: 'blur(10px)',
-        clipPath: 'inset(0 0 100% 0)',
-        duration: 0.6,
-        ease: 'power3.inOut',
-        delay: 0.2,
-      });
     }, overlayRef);
-
     return () => ctx.revert();
   }, [onComplete]);
 

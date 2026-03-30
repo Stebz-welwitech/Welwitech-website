@@ -38,12 +38,14 @@ export default function CustomCursor() {
     const onMouseOver = (e) => {
       if (e.target.closest(INTERACTIVE_SELECTOR)) {
         ring.classList.add(styles.expanded)
+        dot.classList.add(styles.expanded)
       }
     }
 
     const onMouseOut = (e) => {
       if (e.target.closest(INTERACTIVE_SELECTOR)) {
         ring.classList.remove(styles.expanded)
+        dot.classList.remove(styles.expanded)
       }
     }
 

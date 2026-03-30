@@ -1,57 +1,84 @@
 .nav {
-  position: fixed; top: 0; left: 0; right: 0; height: 48px; z-index: 100;
+  position: fixed; top: 0; left: 0; right: 0; height: 56px; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 var(--px);
-  background: rgba(0,0,0,0.72);
-  backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px);
-  transition: background 0.3s, border-bottom 0.3s;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: saturate(180%) blur(24px); -webkit-backdrop-filter: saturate(180%) blur(24px);
+  border-bottom: 1px solid transparent;
+  transition: background 0.4s, border-bottom 0.4s, box-shadow 0.4s;
 }
 .scrolled {
-  background: rgba(0,0,0,0.92);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: rgba(0, 0, 0, 0.85);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
+
 .logo {
-  font-weight: 600; font-size: 13px; letter-spacing: 0.08em; color: var(--text);
+  font-weight: 700; font-size: 15px; letter-spacing: 0.1em; color: var(--text);
   transition: opacity 0.3s;
 }
-.logo:hover { opacity: 0.8; }
-.right { display: flex; align-items: center; gap: 24px; }
-.links { display: flex; gap: 24px; align-items: center; }
+.logo:hover { opacity: 0.75; }
+
+.right { display: flex; align-items: center; gap: 32px; }
+.links { display: flex; gap: 28px; align-items: center; }
 .link {
-  font-size: 12px; font-weight: 400; color: var(--text-2);
+  font-size: 13px; font-weight: 500; color: var(--text-2);
   transition: color 0.3s;
+  position: relative;
 }
-.link::after { display: none; }
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 100%;
+  height: 1px;
+  background: var(--accent);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center;
+}
 .link:hover { color: var(--text); }
+.link:hover::after { transform: translateX(-50%) scaleX(0.6); }
 .link.active { color: var(--text); }
+.link.active::after { transform: translateX(-50%) scaleX(0.6); }
 
 .cta {
-  font-size: 12px; font-weight: 400; padding: 6px 16px;
-  background: var(--accent); color: #fff;
-  border-radius: 980px; transition: opacity 0.3s;
+  font-size: 13px; font-weight: 600; padding: 8px 20px;
+  background: #ffffff;
+  color: #000000;
+  border-radius: 980px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px -2px rgba(255, 255, 255, 0.15);
 }
 .cta::before { display: none; }
-.cta:hover { opacity: 0.85; }
+.cta:hover {
+  transform: translateY(-1px);
+  background: #f0f0f0;
+  box-shadow: 0 4px 12px -2px rgba(255, 255, 255, 0.25);
+}
 
 .burger { display: none; flex-direction: column; gap: 5px; padding: 8px; z-index: 101; }
 .burger span {
-  display: block; width: 17px; height: 1px; background: var(--text);
+  display: block; width: 18px; height: 1.5px; background: var(--text);
   transition: all 0.3s var(--ease); transform-origin: center;
+  border-radius: 2px;
 }
-.x1 { transform: rotate(45deg) translate(3px,3px); }
+.x1 { transform: rotate(45deg) translate(3px, 3px); }
 .x2 { opacity: 0; }
-.x3 { transform: rotate(-45deg) translate(3px,-3px); }
+.x3 { transform: rotate(-45deg) translate(3px, -3px); }
 
 .mobile {
   position: fixed; inset: 0; z-index: 99;
-  background: rgba(0,0,0,0.95); backdrop-filter: blur(30px);
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px;
+  background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 36px;
 }
 .mobile a {
-  font-size: 32px; font-weight: 600; color: var(--text-2);
-  transition: color 0.3s;
+  font-size: 28px; font-weight: 600; color: var(--text-2);
+  transition: color 0.3s, transform 0.3s;
+  letter-spacing: -0.02em;
 }
-.mobile a:hover { color: var(--text); }
+.mobile a:hover { color: var(--text); transform: translateX(4px); }
 
 .skipLink {
   position: absolute; top: -100%; left: 16px; z-index: 200;

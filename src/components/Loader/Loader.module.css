@@ -1,27 +1,52 @@
 .overlay {
   position: fixed; inset: 0; z-index: 1000;
-  background: #000000;
+  background: radial-gradient(circle at 50% 100%, #151020 0%, #050507 80%);
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   will-change: clip-path, filter, transform;
 }
-.gradientOverlay { display: none; }
+.gradientOverlay { 
+  position: absolute; inset: 0; pointer-events: none;
+  background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)"/></svg>');
+  opacity: 0.04; mix-blend-mode: overlay;
+}
 .brand {
   font-family: 'Sora', sans-serif;
-  font-size: clamp(28px, 5vw, 48px);
-  font-weight: 600; letter-spacing: 0.15em;
-  color: #f5f5f7;
+  font-size: clamp(32px, 6vw, 64px);
+  font-weight: 800; letter-spacing: 0.12em;
+  background: linear-gradient(135deg, #fff 0%, #a0a0a5 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   display: flex; overflow: hidden;
+  filter: drop-shadow(0 4px 20px rgba(255,255,255,0.1));
 }
 .letter { display: inline-block; visibility: hidden; }
 .progressTrack {
-  width: 160px; height: 1px;
-  background: rgba(255,255,255,0.06);
-  margin-top: 32px; border-radius: 0; overflow: hidden;
+  width: 240px; height: 2px;
+  background: rgba(255,255,255,0.08);
+  margin-top: 48px; border-radius: 4px; overflow: hidden;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.5);
+  position: relative; z-index: 2;
 }
-.progressFill { height: 100%; width: 0%; background: #f5f5f7; }
+.progressFill { 
+  height: 100%; width: 0%; 
+  background: linear-gradient(90deg, #2997ff, #bf5af2);
+  box-shadow: 0 0 12px rgba(191,90,242,0.8);
+}
 .counter {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px; color: #48484a;
-  letter-spacing: 0.08em; margin-top: 16px;
+  position: absolute;
+  bottom: -2vw; right: 2vw;
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(80px, 18vw, 300px);
+  font-weight: 800; 
+  color: rgba(255,255,255,0.03);
+  letter-spacing: -0.05em; line-height: 1;
+  pointer-events: none; z-index: 1;
+}
+.counter::after {
+  content: '%';
+  font-size: 0.4em;
+  opacity: 0.5;
+  margin-left: 4px;
 }

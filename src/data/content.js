@@ -191,3 +191,74 @@ export const footer = {
   brand: 'WELWITECH',
   copyright: '\u00A9 2026 Welwitech',
 }
+
+export const clients = {
+  tag: 'Ils nous font confiance',
+  title: 'NOS PARTENAIRES',
+  logos: [
+    { name: 'Nextiflow', },
+    { name: 'UrbanPulse', },
+    { name: 'Meridian', },
+    { name: 'Vertex Labs', },
+    { name: 'Solaris', },
+    { name: 'AetherTech', },
+    { name: 'Novalux', },
+    { name: 'Orinox', },
+  ],
+}
+
+export const stats = [
+  { value: '50+', label: 'Projets livrés' },
+  { value: '98%', label: 'Clients satisfaits' },
+  { value: '12', label: 'Experts dédiés' },
+  { value: '4', label: "Pôles d'expertise" },
+]
+
+export const testimonials = {
+  tag: 'Témoignages',
+  title: 'CE QUE DISENT NOS CLIENTS',
+  items: [
+    {
+      quote: "Welwitech a transformé notre vision en une application que nos utilisateurs adorent. L'équipe est réactive, créative et techniquement irréprochable.",
+      author: 'Sarah M.',
+      role: 'CEO, Nextiflow',
+    },
+    {
+      quote: "Le niveau de finition et le souci du détail sont exceptionnels. Notre taux de conversion a augmenté de 40% depuis le lancement du nouveau site.",
+      author: 'Thomas K.',
+      role: 'Directeur Marketing, UrbanPulse',
+    },
+    {
+      quote: "L'intégration de l'IA dans notre CRM a révolutionné notre support client. Un partenaire technique de confiance que je recommande sans hésitation.",
+      author: 'Amira B.',
+      role: 'CTO, Meridian',
+    },
+  ],
+}
+
+export const faq = {
+  tag: 'FAQ',
+  title: 'QUESTIONS FRÉQUENTES',
+  items: [
+    {
+      question: 'Quel est le délai moyen d\u2019un projet ?',
+      answer: 'Un projet type dure entre 6 et 16 semaines selon sa complexité. Nous définissons ensemble un planning réaliste dès la phase de découverte, avec des livrables intermédiaires à chaque sprint.',
+    },
+    {
+      question: 'Travaillez-vous avec des startups ou des grandes entreprises ?',
+      answer: 'Les deux. Nous accompagnons aussi bien des startups early-stage que des entreprises établies. Notre processus s\u2019adapte à votre maturité et vos contraintes.',
+    },
+    {
+      question: 'Quelles technologies utilisez-vous ?',
+      answer: 'React, Next.js, Flutter, Swift, Kotlin, Node.js, Python pour le développement. Figma pour le design. AWS, GCP pour l\u2019infrastructure. GPT-4, Claude, Mistral pour l\u2019IA.',
+    },
+    {
+      question: 'Proposez-vous un accompagnement post-lancement ?',
+      answer: 'Oui. Nous proposons des contrats de maintenance et d\u2019évolution continue. Support technique, monitoring, mises à jour de sécurité et nouvelles fonctionnalités.',
+    },
+    {
+      question: 'Comment se passe le premier échange ?',
+      answer: 'Un appel de 30 minutes gratuit et sans engagement. Nous discutons de votre projet, vos objectifs, et nous vous proposons un cadrage et un devis personnalisé.',
+    },
+  ],
+}

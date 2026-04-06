@@ -1,0 +1,134 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Mentions légales — Welwitech" description="Mentions légales du site welwitech.com — éditeur, hébergement, propriété intellectuelle, données personnelles et cookies.">
+  <section class="legal">
+    <div class="legal__inner">
+      <h1 class="legal__heading">Mentions légales</h1>
+
+      <div class="legal__body">
+        <h2>Éditeur du site</h2>
+        <p>
+          Le site <strong>welwitech.com</strong> est édité par <strong>Welwitech</strong>, studio digital spécialisé en Design, Développement Mobile, Web, SaaS et Intelligence Artificielle.
+        </p>
+        <ul>
+          <li><strong>Raison sociale :</strong> Welwitech</li>
+          <li><strong>Sièges :</strong> Dubai (EAU) &amp; France</li>
+          <li><strong>E-mail :</strong> <a href="mailto:contact@welwitech.com">contact@welwitech.com</a></li>
+          <li><strong>Directeur de la publication :</strong> Maurice Zayat</li>
+        </ul>
+
+        <h2>Hébergement</h2>
+        <p>
+          Le site est hébergé par <strong>Netlify, Inc.</strong>, 512 2nd Street, Suite 200, San Francisco, CA 94107, États-Unis.
+          <br />Site web : <a href="https://www.netlify.com" target="_blank" rel="noopener">netlify.com</a>
+        </p>
+
+        <h2>Propriété intellectuelle</h2>
+        <p>
+          L'ensemble des contenus présents sur le site welwitech.com (textes, images, graphismes, logo, icônes, code source, etc.) est la propriété exclusive de Welwitech ou de ses partenaires, et est protégé par les lois françaises et internationales relatives à la propriété intellectuelle.
+        </p>
+        <p>
+          Toute reproduction, représentation, modification, distribution ou exploitation, totale ou partielle, de ces contenus est interdite sans l'autorisation écrite préalable de Welwitech.
+        </p>
+
+        <h2>Données personnelles &amp; RGPD</h2>
+        <p>
+          Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de rectification, de suppression et de portabilité de vos données personnelles.
+        </p>
+        <p>
+          Les données collectées via le formulaire de contact (nom, e-mail, message) sont utilisées uniquement pour répondre à votre demande. Elles ne sont ni cédées ni vendues à des tiers.
+        </p>
+        <p>
+          Pour exercer vos droits, contactez-nous à : <a href="mailto:contact@welwitech.com">contact@welwitech.com</a>.
+        </p>
+
+        <h2>Cookies</h2>
+        <p>
+          Le site welwitech.com peut utiliser des cookies strictement nécessaires au bon fonctionnement du site et des cookies d'analyse anonymisés pour améliorer l'expérience utilisateur.
+        </p>
+        <p>
+          Vous pouvez configurer votre navigateur pour refuser les cookies. La navigation sur le site reste possible sans acceptation des cookies non essentiels.
+        </p>
+
+        <h2>Limitation de responsabilité</h2>
+        <p>
+          Welwitech s'efforce de fournir des informations exactes et à jour sur le site. Toutefois, Welwitech ne saurait garantir l'exactitude, la complétude ou l'actualité des informations diffusées.
+        </p>
+        <p>
+          Welwitech décline toute responsabilité en cas de dommage direct ou indirect résultant de l'accès au site ou de l'utilisation des informations qui y sont contenues. Les liens hypertextes vers des sites tiers sont fournis à titre informatif et n'engagent pas la responsabilité de Welwitech.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .legal {
+    @extend %u-container;
+    padding-top: 10rem;
+    padding-bottom: 6rem;
+  }
+
+  .legal__inner {
+    max-width: 48rem;
+  }
+
+  .legal__heading {
+    @extend %u-heading;
+    --fs: var(--font-size-md);
+    color: var(--color-text);
+    margin-bottom: 3rem;
+  }
+
+  .legal__body {
+    @extend %u-text;
+    --fs: var(--font-size-sm);
+    color: var(--color-text-alt);
+    line-height: 1.75;
+  }
+
+  .legal__body h2 {
+    @extend %u-heading;
+    --fs: var(--font-size-sm);
+    color: var(--color-text);
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .legal__body p {
+    margin-bottom: 1rem;
+  }
+
+  .legal__body ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1rem;
+  }
+
+  .legal__body ul li {
+    padding: 0.25rem 0;
+  }
+
+  .legal__body a {
+    color: rgb(var(--rgb-brand-1));
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .legal__body strong {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  @media (--mq-phone) {
+    .legal {
+      padding-top: 7rem;
+      padding-bottom: 4rem;
+    }
+  }
+</style>

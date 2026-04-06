@@ -1,0 +1,260 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const projets = [
+  {
+    title: "Prysm",
+    type: "Web & SaaS · IA",
+    description: "Plateforme d'analytics YouTube augmentée par l'IA",
+    image: "/projet-prysm.png",
+    url: "/projets/prysm",
+  },
+  {
+    title: "YouTube Freedom Academy",
+    type: "Plateforme · Landing Page",
+    description: "Plateforme de formation sur-mesure et landing page haute conversion",
+    image: "/projet-ytfreedom.png",
+    url: "/projets/youtube-freedom",
+  },
+  {
+    title: "OYA Intelligence",
+    type: "SaaS · HR Tech · IA",
+    description: "Plateforme de recrutement nouvelle génération augmentée par l'IA",
+    image: "/projet-oya.png",
+    url: "/projets/oya-intelligence",
+  },
+  {
+    title: "Les Froggies",
+    type: "Plateforme · Marketplace",
+    description: "Mise en relation voyageurs et guides francophones locaux",
+    image: "/projet-froggies.png",
+    url: "/projets/les-froggies",
+  },
+  {
+    title: "Monarach",
+    type: "SaaS · IA · Creator Economy",
+    description: "Intelligence virale pour créateurs — The Gold Standard",
+    image: "/projet-monarach.png",
+    url: "/projets/monarach",
+  },
+  {
+    title: "ATTRIQ",
+    type: "SaaS · AdTech · App Mobile",
+    description: "Tracking et attribution publicitaire multi-canal",
+    image: "/projet-attriq.png",
+    url: "/projets/attriq",
+  },
+  {
+    title: "Pinkin Pass",
+    type: "SaaS · App Mobile · Nightlife",
+    description: "Pass événementiel pour la nuit parisienne à 7€/mois",
+    image: "/projet-pinkinpass.png",
+    url: "/projets/pinkin-pass",
+  },
+  {
+    title: "MatCo",
+    type: "Site Vitrine · E-commerce",
+    description: "Site industriel avec configurateur de machines et paiement Stripe",
+    image: "/projet-matco.png",
+    url: "/projets/matco",
+  },
+  {
+    title: "Webinova",
+    type: "SaaS · Streaming",
+    description: "Plateforme de webinaires live et evergreen",
+    image: "/projet-webinova.png",
+    url: "/projets/webinova",
+  },
+  {
+    title: "NomadTax",
+    type: "App Mobile · FinTech",
+    description: "Gestion de la fiscalité internationale pour digital nomads",
+    image: "/projet-nomadtax.png",
+    url: "/projets/nomadtax",
+  },
+  {
+    title: "Tuvok 12",
+    type: "Portfolio · 3D · Branding",
+    description: "Portfolio immersif 3D pour le N°1 mondial du contenu sport",
+    image: "/projet-tuvok12.png",
+    url: "/projets/tuvok-12",
+  },
+  {
+    title: "FocusReal",
+    type: "App Mobile · Social",
+    description: "Le BeReal de l'entrepreneur — capture authentique du quotidien",
+    image: "/projet-focusreal.png",
+    url: "/projets/focusreal",
+  },
+  {
+    title: "ScanVault",
+    type: "App Mobile · PropTech · LiDAR",
+    description: "Détection volumétrique par LiDAR pour le déménagement",
+    image: "/image-3.jpg",
+    url: "/projets/scanvault",
+  },
+  {
+    title: "Blue Axis Limited",
+    type: "Site Corporate",
+    description: "Vitrine digitale premium pour cabinet de conseil stratégique",
+    image: "/projet-blueaxis.png",
+    url: "/projets/blue-axis",
+  },
+  {
+    title: "MyDiCard",
+    type: "App Mobile · Networking",
+    description: "Carte de visite digitale dans Apple Wallet — NFC, QR code, toujours à jour",
+    image: "/projet-mydicard.png",
+    url: "/projets/mydicard",
+  },
+  {
+    title: "Splitwise",
+    type: "App Mobile · FinTech",
+    description: "Gestion des dépenses partagées en colocation — soldes temps réel",
+    image: "/image-2.jpg",
+    url: "/projets/splitwise",
+  },
+  {
+    title: "Vector Capital",
+    type: "Site Corporate",
+    description: "Site vitrine pour cabinet de conseil digital et business",
+    image: "/projet-vectorcapital.png",
+    url: "/projets/vector-capital",
+  },
+];
+---
+
+<Layout title="Nos réalisations — Welwitech" description="Découvrez les projets conçus et développés par Welwitech : SaaS, apps mobiles, plateformes, sites corporate et solutions IA.">
+  <section class="projets">
+    <div class="container">
+      <header class="header">
+        <h1 class="u-heading title">Nos réalisations</h1>
+        <p class="u-text subtitle">{projets.length} projets livrés. Zéro abandonné.</p>
+      </header>
+
+      <div class="grid">
+        {
+          projets.map((p) => (
+            <a href={p.url} class="card">
+              <div class="card-image">
+                <img src={p.image} alt={p.title} loading="lazy" decoding="async" />
+              </div>
+              <div class="card-content">
+                <span class="card-type u-text">{p.type}</span>
+                <h2 class="card-title u-heading">{p.title}</h2>
+                <p class="card-desc u-text">{p.description}</p>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .projets {
+    padding: 10rem 0 6rem;
+  }
+
+  .container {
+    @extend %u-container;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .title {
+    --fs: clamp(2rem, 4vw, 3rem);
+    --fw: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin: 0 0 0.5rem;
+  }
+
+  .subtitle {
+    --fs: var(--font-size-md);
+    color: var(--color-text-alt);
+    margin: 0;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+
+    @media (--mq-phone) {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid rgba(var(--rgb-text), 0.06);
+    background: var(--color-white);
+    transition: box-shadow 0.4s var(--ease-out-cubic), transform 0.4s var(--ease-out-cubic);
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(var(--rgb-text), 0.06);
+    }
+  }
+
+  .card-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--color-brand-3);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s var(--ease-out-cubic);
+    }
+  }
+
+  .card:hover .card-image img {
+    transform: scale(1.03);
+  }
+
+  .card-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+
+    @media (--mq-phone) {
+      padding: 1.25rem;
+    }
+  }
+
+  .card-type {
+    --fs: var(--font-size-xs);
+    --fw: 400;
+    color: rgb(var(--rgb-brand-1));
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .card-title {
+    --fs: 1.15rem;
+    --fw: 400;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  .card-desc {
+    --fs: var(--font-size-sm);
+    color: var(--color-text-alt);
+    margin: 0;
+    line-height: 1.5;
+  }
+</style>

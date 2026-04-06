@@ -1,0 +1,332 @@
+---
+import logoIcon from "../assets/logo-icon.png";
+import Button from "./Button.astro";
+import type { Link } from "../types";
+
+interface Props {
+  logoUrl: string;
+  logoAlt: string;
+  links: Link[];
+}
+
+const { logoUrl, logoAlt, links } = Astro.props;
+
+const expertiseLinks = [
+  { title: "UX/UI Design", url: "#expertises" },
+  { title: "Apps Mobile", url: "#expertises" },
+  { title: "Web & SaaS", url: "#expertises" },
+  { title: "IA & Agents", url: "#expertises" },
+];
+
+const companyLinks = [
+  { title: "Méthode", url: "#methode" },
+  { title: "Tarifs", url: "#tarifs" },
+  { title: "Équipe", url: "#equipe" },
+  { title: "Contact", url: "#contact" },
+];
+
+const legalLinks = [
+  { title: "Mentions légales", url: "/mentions-legales" },
+  { title: "CGV", url: "/cgv" },
+];
+
+const year = new Date().getFullYear();
+---
+
+<sy-footer>
+  <footer>
+    <div class="grid-section u-container">
+      <div class="brand-col">
+        <a class="logo" href={logoUrl}>
+          <img src={logoIcon.src} alt="" width="28" height="28" />
+          <span class="logo-text">{logoAlt}</span>
+        </a>
+        <p class="brand-desc">
+          Studio digital senior.<br />Design, Mobile, Web, SaaS & IA.
+        </p>
+        <p class="brand-location">Dubai · France · International</p>
+      </div>
+
+      <div class="link-col">
+        <h3 class="col-title">Expertises</h3>
+        <ul>
+          {expertiseLinks.map((l) => (
+            <li><a href={l.url}>{l.title}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="link-col">
+        <h3 class="col-title">Studio</h3>
+        <ul>
+          {companyLinks.map((l) => (
+            <li><a href={l.url}>{l.title}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="link-col">
+        <h3 class="col-title">Contact</h3>
+        <ul>
+          <li><a href="mailto:contact@welwitech.com">contact@welwitech.com</a></li>
+        </ul>
+        <div class="social-row">
+          <a href="https://www.linkedin.com/company/welwitech" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="https://x.com/welwitech" target="_blank" rel="noopener" class="social-link" aria-label="Twitter / X">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768"/><path d="M20 4l-7.364 7.364"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-bar u-container">
+      <p class="copyright">&copy; {year} {logoAlt}</p>
+      <ul class="legal-links">
+        {legalLinks.map((l) => (
+          <li><a href={l.url}>{l.title}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="big-name" aria-hidden="true">
+      <span>WELWITECH</span>
+    </div>
+  </footer>
+</sy-footer>
+
+<style>
+  sy-footer {
+    @extend %u-text;
+
+    --fs: var(--font-size-sm);
+    display: block;
+    clip-path: inset(0);
+
+    :global(&.has-no-anim footer) {
+      position: static;
+    }
+  }
+
+  footer {
+    --footer-bg: #111114;
+    --footer-text: rgba(255, 255, 255, 0.45);
+    --footer-text-bright: rgba(255, 255, 255, 0.85);
+    --footer-border: rgba(255, 255, 255, 0.06);
+
+    background: var(--footer-bg);
+    color: var(--footer-text);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+
+  /* ---- Grid ---- */
+  .grid-section {
+    display: grid;
+    grid-template-columns: 1.6fr 0.8fr 0.8fr 1fr;
+    gap: 3rem;
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--footer-border);
+
+    @media (--mq-tablet) {
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    @media (--mq-phone) {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      padding-top: 3rem;
+      padding-bottom: 2rem;
+    }
+  }
+
+  /* ---- Brand ---- */
+  .brand-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    width: fit-content;
+    text-decoration: none;
+
+    img {
+      width: 1.6rem;
+      height: 1.6rem;
+      object-fit: contain;
+    }
+
+    .logo-text {
+      font-family: var(--font-inter);
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.03em;
+      color: var(--footer-text-bright);
+    }
+  }
+
+  .brand-desc {
+    margin: 0;
+    line-height: 1.6;
+    max-width: 22ch;
+    color: var(--footer-text);
+  }
+
+  .brand-location {
+    margin: 0;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.25);
+  }
+
+  /* ---- Links ---- */
+  .col-title {
+    @extend %u-text;
+
+    --fs: var(--font-size-xs);
+    color: var(--footer-text-bright);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0 0 1.25rem;
+    font-weight: 400;
+  }
+
+  .link-col {
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--footer-text);
+      transition: color 0.25s var(--ease-out-cubic);
+
+      &:hover {
+        color: var(--footer-text-bright);
+      }
+    }
+  }
+
+  /* ---- Social ---- */
+  .social-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: 1px solid var(--footer-border);
+    color: var(--footer-text);
+    transition: color 0.25s var(--ease-out-cubic), border-color 0.25s var(--ease-out-cubic);
+
+    &:hover {
+      color: var(--footer-text-bright);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+  }
+
+  /* ---- Bottom ---- */
+  .bottom-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+
+    @media (--mq-phone) {
+      flex-direction: column;
+      text-align: center;
+      gap: 0.75rem;
+    }
+  }
+
+  .copyright {
+    margin: 0;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.2);
+  }
+
+  .legal-links {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 1.5rem;
+
+    a {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.2);
+      text-decoration: none;
+      transition: color 0.25s var(--ease-out-cubic);
+
+      &:hover {
+        color: var(--footer-text);
+      }
+    }
+  }
+
+  /* ---- Big Name ---- */
+  .big-name {
+    overflow: hidden;
+    padding: 2rem 0 1.5rem;
+    text-align: center;
+
+    span {
+      display: block;
+      font-family: var(--font-roboto-slab);
+      font-weight: 200;
+      font-size: clamp(3rem, 13vw, 10rem);
+      letter-spacing: 0.08em;
+      line-height: 0.85;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255, 255, 255, 0.06);
+      user-select: none;
+    }
+  }
+</style>
+
+<script>
+  import { addResizeObserver } from "../utils/observers";
+
+  class Footer extends HTMLElement {
+    connectedCallback() {
+      addResizeObserver(this);
+
+      this.onResize();
+    }
+
+    onResize() {
+      const inner = this.firstElementChild as HTMLElement;
+      const bcr = inner.getBoundingClientRect();
+
+      if (bcr.height + 100 > window.innerHeight) {
+        this.style.height = "";
+        this.classList.add("has-no-anim");
+      } else {
+        this.style.height = `${bcr.height}px`;
+        this.classList.remove("has-no-anim");
+      }
+    }
+  }
+
+  customElements.define("sy-footer", Footer);
+</script>

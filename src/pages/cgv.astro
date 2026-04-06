@@ -1,0 +1,169 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Conditions Générales de Vente — Welwitech" description="Conditions générales de vente de Welwitech — devis, paiement, livraison, propriété intellectuelle, garanties et responsabilité.">
+  <section class="legal">
+    <div class="legal__inner">
+      <h1 class="legal__heading">Conditions Générales de Vente</h1>
+
+      <div class="legal__body">
+        <h2>1. Objet</h2>
+        <p>
+          Les présentes Conditions Générales de Vente (CGV) régissent les relations contractuelles entre <strong>Welwitech</strong> (ci-après « le Prestataire ») et tout client professionnel ou particulier (ci-après « le Client ») faisant appel à ses services de conception UX/UI, développement web, mobile, SaaS et intelligence artificielle.
+        </p>
+        <p>
+          Toute commande implique l'acceptation pleine et entière des présentes CGV.
+        </p>
+
+        <h2>2. Devis et commande</h2>
+        <p>
+          Chaque projet fait l'objet d'un devis détaillé, gratuit et personnalisé, transmis sous 48 heures. Le devis précise le périmètre fonctionnel, les livrables, le calendrier prévisionnel et le montant total.
+        </p>
+        <p>
+          La commande est considérée comme ferme et définitive à réception du devis signé par le Client accompagné du versement de l'acompte.
+        </p>
+
+        <h2>3. Tarifs et paiement</h2>
+        <p>
+          Les tarifs sont exprimés en euros (EUR), hors taxes sauf mention contraire. Le paiement s'effectue selon l'échéancier suivant :
+        </p>
+        <ul>
+          <li><strong>50 % à la signature du devis</strong> — déclenchement du projet</li>
+          <li><strong>50 % à la livraison</strong> — remise des livrables finaux</li>
+        </ul>
+        <p>
+          Les paiements sont exigibles par virement bancaire ou tout autre moyen convenu entre les parties. En cas de retard de paiement, des pénalités de retard seront appliquées conformément à la législation en vigueur.
+        </p>
+
+        <h2>4. Délais de livraison</h2>
+        <p>
+          Les délais de livraison sont indiqués à titre indicatif dans le devis. Welwitech s'engage à informer le Client de tout retard éventuel et à mettre en œuvre tous les moyens nécessaires pour respecter le calendrier.
+        </p>
+        <p>
+          Les délais courent à compter de la réception de l'acompte et de l'ensemble des éléments nécessaires au démarrage du projet (contenus, accès, validations).
+        </p>
+
+        <h2>5. Propriété intellectuelle</h2>
+        <p>
+          À complet paiement du prix convenu, le Client devient propriétaire des livrables spécifiquement créés pour son projet : maquettes, code source, documentation technique.
+        </p>
+        <p>
+          Le <strong>code source est livré à 100 %</strong> au Client. Ce transfert de propriété ne concerne pas les outils, frameworks, bibliothèques tierces ou composants génériques utilisés par le Prestataire, qui restent sous leurs licences respectives.
+        </p>
+        <p>
+          Welwitech se réserve le droit de mentionner la réalisation du projet dans ses références commerciales, sauf clause de confidentialité expresse.
+        </p>
+
+        <h2>6. Garanties</h2>
+        <p>
+          Welwitech garantit la conformité des livrables au périmètre défini dans le devis. Une période de garantie de <strong>30 jours</strong> après la livraison couvre la correction des anomalies (bugs) par rapport aux spécifications validées.
+        </p>
+        <p>
+          Les demandes d'évolution ou de nouvelles fonctionnalités ne relèvent pas de la garantie et feront l'objet d'un devis complémentaire.
+        </p>
+
+        <h2>7. Responsabilité</h2>
+        <p>
+          Welwitech s'engage à exécuter ses prestations avec diligence et professionnalisme, dans le cadre d'une obligation de moyens. La responsabilité de Welwitech ne saurait excéder le montant total du projet concerné.
+        </p>
+        <p>
+          Welwitech ne pourra être tenu responsable des dommages indirects, pertes de données, manque à gagner ou préjudice commercial résultant de l'utilisation des livrables.
+        </p>
+
+        <h2>8. Résiliation</h2>
+        <p>
+          En cas de résiliation anticipée par le Client, les sommes déjà versées restent acquises au Prestataire au titre des travaux réalisés. Le Client s'engage à régler les prestations effectuées jusqu'à la date de résiliation.
+        </p>
+        <p>
+          En cas de manquement grave de l'une des parties à ses obligations, l'autre partie pourra résilier le contrat de plein droit après mise en demeure restée infructueuse pendant un délai de 15 jours.
+        </p>
+
+        <h2>9. Droit applicable</h2>
+        <p>
+          Les présentes CGV sont soumises au droit français. En cas de litige, les parties s'engagent à rechercher une solution amiable. À défaut, le litige sera porté devant les tribunaux compétents de Paris, France.
+        </p>
+
+        <p class="legal__updated">
+          Dernière mise à jour : avril 2026
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .legal {
+    @extend %u-container;
+    padding-top: 10rem;
+    padding-bottom: 6rem;
+  }
+
+  .legal__inner {
+    max-width: 48rem;
+  }
+
+  .legal__heading {
+    @extend %u-heading;
+    --fs: var(--font-size-md);
+    color: var(--color-text);
+    margin-bottom: 3rem;
+  }
+
+  .legal__body {
+    @extend %u-text;
+    --fs: var(--font-size-sm);
+    color: var(--color-text-alt);
+    line-height: 1.75;
+  }
+
+  .legal__body h2 {
+    @extend %u-heading;
+    --fs: var(--font-size-sm);
+    color: var(--color-text);
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .legal__body p {
+    margin-bottom: 1rem;
+  }
+
+  .legal__body ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1rem;
+  }
+
+  .legal__body ul li {
+    padding: 0.25rem 0;
+  }
+
+  .legal__body a {
+    color: rgb(var(--rgb-brand-1));
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .legal__body strong {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  .legal__updated {
+    margin-top: 3rem;
+    font-style: italic;
+    color: var(--color-text-alt);
+    opacity: 0.6;
+  }
+
+  @media (--mq-phone) {
+    .legal {
+      padding-top: 7rem;
+      padding-bottom: 4rem;
+    }
+  }
+</style>

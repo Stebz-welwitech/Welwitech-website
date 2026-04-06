@@ -1,0 +1,116 @@
+---
+interface Props {
+  title: string;
+  items: {
+    icon: string;
+    text: string;
+  }[];
+}
+
+const { title, items } = Astro.props;
+---
+
+<section class="sy-guarantees">
+  <div class="container">
+    <h2 class="heading" data-sy-reveal="words">{title}</h2>
+
+    <div class="grid">
+      {
+        items.map(({ text }, i) => (
+          <div class="card" data-sy-reveal="lines">
+            <span class="num u-text">{String(i + 1).padStart(2, "0")}</span>
+            <p class="card-text u-text">{text}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .sy-guarantees {
+    display: block;
+    margin: 6rem 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  .container {
+    @extend %u-container;
+  }
+
+  .heading {
+    @extend %u-heading;
+    --fs: 3rem;
+    --fw: 300;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 3rem;
+
+    @media (--mq-phone) {
+      --fs: 1.8rem;
+    }
+  }
+
+  @media (--mq-phone-sm) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+
+    .card {
+      padding: 1.25rem 1rem;
+    }
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(var(--rgb-text), 0.06);
+    border: 1px solid rgba(var(--rgb-text), 0.06);
+    border-radius: 1rem;
+    overflow: hidden;
+
+    @media (--mq-tablet) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (--mq-phone) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .card {
+    background: var(--color-white);
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: background 0.4s var(--ease-out-cubic);
+
+    &:hover {
+      background: var(--color-brand-3);
+    }
+
+    @media (--mq-phone) {
+      padding: 1.5rem 1.25rem;
+    }
+  }
+
+  .num {
+    --fs: var(--font-size-xs);
+    --fw: 400;
+    color: rgb(var(--rgb-brand-1));
+    letter-spacing: 0.05em;
+    opacity: 0.5;
+  }
+
+  .card-text {
+    --fs: var(--font-size-sm);
+    --fw: 400;
+    color: var(--color-text);
+    line-height: 1.4;
+    margin: 0;
+  }
+</style>

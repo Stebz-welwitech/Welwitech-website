@@ -1,0 +1,200 @@
+---
+import Button from "./Button.astro";
+
+interface Props {
+  title: string;
+  subtitle: string;
+  email: string;
+  location: string;
+}
+
+const { title, subtitle, email, location } = Astro.props;
+---
+
+<section class="sy-contact" id="contact">
+  <div class="u-container">
+    <div class="card">
+      <div class="left">
+        <span class="u-text badge" data-sy-reveal="words">Contact</span>
+        <h2 class="u-heading title" data-sy-reveal="words">{title}</h2>
+        <p class="u-text subtitle" data-sy-reveal="lines">{subtitle}</p>
+
+        <div class="meta">
+          <a class="u-text meta-item" href={`mailto:${email}`}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            {email}
+          </a>
+          <span class="u-text meta-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            {location}
+          </span>
+        </div>
+      </div>
+
+      <form class="form" onsubmit="return false;">
+        <div class="row">
+          <div class="field">
+            <label class="u-text label" for="c-name">Nom *</label>
+            <input class="u-text input" type="text" id="c-name" name="name" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label class="u-text label" for="c-company">Entreprise</label>
+            <input class="u-text input" type="text" id="c-company" name="company" autocomplete="organization" />
+          </div>
+        </div>
+        <div class="field">
+          <label class="u-text label" for="c-email">Email *</label>
+          <input class="u-text input" type="email" id="c-email" name="email" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label class="u-text label" for="c-msg">Votre projet</label>
+          <textarea class="u-text input textarea" id="c-msg" name="message" rows="3"></textarea>
+        </div>
+        <Button title="Envoyer la demande" url="#" revealable={false} arrow />
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sy-contact {
+    display: block;
+    padding: 6rem 0 8rem;
+    position: relative;
+  }
+
+  .card {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 3rem;
+    background: var(--color-white);
+    border: 1px solid rgba(var(--rgb-text), 0.06);
+    border-radius: 1.25rem;
+    padding: 3.5rem;
+
+    @media (--mq-tablet) {
+      grid-template-columns: 1fr;
+      padding: 2.5rem;
+    }
+
+    @media (--mq-phone) {
+      padding: 1.5rem;
+      gap: 1.5rem;
+      border-radius: 1rem;
+    }
+
+    @media (--mq-phone-sm) {
+      padding: 1.25rem;
+    }
+  }
+
+  /* ---- Left ---- */
+  .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .badge {
+    --fs: var(--font-size-xs);
+    --fw: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgb(var(--rgb-brand-1));
+  }
+
+  .title {
+    --fs: clamp(1.8rem, 3vw, 2.6rem);
+    --lh: 1.1;
+    margin: 0;
+  }
+
+  .subtitle {
+    --fs: var(--font-size-sm);
+    color: var(--color-text-alt);
+    line-height: 1.6;
+    margin: 0.25rem 0 0;
+    max-width: 24em;
+  }
+
+  .meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(var(--rgb-text), 0.06);
+  }
+
+  .meta-item {
+    --fs: var(--font-size-sm);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-text-alt);
+    text-decoration: none;
+    transition: color 0.25s var(--ease-out-cubic);
+
+    svg { opacity: 0.4; flex-shrink: 0; }
+
+    &:hover { color: var(--color-text); }
+  }
+
+  /* ---- Form ---- */
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem;
+
+    @media (--mq-phone) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .label {
+    --fs: var(--font-size-xs);
+    --fw: 500;
+    color: var(--color-text-alt);
+  }
+
+  .input {
+    --fs: var(--font-size-sm);
+    font-family: var(--font-inter);
+    background: var(--color-bg);
+    border: 1px solid rgba(var(--rgb-text), 0.08);
+    border-radius: 0.55rem;
+    padding: 0.7em 0.85em;
+    color: var(--color-text);
+    outline: none;
+    transition: border-color 0.25s var(--ease-out-cubic), box-shadow 0.25s var(--ease-out-cubic);
+
+    &:focus {
+      border-color: rgba(var(--rgb-brand-1), 0.35);
+      box-shadow: 0 0 0 3px rgba(var(--rgb-brand-1), 0.08);
+    }
+  }
+
+  .textarea {
+    resize: vertical;
+    min-height: 4.5rem;
+    line-height: 1.5;
+  }
+
+  .form :global(.btn) {
+    margin-top: 0.25rem;
+    align-self: flex-start;
+  }
+</style>

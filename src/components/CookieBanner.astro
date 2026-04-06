@@ -1,0 +1,131 @@
+---
+---
+
+<div class="cookie-banner" id="cookie-banner">
+  <p class="cookie-text">
+    Ce site utilise des cookies pour améliorer votre expérience.
+    <a href="/mentions-legales" class="cookie-link">En savoir plus</a>
+  </p>
+  <div class="cookie-actions">
+    <button class="cookie-refuse" id="cookie-refuse" type="button">Refuser</button>
+    <button class="cookie-accept" id="cookie-accept" type="button">Accepter</button>
+  </div>
+</div>
+
+<style>
+  .cookie-banner {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    z-index: 60;
+    max-width: 24rem;
+    padding: 1.25rem;
+    background: var(--color-white);
+    border: 1px solid rgba(var(--rgb-text), 0.06);
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(var(--rgb-text), 0.06);
+    opacity: 1;
+    transition: opacity 0.4s var(--ease-out-cubic), transform 0.4s var(--ease-out-cubic);
+
+    &.is-hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(0.5rem);
+    }
+
+    @media (--mq-phone) {
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      max-width: none;
+    }
+  }
+
+  .cookie-text {
+    @extend %u-text;
+    --fs: var(--font-size-xs);
+    --fw: 400;
+    --text-color: var(--color-text-alt);
+    line-height: 1.5;
+    margin: 0 0 1rem;
+  }
+
+  .cookie-link {
+    color: var(--color-text);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    transition: opacity 0.2s var(--ease-out-cubic);
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  .cookie-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .cookie-refuse,
+  .cookie-accept {
+    @extend %u-text;
+    --fs: var(--font-size-xs);
+    --fw: 600;
+    cursor: pointer;
+    border: none;
+    border-radius: 100px;
+    padding: 0.625em 1.25em;
+    line-height: 1.25;
+    letter-spacing: 0.02em;
+    transition: opacity 0.2s var(--ease-out-cubic);
+  }
+
+  .cookie-refuse {
+    --text-color: var(--color-text-alt);
+    background: none;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  .cookie-accept {
+    --text-color: #fff;
+    background: rgba(var(--rgb-brand-1), 1);
+    color: #fff;
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var banner = document.getElementById('cookie-banner');
+    if (!banner) return;
+
+    var consent = localStorage.getItem('cookies-consent');
+    if (consent) {
+      banner.style.display = 'none';
+      return;
+    }
+
+    document.getElementById('cookie-accept').addEventListener('click', function () {
+      localStorage.setItem('cookies-consent', 'accepted');
+      banner.classList.add('is-hidden');
+      banner.addEventListener('transitionend', function () {
+        banner.style.display = 'none';
+      }, { once: true });
+    });
+
+    document.getElementById('cookie-refuse').addEventListener('click', function () {
+      localStorage.setItem('cookies-consent', 'refused');
+      banner.classList.add('is-hidden');
+      banner.addEventListener('transitionend', function () {
+        banner.style.display = 'none';
+      }, { once: true });
+    });
+  })();
+</script>

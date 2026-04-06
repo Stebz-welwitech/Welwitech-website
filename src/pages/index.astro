@@ -1,0 +1,383 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeroHome from "../components/HeroHome.astro";
+import TextMarquee from "../components/TextMarquee.astro";
+import GalleryText from "../components/GalleryText.astro";
+import ImageMarquee from "../components/ImageMarquee.astro";
+import Faqs from "../components/Faqs.astro";
+import StepsTimeline from "../components/StepsTimeline.astro";
+import Plans from "../components/Plans.astro";
+import Statements from "../components/Statements.astro";
+import Introducing from "../components/Introducing.astro";
+import Expertises from "../components/Expertises.astro";
+import Team from "../components/Team.astro";
+import Testimonial from "../components/Testimonial.astro";
+import Guarantees from "../components/Guarantees.astro";
+import Contact from "../components/Contact.astro";
+import GL from "../components/GL.astro";
+import GLPlaces from "../components/GlPlaces.astro";
+
+import logo1 from "../assets/logoipsum-344.svg";
+import logo2 from "../assets/logoipsum-350.svg";
+import logo3 from "../assets/logoipsum-345.svg";
+import logo4 from "../assets/logoipsum-385.svg";
+import logo5 from "../assets/logoipsum-375.svg";
+import logo6 from "../assets/logoipsum-378.svg";
+import logo7 from "../assets/logoipsum-346.svg";
+import logo8 from "../assets/logoipsum-331.svg";
+---
+
+<Layout title="Welwitech — Votre studio digital">
+  <HeroHome
+    title="Votre studio digital. De l'idée au produit."
+    subtitle="Design, Mobile, Web, SaaS & Intelligence Artificielle. Équipe senior, tarifs transparents, zéro sous-traitance. Chaque projet est livré — sans exception."
+    cta={{
+      title: "Réserver un appel",
+      url: "https://cal.com/maurice-zayat-2uyfey/20min",
+      target: "_blank",
+    }}
+    stats={[
+      { value: "14+", label: "Projets livrés" },
+      { value: "0", label: "Projet abandonné" },
+      { value: "48h", label: "Devis gratuit" },
+    ]}
+  />
+
+  <Introducing
+    title="On ne vend pas des heures. On livre des produits."
+    text="Welwitech est un studio digital fondé par trois associés qui conçoivent, développent et livrent eux-mêmes. Pas de juniors, pas d'intermédiaires. Du premier wireframe au déploiement en production, vous travaillez directement avec les gens qui écrivent le code et dessinent les interfaces."
+    cta={{
+      title: "Découvrir nos expertises",
+      url: "#expertises",
+    }}
+  />
+
+  <Expertises
+    title="Nos expertises"
+    items={[
+      {
+        icon: "",
+        title: "UX/UI Design — Des interfaces qui convertissent",
+        description: "Recherche utilisateur, wireframes, prototypes Figma HD. Design systems, tests d'usabilité et composants réutilisables pour une expérience utilisateur optimale.",
+        cta: { title: "Parlons design", url: "#contact" },
+      },
+      {
+        icon: "",
+        title: "Mobile — Apps natives et cross-platform",
+        description: "Flutter, React Native, Swift, Kotlin. Publication App Store & Play Store. Des applications mobiles performantes, du MVP à la version finale.",
+        cta: { title: "Parlons mobile", url: "#contact" },
+      },
+      {
+        icon: "",
+        title: "Web & SaaS — Sites et plateformes sur mesure",
+        description: "Sites vitrines, e-commerce, applications web & SaaS. CRM, ERP sur mesure. Next.js, React, Tailwind. Architecture scalable et performante.",
+        cta: { title: "Parlons web", url: "#contact" },
+      },
+      {
+        icon: "",
+        title: "IA & Agents — L'intelligence artificielle au service de votre business",
+        description: "Intégration LLM (GPT, Claude, Mistral). Chatbots, assistants intelligents, RAG, bases de connaissances, agents IA autonomes multi-tâches.",
+        cta: { title: "Parlons IA", url: "#contact" },
+      },
+    ]}
+  />
+
+  <StepsTimeline
+    title="Notre méthode"
+    items={[
+      {
+        title: "Découverte & cadrage",
+        text: "On cartographie vos besoins, vos contraintes et vos KPIs. Vous recevez un devis détaillé sous 48 heures — pas de brief qui traîne pendant des semaines.",
+      },
+      {
+        title: "Design & prototypage",
+        text: "Wireframes, maquettes Figma HD, design system complet. Chaque écran est validé avec vous avant qu'une seule ligne de code ne soit écrite.",
+      },
+      {
+        title: "Développement en sprints",
+        text: "Cycles courts, démos toutes les deux semaines, accès au staging en temps réel. Vous voyez votre produit prendre forme — pas de tunnel de 3 mois sans nouvelles.",
+      },
+      {
+        title: "Tests, recette & livraison",
+        text: "QA interne, tests avec votre équipe, corrections, puis mise en production. Code source livré à 100%, documentation complète, formation incluse.",
+      },
+      {
+        title: "Support & évolution",
+        text: "Votre produit vit après le lancement. Maintenance, monitoring, mises à jour et nouvelles fonctionnalités — on reste à vos côtés.",
+      },
+    ]}
+  />
+
+  <GalleryText
+    title="Des produits qui tournent. Pas des maquettes qui dorment."
+    cta={{
+      title: "Voir tous les projets",
+      url: "/projets",
+    }}
+    projects={[
+      {
+        image: { alt: "Prysm — Analytics YouTube", src: "/projet-prysm.png", width: 1280, height: 800 },
+        title: "Prysm — Analytics YouTube & IA",
+        text: "Plateforme d'analytics YouTube augmentée par l'IA. Analyse émotionnelle via Meta Tribe V2, tendances temps réel et insights stratégiques.",
+        url: "/projets/prysm",
+      },
+      {
+        image: { alt: "YouTube Freedom Academy", src: "/projet-ytfreedom.png", width: 1280, height: 800 },
+        title: "YouTube Freedom Academy",
+        text: "Plateforme de formation sur-mesure et landing page haute conversion pour le N°1 français de la YouTube Automation.",
+        url: "/projets/youtube-freedom",
+      },
+      {
+        image: { alt: "OYA Intelligence", src: "/projet-oya.png", width: 1280, height: 800 },
+        title: "OYA Intelligence — Recrutement IA",
+        text: "Plateforme SaaS de recrutement avec six intelligences interconnectées, matching prédictif et intégrations CRM natives.",
+        url: "/projets/oya-intelligence",
+      },
+      {
+        image: { alt: "Les Froggies", src: "/projet-froggies.png", width: 1280, height: 800 },
+        title: "Les Froggies — Marketplace Voyage",
+        text: "Plateforme de mise en relation voyageurs et guides francophones locaux. Recherche IA, communauté et expansion mondiale.",
+        url: "/projets/les-froggies",
+      },
+      {
+        image: { alt: "MatCo", src: "/projet-matco.png", width: 1280, height: 800 },
+        title: "MatCo — Configurateur Industriel",
+        text: "Site vitrine avec configurateur de machines sur-mesure, simulateur LLD et paiement Stripe. Made in France depuis 1997.",
+        url: "/projets/matco",
+      },
+      {
+        image: { alt: "Monarach", src: "/projet-monarach.png", width: 1280, height: 800 },
+        title: "Monarach — Intelligence Virale",
+        text: "Plateforme SaaS premium qui décode les mécaniques algorithmiques des plus grands créateurs au monde. Positionnement luxe.",
+        url: "/projets/monarach",
+      },
+    ]}
+    marqueeTexts={[
+      "UX/UI Design",
+      "Apps Mobile",
+      "Web & SaaS",
+      "Intelligence Artificielle",
+      "Agents IA",
+    ]}
+  />
+
+  <Statements
+    items={[
+      {
+        title: "Pas de juniors, pas de sous-traitance",
+        text: "Vos interlocuteurs sont les fondateurs. Les mêmes personnes qui conçoivent, développent et livrent votre produit.",
+      },
+      {
+        title: "L'IA intégrée dans chaque projet",
+        text: "Chatbots, agents autonomes, automatisation, RAG — notre expertise IA n'est pas en option. Elle est dans l'ADN de chaque produit.",
+      },
+      {
+        title: "Dubai, France, International",
+        text: "Structure légère, tarifs 30 à 50% en-dessous des agences parisiennes. Même exigence, meilleur rapport qualité-prix.",
+      },
+    ]}
+  />
+
+  <Testimonial
+    items={[
+      {
+        text: "Un studio digital qui change la donne. Une vision créative, une approche centrée utilisateur, et une collaboration fluide qui transforment la façon dont nous construisons nos produits. Ce n'est pas juste une agence — c'est un partenaire qui livre.",
+        author: "CEO, Startup Tech",
+        role: "Client Welwitech",
+      },
+      {
+        text: "On a lancé notre MVP en 6 semaines. Le code est propre, la doc est complète, et surtout ils n'ont pas disparu après la livraison. Trois mois plus tard, ils sont toujours là pour les évolutions.",
+        author: "Fondateur, NomadTax",
+        role: "SaaS B2C",
+      },
+      {
+        text: "L'intégration IA a transformé notre processus de traitement documentaire. Ce qui prenait 2 heures par dossier se fait maintenant en 30 secondes. L'équipe Welwitech a compris notre métier avant d'écrire la moindre ligne de code.",
+        author: "Directeur Opérations",
+        role: "Secteur Finance",
+      },
+    ]}
+  />
+
+  <TextMarquee
+    class="marquee"
+    texts={[
+      "Design UX/UI",
+      "Flutter & React Native",
+      "Next.js & React",
+      "GPT · Claude · Mistral",
+      "Agents IA autonomes",
+      "MVP en 4 semaines",
+    ]}
+  />
+
+  <Plans
+    title="Tarifs clairs, sans surprise"
+    subtitle="50% à la signature, 50% à la livraison. Devis détaillé sous 48h."
+    items={[
+      {
+        title: "Starter",
+        price: {
+          amount: "1 890 €",
+          duration: "projet",
+        },
+        link: {
+          title: "Devis gratuit",
+          url: "https://cal.com/maurice-zayat-2uyfey/20min",
+          target: "_blank",
+        },
+        features: [
+          { title: "Landing page optimisée" },
+          { title: "UX/UI Design (3–5 écrans)" },
+          { title: "Site vitrine responsive" },
+          { title: "Hébergement 1 mois offert" },
+          { title: "Livraison en 2–3 semaines" },
+        ],
+      },
+      {
+        title: "Studio",
+        price: {
+          amount: "6 900 €",
+          duration: "projet",
+        },
+        link: {
+          title: "Devis gratuit",
+          url: "https://cal.com/maurice-zayat-2uyfey/20min",
+          target: "_blank",
+        },
+        features: [
+          { title: "Plateforme complète sur mesure" },
+          { title: "CRM / ERP / LMS intégré" },
+          { title: "UX/UI Design complet" },
+          { title: "Intégration API & paiement" },
+          { title: "Support prioritaire 3 mois" },
+        ],
+      },
+      {
+        title: "Enterprise",
+        price: {
+          amount: "18 000 €",
+          duration: "projet",
+        },
+        link: {
+          title: "Devis gratuit",
+          url: "https://cal.com/maurice-zayat-2uyfey/20min",
+          target: "_blank",
+        },
+        features: [
+          { title: "Application mobile (Flutter/natif)" },
+          { title: "Application web / SaaS" },
+          { title: "Agents IA & automatisation" },
+          { title: "Architecture scalable" },
+          { title: "Formation équipe + dashboard admin" },
+          { title: "Support 1 mois inclus" },
+        ],
+      },
+    ]}
+  />
+
+  <Guarantees
+    title="Nos garanties"
+    items={[
+      { icon: "", text: "Devis gratuit sous 48h" },
+      { icon: "", text: "Démos toutes les 2 semaines" },
+      { icon: "", text: "Code source livré 100%" },
+      { icon: "", text: "Documentation complète" },
+      { icon: "", text: "Formation équipe incluse" },
+      { icon: "", text: "Support post-livraison" },
+      { icon: "", text: "Pas de frais cachés" },
+    ]}
+  />
+
+  <Faqs
+    title="Questions fréquentes"
+    mobileTitle="FAQ"
+    subtitle="Tout ce que vous devez savoir avant de démarrer."
+    items={[
+      {
+        question: "Qui sont vos clients ?",
+        answer:
+          "Startups, PME, scale-ups et grands comptes qui veulent un produit digital livré vite, bien, et sans intermédiaires. Du MVP à la plateforme complexe.",
+      },
+      {
+        question: "Combien de temps pour un projet ?",
+        answer:
+          "Un MVP en 4 à 8 semaines. Une plateforme complète en 8 à 16 semaines. Tout dépend du périmètre — on vous donne un calendrier précis dès le devis.",
+      },
+      {
+        question: "Vous faites aussi du mobile ?",
+        answer:
+          "Oui. Flutter pour le cross-platform, Swift et Kotlin pour le natif. Publication App Store et Play Store incluse.",
+      },
+      {
+        question: "Comment fonctionne le paiement ?",
+        answer:
+          "Simple : 50% à la signature, 50% à la livraison. Pas d'acomptes cachés, pas de facturation à l'heure. Vous savez exactement ce que vous payez.",
+      },
+      {
+        question: "Et après la livraison ?",
+        answer:
+          "On ne disparaît pas. Maintenance, monitoring, mises à jour et évolutions à partir de 450 €/mois. Votre produit continue de grandir avec vous.",
+      },
+      {
+        question: "Vous intégrez vraiment l'IA dans chaque projet ?",
+        answer:
+          "Oui. Chatbots, automatisation, agents intelligents, RAG, intégration LLM — c'est notre ADN. Chaque produit en bénéficie, que ce soit au cœur ou en support.",
+      },
+    ]}
+  />
+
+  <Team
+    title="Qui sommes-nous"
+    subtitle="3 fondateurs. 4 expertises. 14+ projets livrés."
+    members={[
+      {
+        initials: "MZ",
+        name: "Maurice Zayat",
+        role: "Commercial & BD",
+        bio: "Stratégie go-to-market, partenariats, relation client. Portefeuille France et international.",
+      },
+      {
+        initials: "SZ",
+        name: "Stéphane Zayat",
+        role: "CTO / Tech Lead",
+        bio: "Architecture technique, mobile, web. 14+ projets livrés. Expert Flutter, Swift, React, Next.js.",
+      },
+      {
+        initials: "JB",
+        name: "Jess Biclair",
+        role: "Développeur & IA",
+        bio: "Intelligence artificielle, LLM, agents IA, RAG, backend, infrastructure cloud.",
+      },
+    ]}
+  />
+
+  <ImageMarquee
+    images={[
+      { src: logo1.src, alt: "Client 1" },
+      { src: logo3.src, alt: "Client 2" },
+      { src: logo4.src, alt: "Client 3" },
+      { src: logo8.src, alt: "Client 4" },
+      { src: logo5.src, alt: "Client 5" },
+      { src: logo6.src, alt: "Client 6" },
+      { src: logo2.src, alt: "Client 7" },
+      { src: logo7.src, alt: "Client 8" },
+    ]}
+  />
+
+  <Contact
+    title="Parlons de votre projet"
+    subtitle="Devis gratuit en 48h. Premier RDV offert. Sans engagement."
+    email="contact@welwitech.com"
+    location="Dubai · France · International"
+  />
+
+  <GL />
+  <GLPlaces />
+</Layout>
+
+<style>
+  .marquee {
+    padding: 2rem 0;
+    z-index: 9;
+  }
+</style>

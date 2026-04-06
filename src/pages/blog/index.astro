@@ -1,0 +1,143 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("blog");
+posts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+function formatDate(dateStr: string): string {
+  const months = [
+    "janvier", "février", "mars", "avril", "mai", "juin",
+    "juillet", "août", "septembre", "octobre", "novembre", "décembre",
+  ];
+  const d = new Date(dateStr);
+  return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
+}
+---
+
+<Layout title="Blog — Welwitech" description="Réflexions sur le design, la tech et l'IA par l'équipe Welwitech.">
+  <section class="blog-index">
+    <div class="blog-index__header">
+      <h1 class="blog-index__title u-heading">Blog</h1>
+      <p class="blog-index__subtitle u-text">Réflexions sur le design, la tech et l'IA</p>
+    </div>
+
+    <div class="blog-index__list">
+      {posts.map((post) => (
+        <article class="blog-card">
+          <span class="blog-card__date u-text">{formatDate(post.data.date)}</span>
+          <h2 class="blog-card__title">
+            <a href={`/blog/${post.id}`} class="blog-card__link u-text">{post.data.title}</a>
+          </h2>
+          <p class="blog-card__desc u-text">{post.data.description}</p>
+          {post.data.tags && (
+            <div class="blog-card__tags">
+              {post.data.tags.map((tag: string) => (
+                <span class="blog-card__tag u-text">{tag}</span>
+              ))}
+            </div>
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .blog-index {
+    @extend %u-container;
+    padding-top: 10rem;
+    padding-bottom: 6rem;
+  }
+
+  .blog-index__header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .blog-index__title {
+    @extend %u-heading;
+    --fs: 3rem;
+    --fw: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 0 0 1rem;
+
+    @media (--mq-tablet) {
+      --fs: 2.2rem;
+    }
+  }
+
+  .blog-index__subtitle {
+    @extend %u-text;
+    --fs: var(--font-size-md);
+    --fw: 350;
+    color: var(--color-text-alt);
+    margin: 0;
+  }
+
+  .blog-index__list {
+    max-width: 48rem;
+    margin: 0 auto;
+  }
+
+  .blog-card {
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(var(--rgb-text), 0.06);
+  }
+
+  .blog-card:first-child {
+    border-top: 1px solid rgba(var(--rgb-text), 0.06);
+  }
+
+  .blog-card__date {
+    @extend %u-text;
+    --fs: var(--font-size-xs);
+    --fw: 400;
+    color: var(--color-text-alt);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .blog-card__title {
+    margin: 0 0 0.5rem;
+  }
+
+  .blog-card__link {
+    @extend %u-text;
+    --fs: 1.25rem;
+    --fw: 400;
+    text-decoration: none;
+    transition: color 0.3s var(--ease-out-cubic);
+
+    &:hover {
+      color: var(--color-brand-1);
+    }
+  }
+
+  .blog-card__desc {
+    @extend %u-text;
+    --fs: var(--font-size-sm);
+    --fw: 350;
+    color: var(--color-text-alt);
+    margin: 0 0 0.75rem;
+    line-height: 1.5;
+  }
+
+  .blog-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .blog-card__tag {
+    @extend %u-text;
+    --fs: var(--font-size-xs);
+    --fw: 400;
+    color: var(--color-text-alt);
+    border: 1px solid rgba(var(--rgb-text), 0.08);
+    border-radius: 100px;
+    padding: 0.2em 0.75em;
+    transition: border-color 0.3s var(--ease-out-cubic);
+  }
+</style>

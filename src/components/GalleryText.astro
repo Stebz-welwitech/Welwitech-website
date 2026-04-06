@@ -1,0 +1,256 @@
+---
+import type { Link, Image } from "../types";
+import Button from "./Button.astro";
+import Gallery from "./Gallery.astro";
+import GradientBackground from "./GradientBackground.astro";
+import TextMarquee from "../components/TextMarquee.astro";
+
+interface ProjectSlide {
+  image: Image;
+  title: string;
+  text: string;
+  url?: string;
+}
+
+interface Props {
+  images?: Image[];
+  projects?: ProjectSlide[];
+  title: string;
+  text?: string;
+  cta?: Link;
+  marqueeTexts: string[];
+}
+
+const { title, text, cta, images, projects, marqueeTexts } = Astro.props;
+const galleryImages = projects ? projects.map((p) => p.image) : images || [];
+---
+
+<sy-gallery-text>
+  <div class="sy-gallery-text">
+    <div class="u-container container">
+      <div class="content">
+        <h2 class="u-heading title" data-sy-reveal="words">{title}</h2>
+        {projects ? (
+          <div class="project-info">
+            {projects.map((p, i) => (
+              <div class:list={["project-slide", i === 0 && "is-active"]} data-project-index={i}>
+                <h3 class="u-heading project-title">{p.title}</h3>
+                <p class="u-text project-text">{p.text}</p>
+                {p.url && <a class="project-link u-text" href={p.url}>Voir le projet <span aria-hidden>&rarr;</span></a>}
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p class="u-text text" data-sy-reveal="lines">{text}</p>
+        )}
+        {cta ? <Button {...cta} arrow class="cta" /> : null}
+      </div>
+      <Gallery class="gallery" images={galleryImages} />
+    </div>
+    <TextMarquee class="marquee" texts={marqueeTexts} direction={-1} />
+    <GradientBackground />
+  </div>
+</sy-gallery-text>
+
+<style>
+  sy-gallery-text {
+    display: block;
+  }
+
+  .sy-gallery-text {
+    margin: 8rem 0 0;
+    padding: 10rem 0 0;
+    position: relative;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 3rem;
+    position: relative;
+    z-index: 9;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    backdrop-filter: blur(6px) saturate(1.05);
+
+    @media (--mq-tablet) {
+      gap: 2rem;
+    }
+
+    @media (--mq-tablet-sm) {
+      flex-direction: column-reverse;
+    }
+
+    @media (--mq-phone) {
+      padding: 1rem 0;
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 0;
+    flex: 1;
+  }
+
+  .title {
+    --fs: 2rem;
+    --fw: 400;
+    --lh: 1.1;
+    max-width: 12em;
+    margin-bottom: 1.25rem;
+  }
+
+  .text {
+    max-width: 25em;
+  }
+
+  /* ---- Project slides ---- */
+  .project-info {
+    position: relative;
+    min-height: 8rem;
+    width: 100%;
+    max-width: 25em;
+  }
+
+  .project-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(0.5rem);
+    transition: opacity 0.4s var(--ease-out-cubic), transform 0.4s var(--ease-out-cubic);
+    pointer-events: none;
+
+    &.is-active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+      position: relative;
+    }
+  }
+
+  .project-title {
+    --fs: 1.15rem;
+    --fw: 500;
+    --lh: 1.2;
+    margin: 0 0 0.5rem;
+    color: var(--color-text);
+  }
+
+  .project-text {
+    --fs: var(--font-size-sm);
+    color: var(--color-text-alt);
+    line-height: 1.6;
+    margin: 0 0 0.75rem;
+  }
+
+  .project-link {
+    --fs: var(--font-size-sm);
+    --fw: 500;
+    color: rgb(var(--rgb-brand-1));
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    transition: gap 0.3s var(--ease-out-expo);
+
+    &:hover {
+      gap: 0.6em;
+    }
+  }
+
+  .cta {
+    margin-top: 1.5rem;
+  }
+
+  .gallery {
+    max-width: 32rem;
+    min-height: 22rem;
+
+    @media (--mq-desktop-sm) {
+      max-width: 27rem;
+    }
+
+    @media (--mq-tablet) {
+      max-width: 25rem;
+    }
+  }
+
+  .marquee {
+    z-index: 9;
+    padding: 2rem 0;
+    margin: 6rem 0 0;
+    --c: var(--color-white);
+  }
+
+</style>
+
+<script>
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  class GalleryTextSync extends HTMLElement {
+    constructor() {
+      super();
+
+      const slides = this.querySelectorAll<HTMLElement>('.project-slide');
+      if (slides.length === 0) return;
+
+      // Listen for gallery slide changes
+      const gallery = this.querySelector('sy-gallery');
+      if (!gallery) return;
+
+      const observer = new MutationObserver(() => {
+        const dots = gallery.querySelectorAll('.dots button');
+        dots.forEach((dot, i) => {
+          dot.addEventListener('click', () => this.syncSlide(i, slides));
+        });
+      });
+      observer.observe(gallery, { childList: true, subtree: true });
+
+      // Also watch for drag-based changes via active dot
+      const checkInterval = setInterval(() => {
+        const activeDot = gallery.querySelector('.dots button.is-active');
+        if (!activeDot) return;
+        const dots = Array.from(gallery.querySelectorAll('.dots button'));
+        const idx = dots.indexOf(activeDot as HTMLButtonElement);
+        if (idx >= 0) this.syncSlide(idx, slides);
+      }, 300);
+
+      // Parallax
+      const section = this.querySelector('.sy-gallery-text');
+      if (section && gallery) {
+        gsap.to(gallery, {
+          y: -40,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      }
+    }
+
+    currentIdx = -1;
+
+    syncSlide(idx: number, slides: NodeListOf<HTMLElement>) {
+      if (idx === this.currentIdx) return;
+      this.currentIdx = idx;
+
+      slides.forEach((s, i) => {
+        s.classList.toggle('is-active', i === idx);
+      });
+    }
+  }
+
+  customElements.define('sy-gallery-text', GalleryTextSync);
+</script>

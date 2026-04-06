@@ -1,0 +1,201 @@
+---
+interface Quote {
+  text: string;
+  author: string;
+  role: string;
+}
+
+interface Props {
+  items: Quote[];
+}
+
+const { items } = Astro.props;
+---
+
+<sy-testimonials>
+  <div class="u-container">
+    <div class="inner">
+      <div class="slides">
+        {
+          items.map((item, i) => (
+            <blockquote class:list={["slide", i === 0 && "is-active"]}>
+              <p class="u-heading quote">{item.text}</p>
+              <footer class="attribution">
+                <span class="dash" aria-hidden="true"></span>
+                <div class="attribution-text">
+                  <cite class="u-text author">{item.author}</cite>
+                  <span class="u-text role">{item.role}</span>
+                </div>
+              </footer>
+            </blockquote>
+          ))
+        }
+      </div>
+      {items.length > 1 && (
+        <div class="dots">
+          {items.map((_, i) => (
+            <button
+              class:list={["dot", i === 0 && "is-active"]}
+              aria-label={`Témoignage ${i + 1}`}
+              type="button"
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
+</sy-testimonials>
+
+<style>
+  sy-testimonials {
+    display: block;
+    padding: 7rem 0;
+  }
+
+  .inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .slides {
+    position: relative;
+    width: 100%;
+    min-height: 12rem;
+
+    @media (--mq-phone) {
+      min-height: clamp(12rem, 40vh, 18rem);
+    }
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    max-width: 42em;
+    margin: 0 auto;
+    padding: 0;
+    opacity: 0;
+    transform: translateY(0.75rem);
+    transition: opacity 0.5s var(--ease-out-cubic), transform 0.5s var(--ease-out-cubic);
+    pointer-events: none;
+
+    &.is-active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+      position: relative;
+    }
+  }
+
+  .quote {
+    --fs: clamp(1.2rem, 2vw, 1.6rem);
+    --fw: 300;
+    --lh: 1.5;
+    font-style: italic;
+    color: var(--color-text);
+  }
+
+  .attribution {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .dash {
+    width: 2rem;
+    height: 1px;
+    background: rgba(var(--rgb-text), 0.15);
+  }
+
+  .attribution-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    text-align: left;
+  }
+
+  .author {
+    --fw: 500;
+    --fs: var(--font-size-sm);
+    font-style: normal;
+    color: var(--color-text);
+  }
+
+  .role {
+    --fs: var(--font-size-xs);
+    color: var(--color-text-alt);
+  }
+
+  /* Dots */
+  .dots {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    background: rgba(var(--rgb-text), 0.12);
+    cursor: pointer;
+    transition: background 0.3s var(--ease-out-cubic), transform 0.3s var(--ease-out-cubic);
+
+    &.is-active {
+      background: rgb(var(--rgb-brand-1));
+      transform: scale(1.25);
+    }
+
+    &:hover:not(.is-active) {
+      background: rgba(var(--rgb-text), 0.25);
+    }
+  }
+</style>
+
+<script>
+  class Testimonials extends HTMLElement {
+    current = 0;
+    slides: HTMLElement[];
+    dots: HTMLElement[];
+    interval: ReturnType<typeof setInterval> | null = null;
+
+    constructor() {
+      super();
+      this.slides = Array.from(this.querySelectorAll('.slide'));
+      this.dots = Array.from(this.querySelectorAll('.dot'));
+
+      this.dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => this.goTo(i));
+      });
+
+      if (this.slides.length > 1) {
+        this.interval = setInterval(() => this.next(), 6000);
+      }
+    }
+
+    goTo(index: number) {
+      this.slides[this.current].classList.remove('is-active');
+      this.dots[this.current]?.classList.remove('is-active');
+
+      this.current = index;
+
+      this.slides[this.current].classList.add('is-active');
+      this.dots[this.current]?.classList.add('is-active');
+
+      // Reset auto-play
+      if (this.interval) clearInterval(this.interval);
+      this.interval = setInterval(() => this.next(), 6000);
+    }
+
+    next() {
+      this.goTo((this.current + 1) % this.slides.length);
+    }
+  }
+
+  customElements.define('sy-testimonials', Testimonials);
+</script>

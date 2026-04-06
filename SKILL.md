@@ -1,6 +1,6 @@
 # SKILL.md - Frontend Design & Astro Development Skills
 
-## Active Skills
+## Active Skillsz
 
 ### 1. Frontend Design (`frontend-design`)
 Create distinctive, production-grade frontend interfaces with high design quality. Used for building web components, pages, and applications with creative, polished output.

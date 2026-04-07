@@ -77,6 +77,9 @@ const year = new Date().getFullYear();
           <a href="https://x.com/welwitech" target="_blank" rel="noopener" class="social-link" aria-label="Twitter / X">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768"/><path d="M20 4l-7.364 7.364"/></svg>
           </a>
+          <a href="https://instagram.com/welwitech" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
         </div>
       </div>
     </div>
@@ -91,7 +94,9 @@ const year = new Date().getFullYear();
     </div>
 
     <div class="big-name" aria-hidden="true">
-      <span>WELWITECH</span>
+      {"WELWITECH".split("").map((letter) => (
+        <span class="letter">{letter}</span>
+      ))}
     </div>
   </footer>
 </sy-footer>
@@ -293,18 +298,24 @@ const year = new Date().getFullYear();
   .big-name {
     overflow: hidden;
     padding: 2rem 0 1.5rem;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    user-select: none;
+  }
 
-    span {
-      display: block;
-      font-family: var(--font-roboto-slab);
-      font-weight: 200;
-      font-size: clamp(3rem, 13vw, 10rem);
-      letter-spacing: 0.08em;
-      line-height: 0.85;
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(255, 255, 255, 0.06);
-      user-select: none;
+  .letter {
+    display: inline-block;
+    font-family: var(--font-inter);
+    font-weight: 300;
+    font-size: clamp(3rem, 13vw, 9rem);
+    letter-spacing: 0.06em;
+    line-height: 0.85;
+    color: rgba(255, 255, 255, 0.04);
+    transition: color 0.3s var(--ease-out-cubic);
+    cursor: default;
+
+    &:hover {
+      color: rgba(255, 255, 255, 0.2);
     }
   }
 </style>

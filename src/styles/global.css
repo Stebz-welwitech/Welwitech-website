@@ -102,6 +102,16 @@ button {
   color: currentcolor;
 }
 
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid rgb(var(--rgb-brand-1));
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

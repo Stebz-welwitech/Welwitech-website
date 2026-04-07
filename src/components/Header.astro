@@ -16,7 +16,7 @@ const { logoUrl, logoAlt, link1, link2, links } = Astro.props;
 
 <header>
   <sy-head>
-    <div class="inner u-container">
+    <div class="inner">
       <div class="wrapper">
         <a class="logo" href={logoUrl}>
           <img src={logoIcon.src} alt="" width="28" height="28" />
@@ -85,7 +85,11 @@ const { logoUrl, logoAlt, link1, link2, links } = Astro.props;
     }
 
     @media (--mq-tablet) {
-      padding: 0.6rem 0.75rem 0;
+      padding: 0.5rem 0.5rem 0;
+
+      :global(body.is-nav-small) & {
+        padding: 0.5rem 0.5rem 0;
+      }
     }
   }
 
@@ -122,8 +126,9 @@ const { logoUrl, logoAlt, link1, link2, links } = Astro.props;
       padding: 0.5rem 0.75rem;
 
       :global(body.is-nav-small) & {
-        padding: 0.35rem 0.75rem;
+        padding: 0.4rem 0.75rem;
         max-width: 100%;
+        border-radius: 0.75rem;
       }
     }
   }

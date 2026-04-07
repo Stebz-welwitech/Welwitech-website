@@ -27,7 +27,7 @@ import logo7 from "../assets/logoipsum-346.svg";
 import logo8 from "../assets/logoipsum-331.svg";
 ---
 
-<Layout title="Welwitech — Votre studio digital">
+<Layout title="Welwitech — Studio Digital Dubai & France | Création Site Web, Application Mobile, SaaS & IA" description="Studio digital spécialisé en création de sites web, applications mobiles, SaaS et intelligence artificielle. Équipe senior, tarifs transparents, livraison garantie. Dubai et France.">
   <HeroHome
     title="Votre studio digital. De l'idée au produit."
     subtitle="Design, Mobile, Web, SaaS & Intelligence Artificielle. Équipe senior, tarifs transparents, zéro sous-traitance. Chaque projet est livré — sans exception."
@@ -382,3 +382,41 @@ import logo8 from "../assets/logoipsum-331.svg";
     z-index: 9;
   }
 </style>
+
+<!-- FAQ Schema for SEO -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Qui sont vos clients ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Startups, PME, scale-ups et grands comptes qui veulent un produit digital livré vite, bien, et sans intermédiaires. Du MVP à la plateforme complexe." }
+    },
+    {
+      "@type": "Question",
+      "name": "Combien de temps pour un projet ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Un MVP en 4 à 8 semaines. Une plateforme complète en 8 à 16 semaines. Tout dépend du périmètre — on vous donne un calendrier précis dès le devis." }
+    },
+    {
+      "@type": "Question",
+      "name": "Vous faites aussi du mobile ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Oui. Flutter pour le cross-platform, Swift et Kotlin pour le natif. Publication App Store et Play Store incluse." }
+    },
+    {
+      "@type": "Question",
+      "name": "Comment fonctionne le paiement ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Simple : 50% à la signature, 50% à la livraison. Pas d'acomptes cachés, pas de facturation à l'heure." }
+    },
+    {
+      "@type": "Question",
+      "name": "Et après la livraison ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "On ne disparaît pas. Maintenance, monitoring, mises à jour et évolutions à partir de 450 €/mois." }
+    },
+    {
+      "@type": "Question",
+      "name": "Vous intégrez vraiment l'IA dans chaque projet ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Oui. Chatbots, automatisation, agents intelligents, RAG, intégration LLM — c'est notre ADN. Chaque produit en bénéficie." }
+    }
+  ]
+})} />

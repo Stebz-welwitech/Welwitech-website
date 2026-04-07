@@ -23,7 +23,18 @@ function formatDate(dateStr: string): string {
 }
 ---
 
-<Layout title={`${post.data.title} — Welwitech`} description={post.data.description}>
+<Layout
+  title={`${post.data.title} — Welwitech`}
+  description={post.data.description}
+  ogType="article"
+  articleDate={post.data.date}
+  articleAuthor={post.data.author}
+  breadcrumbs={[
+    { name: "Accueil", url: "/" },
+    { name: "Blog", url: "/blog" },
+    { name: post.data.title, url: `/blog/${post.id}` },
+  ]}
+>
   <article class="blog-post">
     <div class="blog-post__back">
       <a href="/blog" class="blog-post__back-link u-text">← Blog</a>

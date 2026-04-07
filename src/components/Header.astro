@@ -18,7 +18,7 @@ const { logoUrl, logoAlt, link1, link2, links } = Astro.props;
   <sy-head>
     <nav class="bar" aria-label="Navigation principale">
       <a class="logo" href={logoUrl}>
-        <img src={logoIcon.src} alt="" width="28" height="28" />
+        <img src={logoIcon.src} alt="" width="28" height="28" loading="eager" decoding="async" />
         <span class="logo-text">{logoAlt}</span>
       </a>
 

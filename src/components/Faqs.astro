@@ -19,7 +19,7 @@ const { title, subtitle, mobileTitle, items } = Astro.props;
     <div class="content">
       <h2 class="u-heading" data-sy-reveal="words">
         <span>{title}</span>
-        <span aria-hidden>{mobileTitle}</span>
+        <span aria-hidden="true">{mobileTitle}</span>
       </h2>
       <p class="u-text subtitle" data-sy-reveal="lines">{subtitle}</p>
     </div>
@@ -39,7 +39,7 @@ const { title, subtitle, mobileTitle, items } = Astro.props;
                   <span class="question-text" data-sy-reveal="words">
                     {item["question"]}
                   </span>
-                  <span />
+                  <span aria-hidden="true" />
                 </button>
               </h3>
             </div>

@@ -163,20 +163,13 @@ const links = [
   .sticky-cta {
     display: none;
     position: fixed;
-    bottom: 0;
+    bottom: 1.25rem;
+    bottom: calc(1.25rem + env(safe-area-inset-bottom, 0));
     left: 0;
     right: 0;
     z-index: 50;
-    padding: 0.75rem 1rem;
-    padding-bottom: calc(0.75rem + env(safe-area-inset-bottom, 0));
-    background: rgba(var(--rgb-white), 0.85);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-top: 1px solid rgba(var(--rgb-brand-1), 0.08);
-
-    :global([data-theme="dark"]) & {
-      background: rgba(var(--rgb-brand-3), 0.85);
-    }
+    pointer-events: none;
+    text-align: center;
 
     @media (--mq-tablet) {
       display: block;
@@ -186,17 +179,23 @@ const links = [
   .sticky-cta-btn {
     --fs: var(--font-size-xs);
     --fw: 600;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.5em;
-    width: 100%;
-    padding: 0.9em 1.5em;
+    padding: 0.85em 2em;
     border-radius: 100px;
     background: rgb(var(--rgb-brand-1));
     color: #fff;
     text-decoration: none;
     letter-spacing: 0.02em;
+    pointer-events: auto;
+    box-shadow: 0 4px 20px rgba(var(--rgb-brand-1), 0.3);
+    transition: box-shadow 0.3s var(--ease-out-cubic), transform 0.3s var(--ease-out-cubic);
+
+    &:active {
+      transform: scale(0.97);
+    }
   }
 
   /* ---- Back to top ---- */
@@ -237,15 +236,10 @@ const links = [
     }
 
     @media (--mq-tablet) {
-      bottom: 5.5rem;
+      bottom: 5rem;
       right: 1rem;
       width: 2.5rem;
       height: 2.5rem;
-    }
-
-    @media (--mq-phone) {
-      bottom: 5rem;
-      right: 0.75rem;
     }
   }
 </style>

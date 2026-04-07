@@ -36,6 +36,7 @@ const { title, subtitle, items } = Astro.props;
               <h3 class="u-text plan-title" data-sy-reveal="words">
                 {item.title}
               </h3>
+              <span class="u-text from-label">À partir de</span>
               <p class="u-heading price">
                 <span data-sy-reveal="words">{item.price.amount}</span>
                 <span class="duration u-text" data-sy-reveal="words">
@@ -151,6 +152,14 @@ const { title, subtitle, items } = Astro.props;
   .plan-title {
     --fs: var(--font-size-md);
     --fw: 500;
+  }
+
+  .from-label {
+    --fs: var(--font-size-xs);
+    --fw: 400;
+    color: var(--color-text-alt);
+    display: block;
+    margin-top: 0.75rem;
   }
 
   .price {

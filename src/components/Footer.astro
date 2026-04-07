@@ -10,22 +10,31 @@ interface Props {
 }
 
 const { logoUrl, logoAlt, links } = Astro.props;
+const isEn = logoUrl.startsWith("/en");
 
 const expertiseLinks = [
   { title: "UX/UI Design", url: "#expertises" },
-  { title: "Apps Mobile", url: "#expertises" },
+  { title: isEn ? "Mobile Apps" : "Apps Mobile", url: "#expertises" },
   { title: "Web & SaaS", url: "#expertises" },
-  { title: "IA & Agents", url: "#expertises" },
+  { title: isEn ? "AI & Agents" : "IA & Agents", url: "#expertises" },
 ];
 
-const companyLinks = [
+const companyLinks = isEn ? [
+  { title: "Method", url: "#methode" },
+  { title: "Pricing", url: "#tarifs" },
+  { title: "Team", url: "#equipe" },
+  { title: "Contact", url: "#contact" },
+] : [
   { title: "Méthode", url: "#methode" },
   { title: "Tarifs", url: "#tarifs" },
   { title: "Équipe", url: "#equipe" },
   { title: "Contact", url: "#contact" },
 ];
 
-const legalLinks = [
+const legalLinks = isEn ? [
+  { title: "Legal", url: "/mentions-legales" },
+  { title: "Terms", url: "/cgv" },
+] : [
   { title: "Mentions légales", url: "/mentions-legales" },
   { title: "CGV", url: "/cgv" },
 ];
@@ -42,7 +51,7 @@ const year = new Date().getFullYear();
           <span class="logo-text">{logoAlt}</span>
         </a>
         <p class="brand-desc">
-          Studio digital senior.<br />Design, Mobile, Web, SaaS & IA.
+          {isEn ? "Senior digital studio." : "Studio digital senior."}<br />{isEn ? "Design, Mobile, Web, SaaS & AI." : "Design, Mobile, Web, SaaS & IA."}
         </p>
         <p class="brand-location">Dubai · France · International</p>
       </div>

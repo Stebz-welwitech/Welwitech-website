@@ -6,16 +6,42 @@ interface Props {
   subtitle: string;
   email: string;
   location: string;
+  lang?: string;
 }
 
-const { title, subtitle, email, location } = Astro.props;
+const { title, subtitle, email, location, lang = "fr" } = Astro.props;
+const en = lang === "en";
+
+const labels = {
+  badge: en ? "Contact" : "Contact",
+  name: en ? "Name *" : "Nom *",
+  namePlaceholder: en ? "John Doe" : "Jean Dupont",
+  company: en ? "Company" : "Entreprise",
+  companyPlaceholder: en ? "Your company" : "Votre entreprise",
+  email: en ? "Email *" : "Email *",
+  emailPlaceholder: en ? "john@company.com" : "jean@entreprise.com",
+  phone: en ? "Phone" : "Téléphone",
+  phonePlaceholder: en ? "+971 50 000 0000" : "+33 6 00 00 00 00",
+  budget: en ? "Estimated budget" : "Budget estimé",
+  budgetDefault: en ? "Select a budget" : "Sélectionner un budget",
+  budgetOptions: en
+    ? ["Under €5,000", "€5,000 — €15,000", "€15,000 — €30,000", "Over €30,000"]
+    : ["Moins de 5 000 €", "5 000 € — 15 000 €", "15 000 € — 30 000 €", "Plus de 30 000 €"],
+  message: en ? "Describe your project" : "Décrivez votre projet",
+  messagePlaceholder: en ? "Tell us about your project, goals and timeline..." : "Parlez-nous de votre projet, vos objectifs et vos délais...",
+  submit: en ? "Send request" : "Envoyer la demande",
+  byAppointment: en ? "By appointment only" : "Sur rendez-vous uniquement",
+  trust: en
+    ? ["Response within 24h", "Free quote", "No commitment"]
+    : ["Réponse sous 24h", "Devis gratuit", "Sans engagement"],
+};
 ---
 
 <section class="sy-contact" id="contact">
   <div class="u-container">
     <div class="card">
       <div class="left">
-        <span class="u-text badge" data-sy-reveal="words">Contact</span>
+        <span class="u-text badge" data-sy-reveal="words">{labels.badge}</span>
         <h2 class="u-heading title" data-sy-reveal="words">{title}</h2>
         <p class="u-text subtitle" data-sy-reveal="lines">{subtitle}</p>
 
@@ -30,62 +56,56 @@ const { title, subtitle, email, location } = Astro.props;
           </span>
           <span class="u-text meta-item">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Sur rendez-vous uniquement
+            {labels.byAppointment}
           </span>
         </div>
 
         <div class="trust">
-          <div class="trust-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            <span class="u-text">Réponse sous 24h</span>
-          </div>
-          <div class="trust-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            <span class="u-text">Devis gratuit</span>
-          </div>
-          <div class="trust-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            <span class="u-text">Sans engagement</span>
-          </div>
+          {labels.trust.map((t) => (
+            <div class="trust-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span class="u-text">{t}</span>
+            </div>
+          ))}
         </div>
       </div>
 
       <form class="form" onsubmit="return false;">
         <div class="row">
           <div class="field">
-            <label class="u-text label" for="c-name">Nom *</label>
-            <input class="u-text input" type="text" id="c-name" name="name" placeholder="Jean Dupont" autocomplete="name" required />
+            <label class="u-text label" for="c-name">{labels.name}</label>
+            <input class="u-text input" type="text" id="c-name" name="name" placeholder={labels.namePlaceholder} autocomplete="name" required />
           </div>
           <div class="field">
-            <label class="u-text label" for="c-company">Entreprise</label>
-            <input class="u-text input" type="text" id="c-company" name="company" placeholder="Votre entreprise" autocomplete="organization" />
+            <label class="u-text label" for="c-company">{labels.company}</label>
+            <input class="u-text input" type="text" id="c-company" name="company" placeholder={labels.companyPlaceholder} autocomplete="organization" />
           </div>
         </div>
         <div class="row">
           <div class="field">
-            <label class="u-text label" for="c-email">Email *</label>
-            <input class="u-text input" type="email" id="c-email" name="email" placeholder="jean@entreprise.com" autocomplete="email" required />
+            <label class="u-text label" for="c-email">{labels.email}</label>
+            <input class="u-text input" type="email" id="c-email" name="email" placeholder={labels.emailPlaceholder} autocomplete="email" required />
           </div>
           <div class="field">
-            <label class="u-text label" for="c-phone">Téléphone</label>
-            <input class="u-text input" type="tel" id="c-phone" name="phone" placeholder="+33 6 00 00 00 00" autocomplete="tel" />
+            <label class="u-text label" for="c-phone">{labels.phone}</label>
+            <input class="u-text input" type="tel" id="c-phone" name="phone" placeholder={labels.phonePlaceholder} autocomplete="tel" />
           </div>
         </div>
         <div class="field">
-          <label class="u-text label" for="c-budget">Budget estimé</label>
+          <label class="u-text label" for="c-budget">{labels.budget}</label>
           <select class="u-text input select" id="c-budget" name="budget">
-            <option value="">Sélectionner un budget</option>
-            <option value="starter">Moins de 5 000 €</option>
-            <option value="studio">5 000 € — 15 000 €</option>
-            <option value="enterprise">15 000 € — 30 000 €</option>
-            <option value="custom">Plus de 30 000 €</option>
+            <option value="">{labels.budgetDefault}</option>
+            <option value="starter">{labels.budgetOptions[0]}</option>
+            <option value="studio">{labels.budgetOptions[1]}</option>
+            <option value="enterprise">{labels.budgetOptions[2]}</option>
+            <option value="custom">{labels.budgetOptions[3]}</option>
           </select>
         </div>
         <div class="field">
-          <label class="u-text label" for="c-msg">Décrivez votre projet</label>
-          <textarea class="u-text input textarea" id="c-msg" name="message" placeholder="Parlez-nous de votre projet, vos objectifs et vos délais..." rows="4"></textarea>
+          <label class="u-text label" for="c-msg">{labels.message}</label>
+          <textarea class="u-text input textarea" id="c-msg" name="message" placeholder={labels.messagePlaceholder} rows="4"></textarea>
         </div>
-        <Button title="Envoyer la demande" url="#" revealable={false} arrow />
+        <Button title={labels.submit} url="#" revealable={false} arrow />
       </form>
     </div>
   </div>

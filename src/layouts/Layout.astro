@@ -34,13 +34,21 @@ const lang = isEn ? "en" : "fr";
 const ogLocale = isEn ? "en_US" : "fr_FR";
 const t = useTranslations();
 
-const links = [
+const links = isEn ? [
+  { title: "Expertises", url: "#expertises" },
+  { title: "Method", url: "#methode" },
+  { title: "Pricing", url: "#tarifs" },
+  { title: "Blog", url: "/en/blog" },
+  { title: "Contact", url: "#contact" },
+] : [
   { title: "Expertises", url: "#expertises" },
   { title: "Méthode", url: "#methode" },
   { title: "Tarifs", url: "#tarifs" },
   { title: "Blog", url: "/blog" },
   { title: "Contact", url: "#contact" },
 ];
+
+const ctaLabel = isEn ? "Free quote" : "Devis gratuit";
 ---
 
 <html lang={lang}>
@@ -149,20 +157,20 @@ const links = [
     <div class="scroll-progress" aria-hidden="true"></div>
     <a href="#main" class="skip-link">{t("accessibility.skip-to-content")}</a>
     <Header
-      logoUrl="/"
+      logoUrl={isEn ? "/en/" : "/"}
       logoAlt="Welwitech"
       links={links}
-      link2={{ title: "Devis gratuit", url: "https://cal.com/maurice-zayat-2uyfey/20min", target: "_blank" }}
+      link2={{ title: ctaLabel, url: "https://cal.com/maurice-zayat-2uyfey/20min", target: "_blank" }}
     />
     <main id="main">
       <slot />
     </main>
-    <Footer logoUrl="/" logoAlt="Welwitech" links={links} />
+    <Footer logoUrl={isEn ? "/en/" : "/"} logoAlt="Welwitech" links={links} />
 
     <!-- Sticky mobile CTA -->
     <div class="sticky-cta">
       <a href="https://cal.com/maurice-zayat-2uyfey/20min" target="_blank" rel="noopener" class="u-text sticky-cta-btn">
-        Devis gratuit
+        {ctaLabel}
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
     </div>

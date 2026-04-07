@@ -147,6 +147,10 @@ const galleryImages = projects ? projects.map((p) => p.image) : images || [];
     color: var(--color-text-alt);
     line-height: 1.6;
     margin: 0 0 0.75rem;
+
+    :global([data-theme="dark"]) & {
+      color: rgba(255, 255, 255, 0.7);
+    }
   }
 
   .project-link {
@@ -154,6 +158,10 @@ const galleryImages = projects ? projects.map((p) => p.image) : images || [];
     --fw: 500;
     color: rgb(var(--rgb-brand-1));
     text-decoration: none;
+
+    :global([data-theme="dark"]) & {
+      color: #fff;
+    }
     display: inline-flex;
     align-items: center;
     gap: 0.3em;

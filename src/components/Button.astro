@@ -43,6 +43,7 @@ const attrs =
     ? {
         target,
         href: url,
+        ...(target === "_blank" ? { rel: "noopener" } : {}),
       }
     : {
         type,

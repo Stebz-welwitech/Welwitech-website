@@ -345,8 +345,8 @@ void main() {
   }
 
   /// circle
-  const baseColor = "#643CDC";
-  const colors = ["#825AE6", "#9B7AED"];
+  const baseColor = "#8B6FD4";
+  const colors = ["#A68DE0", "#C0B0EC"];
 
   const seed = Math.random() * 10;
   const waves = colors.map((c, i) => {
@@ -545,7 +545,7 @@ void main() {
     uniforms,
   });
 
-  const geometry = new THREE.PlaneGeometry(1.7, 1.7, 100, 100);
+  const geometry = new THREE.PlaneGeometry(1.4, 1.4, 100, 100);
   const circle = new THREE.Mesh(geometry, material);
   ballGroup.add(circle);
 
@@ -885,5 +885,6 @@ void main() {
     pointer-events: none;
     top: 0;
     left: 0;
+    opacity: 0.75;
   }
 </style>

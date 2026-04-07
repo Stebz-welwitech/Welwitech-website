@@ -270,13 +270,16 @@ const { logoUrl, logoAlt, link1, link2, links } = Astro.props;
   .toggle {
     border: none;
     background: none;
-    padding: 0;
+    padding: 0.5rem;
     cursor: pointer;
     align-items: center;
     display: none;
     z-index: 3;
     color: var(--color-text);
     opacity: 0.5;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    justify-content: center;
 
     &:hover { opacity: 1; }
 

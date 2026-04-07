@@ -147,6 +147,10 @@ const { title, subtitle, items } = Astro.props;
     background: var(--color-white);
     border-radius: 0.9rem;
     padding: 2rem;
+
+    @media (--mq-phone) {
+      padding: 1.5rem;
+    }
   }
 
   .plan-title {

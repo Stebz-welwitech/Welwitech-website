@@ -150,12 +150,16 @@ const { logoUrl, logoAlt, link1, link2, links } = Astro.props;
       align-items: center;
       justify-content: center;
       width: 100vw;
-      height: 100vh;
+      height: 100dvh;
       position: fixed;
       z-index: 2;
-      background: var(--color-brand-3);
+      background: var(--color-bg);
       top: 0;
       left: 0;
+      right: 0;
+      bottom: 0;
+      margin: 0;
+      border-radius: 0;
       clip-path: inset(0 0 0%);
       transition: clip-path 0.5s var(--ease-out-expo);
 

@@ -142,6 +142,11 @@ const attrs =
     &:global(.btn-primary-alt) {
       --text-color: var(--btn-txt-color, var(--color-text));
       --bg-color: var(--btn-bg-color, var(--color-brand-3));
+
+      :global([data-theme="dark"]) & {
+        --text-color: #fff;
+        --bg-color: rgba(var(--rgb-brand-1), 0.25);
+      }
     }
 
     &:hover,

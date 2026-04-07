@@ -177,15 +177,19 @@ const galleryImages = projects ? projects.map((p) => p.image) : images || [];
   }
 
   .gallery {
-    max-width: 32rem;
-    min-height: 22rem;
+    max-width: 36rem;
+    flex-shrink: 0;
 
     @media (--mq-desktop-sm) {
-      max-width: 27rem;
+      max-width: 30rem;
     }
 
     @media (--mq-tablet) {
-      max-width: 25rem;
+      max-width: 26rem;
+    }
+
+    @media (--mq-tablet-sm) {
+      max-width: 100%;
     }
   }
 

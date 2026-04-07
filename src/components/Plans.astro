@@ -18,9 +18,10 @@ interface Props {
   title: string;
   subtitle: string;
   items: Item[];
+  fromLabel?: string;
 }
 
-const { title, subtitle, items } = Astro.props;
+const { title, subtitle, items, fromLabel = "À partir de" } = Astro.props;
 ---
 
 <div class="sy-plans" id="tarifs">
@@ -36,7 +37,7 @@ const { title, subtitle, items } = Astro.props;
               <h3 class="u-text plan-title" data-sy-reveal="words">
                 {item.title}
               </h3>
-              <span class="u-text from-label">À partir de</span>
+              <span class="u-text from-label">{fromLabel}</span>
               <p class="u-heading price">
                 <span data-sy-reveal="words">{item.price.amount}</span>
                 <span class="duration u-text" data-sy-reveal="words">

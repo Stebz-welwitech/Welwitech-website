@@ -16,137 +16,112 @@ const { logoUrl, logoAlt, link1, link2, links } = Astro.props;
 
 <header>
   <sy-head>
-    <div class="inner">
-      <div class="wrapper">
-        <a class="logo" href={logoUrl}>
-          <img src={logoIcon.src} alt="" width="28" height="28" />
-          <span class="logo-text">{logoAlt}</span>
-        </a>
+    <nav class="bar">
+      <a class="logo" href={logoUrl}>
+        <img src={logoIcon.src} alt="" width="28" height="28" />
+        <span class="logo-text">{logoAlt}</span>
+      </a>
 
-        <div class="menu">
-          <ul>
-            {
-              links.map((l) => (
-                <li>
-                  <a href={l.url}>{l.title}</a>
-                </li>
-              ))
-            }
-          </ul>
-        </div>
-
-        <div class="buttons">
+      <div class="menu">
+        <ul>
           {
-            link1 ? (
-              <a class="login" href={link1.url}>
-                {link1.title}
-              </a>
-            ) : null
+            links.map((l) => (
+              <li>
+                <a href={l.url}>{l.title}</a>
+              </li>
+            ))
           }
-          <a href="#" class="lang-switch u-text" aria-label="Switch language">FR</a>
-
-          <button type="button" class="theme-toggle" aria-label="Changer de thème">
-            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-          </button>
-
-          {link2 ? <Button {...link2} revealable={false} /> : null}
-
-          <button type="button" class="toggle" aria-label="">
-            <span class="u-sr-only">Toggle Mobile Menu</span>
-            <span aria-hidden>
-              <span></span>
-              <span></span>
-              <span></span>
-            </span>
-          </button>
-        </div>
+        </ul>
       </div>
-    </div>
+
+      <div class="actions">
+        <a href="#" class="lang-switch u-text" aria-label="Switch language">FR</a>
+
+        <button type="button" class="theme-toggle" aria-label="Changer de thème">
+          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+
+        {link2 ? <Button {...link2} revealable={false} /> : null}
+
+        <button type="button" class="toggle" aria-label="Menu">
+          <span class="u-sr-only">Toggle Mobile Menu</span>
+          <span aria-hidden>
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+      </div>
+    </nav>
   </sy-head>
 </header>
 
 <style>
-  sy-head {
-    --br: 1.25rem;
+  /*
+   * HEADER STRUCTURE:
+   * sy-head (fixed, full viewport width, padding = space around the bar)
+   *   .bar (the visible pill — border-radius, background, content)
+   */
 
+  sy-head {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 10;
+    padding: 0.75rem 1rem;
     color: var(--color-text);
-    margin: 0 auto;
-    padding: 1rem 1.5rem 0;
-    transition: transform 0.4s var(--ease-out-cubic), padding 0.4s var(--ease-out-cubic);
-
-    :global(body.is-nav-hidden) & {
-      transform: translateY(calc(-100% - 1rem));
-    }
-
-    @media (--mq-tablet) {
-      padding: 0.5rem 0.75rem 0;
-
-      :global(body.is-nav-small) & {
-        padding: 0;
-      }
-    }
+    pointer-events: none;
   }
 
-  .inner {
-    padding: 0.75rem 1.5rem;
-    border-radius: var(--br);
-    max-width: 100%;
+  .bar {
+    --bar-radius: 1rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 72rem;
     margin: 0 auto;
+    padding: 0.55rem 1.25rem;
+    border-radius: var(--bar-radius);
+    pointer-events: auto;
+
+    /* default: transparent */
     background: transparent;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    box-shadow: none;
     transition:
-      padding 0.4s var(--ease-out-cubic),
-      max-width 0.5s var(--ease-out-cubic),
       background 0.4s var(--ease-out-cubic),
       box-shadow 0.4s var(--ease-out-cubic),
-      backdrop-filter 0.4s var(--ease-out-cubic);
+      max-width 0.5s var(--ease-out-cubic),
+      padding 0.4s var(--ease-out-cubic);
 
+    /* on scroll: glass pill */
     :global(body.is-nav-small) & {
-      padding: 0.4rem 1.25rem;
-      max-width: 64rem;
-      background: rgba(var(--rgb-white), 0.88);
-      backdrop-filter: blur(28px) saturate(1.3);
-      -webkit-backdrop-filter: blur(28px) saturate(1.3);
-      box-shadow: 0 2px 12px rgba(var(--rgb-text), 0.04);
+      max-width: 60rem;
+      background: rgba(var(--rgb-white), 0.9);
+      backdrop-filter: blur(24px) saturate(1.3);
+      -webkit-backdrop-filter: blur(24px) saturate(1.3);
+      box-shadow: 0 1px 8px rgba(var(--rgb-text), 0.04);
     }
 
     :global([data-theme="dark"] body.is-nav-small) & {
-      background: rgba(var(--rgb-brand-3), 0.88);
+      background: rgba(var(--rgb-brand-3), 0.9);
     }
 
     @media (--mq-tablet) {
       padding: 0.5rem 1rem;
-
-      :global(body.is-nav-small) & {
-        padding: 0.4rem 1rem;
-        max-width: 100%;
-        border-radius: 0;
-      }
     }
   }
 
-  .wrapper {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
+  /* ---- Logo ---- */
   .logo {
     position: relative;
     z-index: 3;
     display: flex;
     align-items: center;
-    gap: 0.25rem;
+    gap: 0.3rem;
     text-decoration: none;
+
     img {
       width: 1.5rem;
       height: 1.5rem;
@@ -156,12 +131,13 @@ const { logoUrl, logoAlt, link1, link2, links } = Astro.props;
     .logo-text {
       font-family: var(--font-inter);
       font-weight: 500;
-      font-size: 1.05rem;
-      letter-spacing: 0.04em;
+      font-size: 1rem;
+      letter-spacing: 0.03em;
       color: currentcolor;
     }
   }
 
+  /* ---- Nav menu ---- */
   .menu {
     display: flex;
     position: absolute;
@@ -187,18 +163,6 @@ const { logoUrl, logoAlt, link1, link2, links } = Astro.props;
         clip-path: inset(0 0 100%);
         pointer-events: none;
       }
-
-      :global(body.is-nav-small:not(.is-nav-opened)) & {
-        clip-path: inset(
-          0 0 calc(100% - 3.75rem) round 0 0 var(--br) var(--br)
-        );
-      }
-    }
-
-    @media (--mq-phone) {
-      :global(body.is-nav-small:not(.is-nav-opened)) & {
-        clip-path: inset(0 0 calc(100% - 3.375rem) round 0 0 1rem 1rem);
-      }
     }
 
     :global(ul) {
@@ -210,40 +174,13 @@ const { logoUrl, logoAlt, link1, link2, links } = Astro.props;
       padding: 0;
       margin: 0;
       align-items: center;
-      gap: 1.3125em;
-
-      @media (--mq-tablet) {
-        color: var(--color-brand-1);
-      }
+      gap: 1.25em;
 
       @media (--mq-tablet) {
         flex-direction: column;
-        font-size: 2rem;
+        font-size: 1.75rem;
         gap: 1rem;
-      }
-
-      :global(li) {
-        display: flex;
-        align-items: center;
-        gap: 1.3125em;
-
-        @media (--mq-tablet) {
-          flex-direction: column;
-          gap: 1rem;
-        }
-
-        &::after {
-          display: inline-block;
-          content: "";
-          width: 2px;
-          height: 2px;
-        }
-
-        &:last-child {
-          &::after {
-            display: none;
-          }
-        }
+        color: var(--color-text);
       }
 
       :global(a) {
@@ -253,7 +190,7 @@ const { logoUrl, logoAlt, link1, link2, links } = Astro.props;
         &::before {
           content: "";
           position: absolute;
-          height: 2px;
+          height: 1px;
           background: currentcolor;
           top: 115%;
           width: 100%;
@@ -275,53 +212,12 @@ const { logoUrl, logoAlt, link1, link2, links } = Astro.props;
     }
   }
 
-  .lang-switch {
-    --fs: var(--font-size-xs);
-    --fw: 500;
-    text-decoration: none;
-    color: var(--color-text);
-    opacity: 0.5;
-    letter-spacing: 0.04em;
-    transition: opacity 0.25s var(--ease-out-cubic);
-
-    &:hover {
-      opacity: 1;
-    }
-  }
-
-  .theme-toggle {
+  /* ---- Right actions ---- */
+  .actions {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 2rem;
-    height: 2rem;
-    border: none;
-    background: none;
-    padding: 0;
-    cursor: pointer;
-    color: var(--color-text);
-    opacity: 0.5;
-    transition: opacity 0.25s var(--ease-out-cubic);
-
-    &:hover {
-      opacity: 1;
-    }
-
-    .icon-moon {
-      display: none;
-    }
-
-    :global([data-theme="dark"]) & {
-      .icon-sun { display: none; }
-      .icon-moon { display: block; }
-    }
-  }
-
-  .buttons {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    z-index: 2;
+    gap: 0.6rem;
+    z-index: 3;
 
     :global(.btn) {
       @media (--mq-tablet) {
@@ -330,64 +226,55 @@ const { logoUrl, logoAlt, link1, link2, links } = Astro.props;
     }
   }
 
-  .signup {
-    @media (--mq-phone) {
-      display: none;
+  .lang-switch {
+    --fs: var(--font-size-xs);
+    --fw: 500;
+    text-decoration: none;
+    color: var(--color-text);
+    opacity: 0.45;
+    letter-spacing: 0.04em;
+    transition: opacity 0.25s var(--ease-out-cubic);
+
+    &:hover { opacity: 1; }
+  }
+
+  .theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    color: var(--color-text);
+    opacity: 0.45;
+    transition: opacity 0.25s var(--ease-out-cubic);
+
+    &:hover { opacity: 1; }
+
+    .icon-moon { display: none; }
+
+    :global([data-theme="dark"]) & {
+      .icon-sun { display: none; }
+      .icon-moon { display: block; }
     }
   }
 
-  .login {
-    @extend %u-text;
-
-    --fs: var(--font-size-sm);
-    position: relative;
-    transform: translateY(0);
-    transition: 0.3s var(--ease-out-expo);
-    transition-property: transform, color;
-
-    &::after {
-      content: "";
-      position: absolute;
-      height: 2px;
-      background: currentcolor;
-      top: 115%;
-      width: 100%;
-      left: 0;
-      pointer-events: none;
-      transform: scaleX(0);
-      transition: transform 0.3s var(--ease-out-expo);
-      transform-origin: right;
-    }
-
-    &:hover,
-    &:focus {
-      &::after {
-        transform: scaleX(1);
-        transform-origin: left;
-      }
-    }
-
-    @media (--mq-phone) {
-      display: none;
-    }
-  }
-
+  /* ---- Hamburger ---- */
   .toggle {
     border: none;
     background: none;
     padding: 0;
     cursor: pointer;
-    align-self: normal;
     align-items: center;
     display: none;
-    z-index: 2;
+    z-index: 3;
     color: var(--color-text);
-    transition: color 0.3s var(--ease-out-expo);
-    opacity: 0.6;
+    opacity: 0.5;
 
-    &:hover {
-      opacity: 1;
-    }
+    &:hover { opacity: 1; }
 
     @media (--mq-tablet) {
       display: flex;
@@ -397,17 +284,16 @@ const { logoUrl, logoAlt, link1, link2, links } = Astro.props;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: 1rem;
-      width: 1.5rem;
+      height: 0.85rem;
+      width: 1.25rem;
 
       span {
         display: flex;
         width: 100%;
-        height: 2px;
+        height: 1.5px;
         background: currentcolor;
-        border-radius: 2px;
+        border-radius: 1px;
         transition: transform 0.25s var(--ease-out-cubic);
-        transform: translateZ(0);
 
         &:nth-child(2) {
           transition-property: opacity;
@@ -416,21 +302,17 @@ const { logoUrl, logoAlt, link1, link2, links } = Astro.props;
     }
 
     :global(body.is-nav-opened) & {
-      color: var(--color-text);
+      > span span {
+        &:first-child {
+          transform: translateY(calc(0.425rem - 0.75px)) rotate(45deg);
+        }
 
-      > span {
-        span {
-          &:first-child {
-            transform: translateY(calc(0.5rem - 1px)) rotate(45deg);
-          }
+        &:nth-child(2) {
+          opacity: 0;
+        }
 
-          &:nth-child(2) {
-            opacity: 0;
-          }
-
-          &:last-child {
-            transform: translateY(calc(-0.5rem + 1px)) rotate(-45deg);
-          }
+        &:last-child {
+          transform: translateY(calc(-0.425rem + 0.75px)) rotate(-45deg);
         }
       }
     }
@@ -444,7 +326,6 @@ const { logoUrl, logoAlt, link1, link2, links } = Astro.props;
 
   class Header extends HTMLElement {
     smallThreshold = 100;
-    hiddenThreshold = 200;
     toggleEl = this.querySelector(".toggle")!;
     hero = document.querySelector(heroSelectors.join(","));
     prevY = -1;
@@ -456,14 +337,11 @@ const { logoUrl, logoAlt, link1, link2, links } = Astro.props;
 
       this.toggleEl.addEventListener("click", this.toggleNav);
 
-      // addResizeObserver(this);
-
       this.onResize();
       this.onScroll(window.scrollY);
     }
 
     onScroll(y: number) {
-      const isDown = y > this.prevY ? true : false;
       this.prevY = y;
 
       const classList = document.body.classList;
@@ -475,7 +353,6 @@ const { logoUrl, logoAlt, link1, link2, links } = Astro.props;
         classList.toggle("is-nav-small", shouldBeSmall);
       }
 
-      // Header always visible — no hide on scroll down
       if (classList.contains("is-nav-hidden")) {
         classList.remove("is-nav-hidden");
       }
@@ -518,7 +395,6 @@ const { logoUrl, logoAlt, link1, link2, links } = Astro.props;
     localStorage.setItem('theme', theme);
   }
 
-  // Apply on load
   applyTheme(getPreferredTheme());
 
   themeBtn?.addEventListener('click', () => {

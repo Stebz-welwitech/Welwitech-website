@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 ---
 
-<Layout title="YouTube Freedom Academy — Plateforme de Formation" description="Plateforme de formation sur-mesure et landing page haute conversion pour YouTube Freedom, leaders français de la YouTube Automation.">
+<Layout title="YouTube Freedom Academy — Plateforme de Formation" description="Plateforme de formation sur-mesure et landing page haute conversion pour YouTube Freedom, leaders français de la YouTube Automation." breadcrumbs={[{name:"Accueil",url:"/"},{name:"Projets",url:"/projets"},{name:"YouTube Freedom",url:"/projets/youtube-freedom"}]}>
   <article class="case">
 
     <!-- Hero -->
@@ -41,7 +41,7 @@ import Layout from "../../layouts/Layout.astro";
     <!-- Image -->
     <section class="case__image">
       <div class="case__image-inner">
-        <img src="/projet-ytfreedom.png" alt="Plateforme YouTube Freedom Academy — tableau de bord élève" loading="lazy" />
+        <img src="/projet-ytfreedom.png" alt="Plateforme YouTube Freedom Academy — tableau de bord élève" loading="lazy" decoding="async" />
       </div>
     </section>
 
@@ -98,7 +98,7 @@ import Layout from "../../layouts/Layout.astro";
     </section>
 
     <!-- Back link -->
-    <nav class="case__back">
+    <nav class="case__back" aria-label="Retour aux projets">
       <div class="case__back-inner">
         <a href="/" class="case__back-link u-text">&larr; Voir tous les projets</a>
       </div>

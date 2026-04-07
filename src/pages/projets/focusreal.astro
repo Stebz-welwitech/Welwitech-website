@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 ---
 
-<Layout title="FocusReal — Le BeReal de l'Entrepreneur" description="Application iOS native pour entrepreneurs. Capture authentique du quotidien entrepreneurial, feed social et communauté sans vanité metrics. Conçu par Welwitech.">
+<Layout title="FocusReal — Le BeReal de l'Entrepreneur" description="Application iOS native pour entrepreneurs. Capture authentique du quotidien entrepreneurial, feed social et communauté sans vanité metrics. Conçu par Welwitech." breadcrumbs={[{name:"Accueil",url:"/"},{name:"Projets",url:"/projets"},{name:"FocusReal",url:"/projets/focusreal"}]}>
   <article class="case">
 
     <!-- Hero -->
@@ -41,7 +41,7 @@ import Layout from "../../layouts/Layout.astro";
     <!-- Image -->
     <section class="case__image">
       <div class="case__image-inner">
-        <img src="/projet-focusreal.png" alt="FocusReal — Build Your Streak, post daily, show consistency" loading="lazy" />
+        <img src="/projet-focusreal.png" alt="FocusReal — Build Your Streak, post daily, show consistency" loading="lazy" decoding="async" />
       </div>
     </section>
 
@@ -110,7 +110,7 @@ import Layout from "../../layouts/Layout.astro";
     </section>
 
     <!-- Back link -->
-    <nav class="case__back">
+    <nav class="case__back" aria-label="Retour aux projets">
       <div class="case__back-inner">
         <a href="/" class="case__back-link u-text">&larr; Voir tous les projets</a>
       </div>

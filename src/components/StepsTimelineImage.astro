@@ -33,7 +33,7 @@ const { title, items } = Astro.props;
                   </p>
                 </div>
                 <div class="item-img">
-                  <img {...item.image} />
+                  <img {...item.image} loading="lazy" decoding="async" />
                 </div>
               </div>
             ))

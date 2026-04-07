@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 ---
 
-<Layout title="Blue Axis Limited — Site Corporate Premium" description="Site vitrine corporate pour Blue Axis Limited, cabinet de conseil stratégique international. Design institutionnel et parcours de conversion optimisé.">
+<Layout title="Blue Axis Limited — Site Corporate Premium" description="Site vitrine corporate pour Blue Axis Limited, cabinet de conseil stratégique international. Design institutionnel et parcours de conversion optimisé." breadcrumbs={[{name:"Accueil",url:"/"},{name:"Projets",url:"/projets"},{name:"Blue Axis",url:"/projets/blue-axis"}]}>
   <article class="case">
 
     <!-- Hero -->
@@ -40,7 +40,7 @@ import Layout from "../../layouts/Layout.astro";
     <!-- Image -->
     <section class="case__image">
       <div class="case__image-inner">
-        <img src="/projet-blueaxis.png" alt="Site corporate Blue Axis Limited — Navigate Complexity, Accelerate Growth" loading="lazy" />
+        <img src="/projet-blueaxis.png" alt="Site corporate Blue Axis Limited — Navigate Complexity, Accelerate Growth" loading="lazy" decoding="async" />
       </div>
     </section>
 
@@ -101,7 +101,7 @@ import Layout from "../../layouts/Layout.astro";
     </section>
 
     <!-- Back link -->
-    <nav class="case__back">
+    <nav class="case__back" aria-label="Retour aux projets">
       <div class="case__back-inner">
         <a href="/" class="case__back-link u-text">&larr; Voir tous les projets</a>
       </div>

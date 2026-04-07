@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 ---
 
-<Layout title="MatCo — Site Vitrine Industriel & Configurateur" description="Site vitrine industriel avec configurateur de machines sur-mesure, simulateur LLD et paiement Stripe pour MatCo, fabricant français de machines BTP depuis 1997.">
+<Layout title="MatCo — Site Vitrine Industriel & Configurateur" description="Site vitrine industriel avec configurateur de machines sur-mesure, simulateur LLD et paiement Stripe pour MatCo, fabricant français de machines BTP depuis 1997." breadcrumbs={[{name:"Accueil",url:"/"},{name:"Projets",url:"/projets"},{name:"MatCo",url:"/projets/matco"}]}>
   <article class="case">
 
     <!-- Hero -->
@@ -41,7 +41,7 @@ import Layout from "../../layouts/Layout.astro";
     <!-- Image -->
     <section class="case__image">
       <div class="case__image-inner">
-        <img src="/projet-matco.png" alt="Site MatCo — machines pour le bâtiment, Made in France" loading="lazy" />
+        <img src="/projet-matco.png" alt="Site MatCo — machines pour le bâtiment, Made in France" loading="lazy" decoding="async" />
       </div>
     </section>
 
@@ -110,7 +110,7 @@ import Layout from "../../layouts/Layout.astro";
     </section>
 
     <!-- Back link -->
-    <nav class="case__back">
+    <nav class="case__back" aria-label="Retour aux projets">
       <div class="case__back-inner">
         <a href="/" class="case__back-link u-text">&larr; Voir tous les projets</a>
       </div>

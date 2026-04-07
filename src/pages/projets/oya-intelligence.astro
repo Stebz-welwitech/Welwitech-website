@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 ---
 
-<Layout title="OYA Intelligence — Plateforme de Recrutement IA" description="Plateforme SaaS de recrutement nouvelle génération augmentée par l'IA. Six intelligences interconnectées, matching prédictif et intégrations CRM. Conçu par Welwitech.">
+<Layout title="OYA Intelligence — Plateforme de Recrutement IA" description="Plateforme SaaS de recrutement nouvelle génération augmentée par l'IA. Six intelligences interconnectées, matching prédictif et intégrations CRM. Conçu par Welwitech." breadcrumbs={[{name:"Accueil",url:"/"},{name:"Projets",url:"/projets"},{name:"OYA Intelligence",url:"/projets/oya-intelligence"}]}>
   <article class="case">
 
     <!-- Hero -->
@@ -45,7 +45,7 @@ import Layout from "../../layouts/Layout.astro";
     <!-- Image -->
     <section class="case__image">
       <div class="case__image-inner">
-        <img src="/projet-oya.png" alt="OYA Intelligence — Le recrutement, sans friction" loading="lazy" />
+        <img src="/projet-oya.png" alt="OYA Intelligence — Le recrutement, sans friction" loading="lazy" decoding="async" />
       </div>
     </section>
 
@@ -118,7 +118,7 @@ import Layout from "../../layouts/Layout.astro";
     </section>
 
     <!-- Back link -->
-    <nav class="case__back">
+    <nav class="case__back" aria-label="Retour aux projets">
       <div class="case__back-inner">
         <a href="/" class="case__back-link u-text">&larr; Voir tous les projets</a>
       </div>

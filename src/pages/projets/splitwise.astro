@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 ---
 
-<Layout title="Splitwise — Gestion des Dépenses en Colocation" description="Application iOS de gestion des dépenses partagées en colocation. Soldes en temps réel, catégorisation et rappels automatiques. Conçu par Welwitech.">
+<Layout title="Splitwise — Gestion des Dépenses en Colocation" description="Application iOS de gestion des dépenses partagées en colocation. Soldes en temps réel, catégorisation et rappels automatiques. Conçu par Welwitech." breadcrumbs={[{name:"Accueil",url:"/"},{name:"Projets",url:"/projets"},{name:"Splitwise",url:"/projets/splitwise"}]}>
   <article class="case">
 
     <!-- Hero -->
@@ -41,7 +41,7 @@ import Layout from "../../layouts/Layout.astro";
     <!-- Image -->
     <section class="case__image">
       <div class="case__image-inner">
-        <img src="/image-2.jpg" alt="Splitwise — gestion des dépenses en colocation" loading="lazy" />
+        <img src="/image-2.jpg" alt="Splitwise — gestion des dépenses en colocation" loading="lazy" decoding="async" />
       </div>
     </section>
 
@@ -118,7 +118,7 @@ import Layout from "../../layouts/Layout.astro";
     </section>
 
     <!-- Back link -->
-    <nav class="case__back">
+    <nav class="case__back" aria-label="Retour aux projets">
       <div class="case__back-inner">
         <a href="/" class="case__back-link u-text">&larr; Voir tous les projets</a>
       </div>

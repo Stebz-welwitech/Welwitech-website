@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 ---
 
-<Layout title="ATTRIQ — Tracking & Attribution Publicitaire" description="Plateforme SaaS de tracking et attribution publicitaire multi-canal. Tracking server-side, attribution multi-touch, IA prédictive. Web et mobile. Conçu par Welwitech.">
+<Layout title="ATTRIQ — Tracking & Attribution Publicitaire" description="Plateforme SaaS de tracking et attribution publicitaire multi-canal. Tracking server-side, attribution multi-touch, IA prédictive. Web et mobile. Conçu par Welwitech." breadcrumbs={[{name:"Accueil",url:"/"},{name:"Projets",url:"/projets"},{name:"ATTRIQ",url:"/projets/attriq"}]}>
   <article class="case">
 
     <!-- Hero -->
@@ -47,7 +47,7 @@ import Layout from "../../layouts/Layout.astro";
     <!-- Image -->
     <section class="case__image">
       <div class="case__image-inner">
-        <img src="/projet-attriq.png" alt="ATTRIQ — Quiz Analytics, tracking et attribution publicitaire" loading="lazy" />
+        <img src="/projet-attriq.png" alt="ATTRIQ — Quiz Analytics, tracking et attribution publicitaire" loading="lazy" decoding="async" />
       </div>
     </section>
 
@@ -116,7 +116,7 @@ import Layout from "../../layouts/Layout.astro";
     </section>
 
     <!-- Back link -->
-    <nav class="case__back">
+    <nav class="case__back" aria-label="Retour aux projets">
       <div class="case__back-inner">
         <a href="/" class="case__back-link u-text">&larr; Voir tous les projets</a>
       </div>

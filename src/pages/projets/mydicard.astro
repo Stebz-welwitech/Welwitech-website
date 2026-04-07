@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 ---
 
-<Layout title="MyDiCard — Carte de Visite Digitale" description="Application iOS de carte de visite digitale avec Apple Wallet, NFC et QR code. Networking sans friction. Conçu et développé par Welwitech.">
+<Layout title="MyDiCard — Carte de Visite Digitale" description="Application iOS de carte de visite digitale avec Apple Wallet, NFC et QR code. Networking sans friction. Conçu et développé par Welwitech." breadcrumbs={[{name:"Accueil",url:"/"},{name:"Projets",url:"/projets"},{name:"MyDiCard",url:"/projets/mydicard"}]}>
   <article class="case">
 
     <!-- Hero -->
@@ -43,7 +43,7 @@ import Layout from "../../layouts/Layout.astro";
     <!-- Image -->
     <section class="case__image">
       <div class="case__image-inner">
-        <img src="/projet-mydicard.png" alt="MyDiCard — carte de visite digitale, partage NFC et QR code" loading="lazy" />
+        <img src="/projet-mydicard.png" alt="MyDiCard — carte de visite digitale, partage NFC et QR code" loading="lazy" decoding="async" />
       </div>
     </section>
 
@@ -112,7 +112,7 @@ import Layout from "../../layouts/Layout.astro";
     </section>
 
     <!-- Back link -->
-    <nav class="case__back">
+    <nav class="case__back" aria-label="Retour aux projets">
       <div class="case__back-inner">
         <a href="/" class="case__back-link u-text">&larr; Voir tous les projets</a>
       </div>

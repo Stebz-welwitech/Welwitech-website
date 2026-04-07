@@ -273,10 +273,14 @@ const { title, subtitle, email, location } = Astro.props;
 
     @media (--mq-phone) {
       align-self: stretch;
+      max-width: 100%;
+      width: 100%;
+      box-sizing: border-box;
+    }
 
-      > span > span {
-        justify-content: center;
-      }
+    @media (--mq-phone) :global(> span > span) {
+      justify-content: center;
+      width: 100%;
     }
   }
 </style>

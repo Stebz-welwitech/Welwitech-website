@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 ---
 
-<Layout title="NomadTax — Fiscalité Internationale" description="Application iOS native de gestion de la fiscalité internationale pour digital nomads et expatriés. Tracker de résidence, simulateur fiscal et obligations multi-pays. Conçu par Welwitech.">
+<Layout title="NomadTax — Fiscalité Internationale" description="Application iOS native de gestion de la fiscalité internationale pour digital nomads et expatriés. Tracker de résidence, simulateur fiscal et obligations multi-pays. Conçu par Welwitech." breadcrumbs={[{name:"Accueil",url:"/"},{name:"Projets",url:"/projets"},{name:"NomadTax",url:"/projets/nomadtax"}]}>
   <article class="case">
 
     <!-- Hero -->
@@ -41,7 +41,7 @@ import Layout from "../../layouts/Layout.astro";
     <!-- Image -->
     <section class="case__image">
       <div class="case__image-inner">
-        <img src="/projet-nomadtax.png" alt="NomadTax — Fiscalité, présence par pays, tracker de résidence fiscale" loading="lazy" />
+        <img src="/projet-nomadtax.png" alt="NomadTax — Fiscalité, présence par pays, tracker de résidence fiscale" loading="lazy" decoding="async" />
       </div>
     </section>
 
@@ -115,7 +115,7 @@ import Layout from "../../layouts/Layout.astro";
     </section>
 
     <!-- Back link -->
-    <nav class="case__back">
+    <nav class="case__back" aria-label="Retour aux projets">
       <div class="case__back-inner">
         <a href="/" class="case__back-link u-text">&larr; Voir tous les projets</a>
       </div>

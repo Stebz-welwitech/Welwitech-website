@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 ---
 
-<Layout title="Les Froggies — Plateforme Voyage & Guides Francophones" description="Plateforme de mise en relation voyageurs et guides francophones locaux. Marketplace, recherche IA et communauté. Conçu et développé par Welwitech.">
+<Layout title="Les Froggies — Plateforme Voyage & Guides Francophones" description="Plateforme de mise en relation voyageurs et guides francophones locaux. Marketplace, recherche IA et communauté. Conçu et développé par Welwitech." breadcrumbs={[{name:"Accueil",url:"/"},{name:"Projets",url:"/projets"},{name:"Les Froggies",url:"/projets/les-froggies"}]}>
   <article class="case">
 
     <!-- Hero -->
@@ -43,7 +43,7 @@ import Layout from "../../layouts/Layout.astro";
     <!-- Image -->
     <section class="case__image">
       <div class="case__image-inner">
-        <img src="/projet-froggies.png" alt="Plateforme Les Froggies — guides locaux francophones, Rio de Janeiro" loading="lazy" />
+        <img src="/projet-froggies.png" alt="Plateforme Les Froggies — guides locaux francophones, Rio de Janeiro" loading="lazy" decoding="async" />
       </div>
     </section>
 
@@ -108,7 +108,7 @@ import Layout from "../../layouts/Layout.astro";
     </section>
 
     <!-- Back link -->
-    <nav class="case__back">
+    <nav class="case__back" aria-label="Retour aux projets">
       <div class="case__back-inner">
         <a href="/" class="case__back-link u-text">&larr; Voir tous les projets</a>
       </div>

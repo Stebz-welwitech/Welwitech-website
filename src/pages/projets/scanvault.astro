@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 ---
 
-<Layout title="ScanVault — Détection Volumétrique LiDAR" description="Application iOS de détection volumétrique par LiDAR pour le secteur du déménagement. Scan 3D, calcul automatique des m³ et rapports professionnels. Conçu par Welwitech.">
+<Layout title="ScanVault — Détection Volumétrique LiDAR" description="Application iOS de détection volumétrique par LiDAR pour le secteur du déménagement. Scan 3D, calcul automatique des m³ et rapports professionnels. Conçu par Welwitech." breadcrumbs={[{name:"Accueil",url:"/"},{name:"Projets",url:"/projets"},{name:"ScanVault",url:"/projets/scanvault"}]}>
   <article class="case">
 
     <!-- Hero -->
@@ -43,7 +43,7 @@ import Layout from "../../layouts/Layout.astro";
     <!-- Image -->
     <section class="case__image">
       <div class="case__image-inner">
-        <img src="/image-3.jpg" alt="ScanVault — scan volumétrique LiDAR pour le déménagement" loading="lazy" />
+        <img src="/image-3.jpg" alt="ScanVault — scan volumétrique LiDAR pour le déménagement" loading="lazy" decoding="async" />
       </div>
     </section>
 
@@ -116,7 +116,7 @@ import Layout from "../../layouts/Layout.astro";
     </section>
 
     <!-- Back link -->
-    <nav class="case__back">
+    <nav class="case__back" aria-label="Retour aux projets">
       <div class="case__back-inner">
         <a href="/" class="case__back-link u-text">&larr; Voir tous les projets</a>
       </div>

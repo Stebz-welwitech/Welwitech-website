@@ -14,7 +14,7 @@ const { images, direction } = Astro.props;
     {
       images.map((img) => (
         <div class="img">
-          <img {...img} />
+          <img {...img} loading="lazy" decoding="async" />
         </div>
       ))
     }

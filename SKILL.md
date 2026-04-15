@@ -12,7 +12,7 @@ Create distinctive, production-grade frontend interfaces with high design qualit
 - Typography: Roboto Slab (headings), Inter (body) via CSS variables
 - Spacing: Container max-width 72rem, padding via `%u-container`
 - Animations: GSAP ScrollTrigger, SplitText reveals, Lenis smooth scroll
-- 3D: Three.js icosahedron scene with refraction shaders
+- 3D: Three.js icosahedron scene with refraction shaderss
 
 ### 2. Astro Framework (`astro`)
 **Documentation:** https://docs.astro.build/en/getting-started/

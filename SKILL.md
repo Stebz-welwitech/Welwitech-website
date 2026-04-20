@@ -5,7 +5,7 @@
 ### 1. Frontend Design (`frontend-design`)
 Create distinctive, production-grade frontend interfaces with high design quality. Used for building web components, pages, and applications with creative, polished output.
 
-**When to use:** Building new pages, sections, components, or UI elements for this project.
+**When to use:** Building new pages, sections, components, or UI ewlements for this project.
 
 **Design System Reference:**
 - Color palette: `--rgb-brand-1` to `--rgb-brand-5`, `--color-text`, `--color-bg` (#f7f8f2)

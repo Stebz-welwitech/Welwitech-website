@@ -6,7 +6,7 @@
         "dev": "astro dev",
         "build": "astro build",
         "preview": "astro preview",
-        "start": "astro preview --host 0.0.0.0 --port ${PORT:-4321}",
+        "start": "serve dist -l ${PORT:-4321}",
         "astro": "astro"
     },
     "engines": {
@@ -23,6 +23,7 @@
         "ogl": "^1.0.11",
         "postcss-extend-rule": "^4.0.0",
         "postcss-preset-env": "^10.2.4",
+        "serve": "^14.2.4",
         "three": "^0.180.0",
         "three-stdlib": "^2.36.0"
     },

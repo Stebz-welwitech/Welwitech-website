@@ -14,6 +14,12 @@ export default defineConfig({
   scopedStyleStrategy: 'where',
 
   vite: {
+    // `astro preview` (used as the production start command) runs Vite's
+    // preview server, which blocks unknown Host headers. Allow the prod
+    // domains served behind the Dokploy reverse proxy.
+    preview: {
+      allowedHosts: ['welwitech.com', 'www.welwitech.com'],
+    },
     build: {
       rollupOptions: {
         output: {

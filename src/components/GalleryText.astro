@@ -58,7 +58,7 @@ const galleryImages = projects ? projects.map((p) => p.image) : images || [];
   }
 
   .sy-gallery-text {
-    margin: 8rem 0 0;
+    margin: var(--section-gap) 0 0;
     padding: 10rem 0 0;
     position: relative;
   }
@@ -72,7 +72,7 @@ const galleryImages = projects ? projects.map((p) => p.image) : images || [];
     position: relative;
     z-index: 9;
     padding: 2rem;
-    border-radius: 1.5rem;
+    border-radius: var(--radius-lg);
     backdrop-filter: blur(6px) saturate(1.05);
 
     @media (--mq-tablet) {

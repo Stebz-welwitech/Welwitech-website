@@ -114,7 +114,7 @@ const labels = {
 <style>
   .sy-contact {
     display: block;
-    padding: 6rem 0 8rem;
+    padding: var(--section-gap) 0;
   }
 
   .card {
@@ -122,8 +122,9 @@ const labels = {
     grid-template-columns: 5fr 7fr;
     gap: 3rem;
     background: var(--color-white);
-    border: 1px solid rgba(var(--rgb-text), 0.06);
-    border-radius: 1.25rem;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
     padding: 3.5rem;
 
     @media (--mq-tablet) {
@@ -134,7 +135,7 @@ const labels = {
     @media (--mq-phone) {
       padding: 1.5rem;
       gap: 2rem;
-      border-radius: 1rem;
+      border-radius: var(--radius-md);
     }
 
     @media (--mq-phone-sm) {
@@ -178,7 +179,7 @@ const labels = {
     gap: 0.6rem;
     margin-top: 1.25rem;
     padding-top: 1.25rem;
-    border-top: 1px solid rgba(var(--rgb-text), 0.06);
+    border-top: 1px solid var(--hairline);
   }
 
   .meta-item {
@@ -201,7 +202,7 @@ const labels = {
     gap: 0.4rem;
     margin-top: 1rem;
     padding-top: 1rem;
-    border-top: 1px solid rgba(var(--rgb-text), 0.06);
+    border-top: 1px solid var(--hairline);
   }
 
   .trust-item {
@@ -254,8 +255,8 @@ const labels = {
     --fs: var(--font-size-sm);
     font-family: var(--font-inter);
     background: var(--color-bg);
-    border: 1px solid rgba(var(--rgb-text), 0.08);
-    border-radius: 0.55rem;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-sm);
     padding: 0.7em 0.85em;
     color: var(--color-text);
     outline: none;

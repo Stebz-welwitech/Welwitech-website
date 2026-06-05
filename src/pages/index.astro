@@ -14,8 +14,6 @@ import Team from "../components/Team.astro";
 import Testimonial from "../components/Testimonial.astro";
 import Guarantees from "../components/Guarantees.astro";
 import Contact from "../components/Contact.astro";
-import GL from "../components/GL.astro";
-import GLPlaces from "../components/GlPlaces.astro";
 
 import logo1 from "../assets/logoipsum-344.svg";
 import logo2 from "../assets/logoipsum-350.svg";
@@ -36,10 +34,28 @@ import logo8 from "../assets/logoipsum-331.svg";
       url: "https://cal.com/maurice-zayat-2uyfey/20min",
       target: "_blank",
     }}
+    cta2={{
+      title: "Voir nos projets",
+      url: "/projets",
+    }}
     stats={[
       { value: "14+", label: "Projets livrés" },
       { value: "0", label: "Projet abandonné" },
       { value: "48h", label: "Devis gratuit" },
+    ]}
+  />
+
+  <ImageMarquee
+    label="Ils nous font confiance"
+    images={[
+      { src: logo1.src, alt: "Client 1", width: 175, height: 89 },
+      { src: logo3.src, alt: "Client 2", width: 175, height: 89 },
+      { src: logo4.src, alt: "Client 3", width: 175, height: 89 },
+      { src: logo8.src, alt: "Client 4", width: 175, height: 89 },
+      { src: logo5.src, alt: "Client 5", width: 175, height: 89 },
+      { src: logo6.src, alt: "Client 6", width: 175, height: 89 },
+      { src: logo2.src, alt: "Client 7", width: 175, height: 89 },
+      { src: logo7.src, alt: "Client 8", width: 175, height: 89 },
     ]}
   />
 
@@ -352,28 +368,12 @@ import logo8 from "../assets/logoipsum-331.svg";
     ]}
   />
 
-  <ImageMarquee
-    images={[
-      { src: logo1.src, alt: "Client 1", width: 175, height: 89 },
-      { src: logo3.src, alt: "Client 2", width: 175, height: 89 },
-      { src: logo4.src, alt: "Client 3", width: 175, height: 89 },
-      { src: logo8.src, alt: "Client 4", width: 175, height: 89 },
-      { src: logo5.src, alt: "Client 5", width: 175, height: 89 },
-      { src: logo6.src, alt: "Client 6", width: 175, height: 89 },
-      { src: logo2.src, alt: "Client 7", width: 175, height: 89 },
-      { src: logo7.src, alt: "Client 8", width: 175, height: 89 },
-    ]}
-  />
-
   <Contact
     title="Parlons de votre projet"
     subtitle="Devis gratuit en 48h. Premier RDV offert. Sans engagement."
     email="contact@welwitech.com"
     location="Dubai · France · International"
   />
-
-  <GL />
-  <GLPlaces />
 </Layout>
 
 <style>

@@ -36,7 +36,7 @@ const { title, items } = Astro.props;
 
 <style>
   .sy-expertises {
-    margin: 8rem 0;
+    margin: var(--section-gap) 0;
     position: relative;
     z-index: 2;
   }
@@ -58,11 +58,7 @@ const { title, items } = Astro.props;
   .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: rgba(var(--rgb-text), 0.06);
-    border: 1px solid rgba(var(--rgb-text), 0.06);
-    border-radius: 1rem;
-    overflow: hidden;
+    gap: 1.25rem;
 
     @media (--mq-tablet) {
       grid-template-columns: repeat(2, 1fr);
@@ -75,13 +71,21 @@ const { title, items } = Astro.props;
 
   .card {
     background: var(--color-white);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-soft);
     padding: 2.5rem;
     display: flex;
     flex-direction: column;
-    transition: background 0.4s var(--ease-out-cubic);
+    transition:
+      transform 0.45s var(--ease-out-cubic),
+      box-shadow 0.45s var(--ease-out-cubic),
+      border-color 0.45s var(--ease-out-cubic);
 
     &:hover {
-      background: var(--color-brand-3);
+      transform: translateY(-5px);
+      border-color: rgba(var(--rgb-brand-1), 0.25);
+      box-shadow: 0 22px 60px -28px rgba(var(--rgb-brand-1), 0.45);
     }
 
     @media (--mq-phone) {

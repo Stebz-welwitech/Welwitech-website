@@ -6,119 +6,207 @@ interface Props {
   title: string;
   subtitle?: string;
   cta?: Link;
+  cta2?: Link;
   stats?: { value: string; label: string }[];
 }
 
-const { title, subtitle, cta, stats } = Astro.props;
+const { title, subtitle, cta, cta2, stats } = Astro.props;
 ---
 
-<div class="sy-hero-home">
-  <div class="bg"></div>
-  <div class="u-container container">
-    <div class="inner">
-      <div class="content">
-        <h1 class="u-heading title" data-sy-reveal="words">{title}</h1>
-        {
-          subtitle ? (
-            <p class="u-text subtitle" data-sy-reveal="lines">
-              {subtitle}
-            </p>
-          ) : null
-        }
-        {cta ? <Button {...cta} arrow class="cta" /> : null}
+<section class="sy-hero-home">
+  <!-- Full-bleed rounded media frame holding the 3D scene -->
+  <div class="frame" aria-hidden="true">
+    <div class="frame-glow"></div>
+    <div class="frame-scrim"></div>
+  </div>
 
-        {stats && stats.length > 0 && (
-          <div class="stats">
-            {stats.map((s) => (
-              <div class="stat" data-sy-reveal="words">
-                <span class="stat-value u-heading" data-count-to={s.value}>{s.value}</span>
-                <span class="stat-label u-text">{s.label}</span>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-      <div data-gl-place></div>
+  <div class="u-container container">
+    <div class="content">
+      <h1 class="u-heading title" data-sy-reveal="words">{title}</h1>
+      {
+        subtitle ? (
+          <p class="u-text subtitle" data-sy-reveal="lines">
+            {subtitle}
+          </p>
+        ) : null
+      }
+
+      {(cta || cta2) && (
+        <div class="ctas">
+          {cta ? <Button {...cta} arrow class="cta" /> : null}
+          {cta2 ? <Button {...cta2} color="ghost" class="cta" /> : null}
+        </div>
+      )}
+
+      {stats && stats.length > 0 && (
+        <div class="stats">
+          {stats.map((s) => (
+            <div class="stat" data-sy-reveal="words">
+              <span class="stat-value u-heading" data-count-to={s.value}>{s.value}</span>
+              <span class="stat-label u-text">{s.label}</span>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   </div>
-</div>
+</section>
 
 <style>
   .sy-hero-home {
     position: relative;
-    overflow: hidden;
-  }
-
-  .bg {
-    &:before,
-    &:after {
-      content: "";
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-
-    &:before {
-      background: linear-gradient(
-        160deg,
-        var(--color-bg) 0%,
-        rgba(var(--rgb-brand-1), 0.06) 30%,
-        rgba(var(--rgb-brand-5), 0.04) 60%,
-        var(--color-bg) 100%
-      );
-      background-position: center;
-      mask: linear-gradient(0deg, rgba(0, 0, 0, 0) 1%, rgba(0, 0, 0, 1) 100%);
-    }
-
-    &:after {
-      backdrop-filter: blur(5px);
-    }
-  }
-
-  .inner {
+    min-height: 100svh;
     display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    padding: 11rem 0 8rem;
-    position: relative;
-    z-index: 1;
-    min-height: 100vh;
+    padding: 9rem 0 4rem;
 
     @media (--mq-tablet) {
-      flex-direction: column;
-      align-items: flex-start;
+      padding: 7.5rem 0 3rem;
+      min-height: auto;
     }
+  }
+
+  /* ---- Rounded media frame (clearly visible aurora panel) ---- */
+  .frame {
+    position: absolute;
+    inset: 0.75rem;
+    border-radius: var(--radius-frame);
+    border: 1px solid rgba(var(--rgb-brand-1), 0.16);
+    overflow: hidden;
+    box-shadow:
+      0 30px 80px -40px rgba(var(--rgb-brand-1), 0.4),
+      inset 0 1px 0 rgba(var(--rgb-white), 0.6);
+    background:
+      radial-gradient(110% 120% at 82% 18%, rgba(var(--rgb-brand-5), 0.28), transparent 55%),
+      radial-gradient(100% 100% at 12% 100%, rgba(var(--rgb-brand-1), 0.12), transparent 50%),
+      linear-gradient(160deg, var(--color-brand-3) 0%, var(--color-bg) 65%);
+
+    @media (--mq-tablet) {
+      inset: 0.4rem;
+    }
+  }
+
+  /* ambient brand glow, top-center of the panel */
+  .frame-glow {
+    position: absolute;
+    top: 8%;
+    left: 50%;
+    width: 54rem;
+    height: 54rem;
+    transform: translate(-50%, -25%);
+    background: radial-gradient(
+      circle,
+      rgba(var(--rgb-brand-5), 0.3) 0%,
+      rgba(var(--rgb-brand-1), 0.12) 32%,
+      rgba(var(--rgb-brand-5), 0) 62%
+    );
+    pointer-events: none;
+
+    @media (--mq-tablet) {
+      width: 34rem;
+      height: 34rem;
+    }
+  }
+
+  /* soft halo behind the headline for contrast */
+  .frame-scrim {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      70% 60% at 50% 52%,
+      rgba(var(--rgb-white), 0.55) 0%,
+      rgba(var(--rgb-white), 0) 72%
+    );
+
+    @media (--mq-tablet) {
+      background: radial-gradient(
+        90% 50% at 50% 60%,
+        rgba(var(--rgb-white), 0.6) 0%,
+        rgba(var(--rgb-white), 0) 75%
+      );
+    }
+  }
+
+  :global([data-theme="dark"]) .frame-glow {
+    background: radial-gradient(
+      circle,
+      rgba(var(--rgb-brand-1), 0.45) 0%,
+      rgba(var(--rgb-brand-5), 0.15) 32%,
+      rgba(var(--rgb-brand-1), 0) 62%
+    );
+  }
+
+  :global([data-theme="dark"]) .frame {
+    border-color: rgba(var(--rgb-brand-1), 0.35);
+    box-shadow:
+      0 30px 90px -40px rgba(0, 0, 0, 0.8),
+      inset 0 1px 0 rgba(var(--rgb-white), 0.06);
+    background:
+      radial-gradient(110% 120% at 82% 18%, rgba(var(--rgb-brand-1), 0.4), transparent 55%),
+      radial-gradient(100% 100% at 12% 100%, rgba(var(--rgb-brand-5), 0.18), transparent 50%),
+      linear-gradient(160deg, rgba(var(--rgb-brand-1), 0.1) 0%, var(--color-bg) 68%);
+  }
+
+  :global([data-theme="dark"]) .frame-scrim {
+    background: radial-gradient(
+      70% 60% at 50% 52%,
+      rgba(15, 15, 19, 0.6) 0%,
+      rgba(15, 15, 19, 0) 72%
+    );
+  }
+
+  /* ---- Content (centered) ---- */
+  .container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+  }
+
+  .content {
+    max-width: 54rem;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .title {
-    --fs: clamp(3rem, 5vw, 5rem);
-    --lh: 0.97;
-    --ls: -0.025em;
+    --fs: clamp(3rem, 6.5vw, 6rem);
+    --lh: 0.95;
+    --ls: -0.035em;
     --fw: 300;
-    max-width: 7em;
+    max-width: 16ch;
+    margin-inline: auto;
+    text-wrap: balance;
   }
 
   .subtitle {
-    --fs: var(--font-size-md);
-    max-width: 28em;
-    margin-top: 1.75rem;
+    --fs: var(--font-size-lg);
+    max-width: 38em;
+    margin: 1.75rem auto 0;
     color: var(--color-text-alt);
-    line-height: 1.65;
+    line-height: 1.6;
+    text-wrap: balance;
   }
 
-  .cta {
-    margin-top: 2.5rem;
+  .ctas {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 2.75rem;
   }
 
   .stats {
     display: flex;
-    gap: 3rem;
-    margin-top: 4rem;
+    justify-content: center;
+    gap: 3.5rem;
+    margin: 3.5rem auto 0;
     padding-top: 2rem;
-    border-top: 1px solid rgba(var(--rgb-text), 0.06);
+    border-top: 1px solid var(--hairline);
 
     @media (--mq-phone) {
       gap: 1.5rem;
@@ -133,11 +221,12 @@ const { title, subtitle, cta, stats } = Astro.props;
   .stat {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 0.25rem;
   }
 
   .stat-value {
-    --fs: 1.75rem;
+    --fs: 1.85rem;
     --fw: 300;
     --lh: 1;
     color: var(--color-text);
@@ -147,31 +236,6 @@ const { title, subtitle, cta, stats } = Astro.props;
     --fs: var(--font-size-xs);
     color: var(--color-text-alt);
     letter-spacing: 0.02em;
-  }
-
-  [data-gl-place] {
-    --d: 1;
-    --s: 22rem;
-    margin-top: -12rem;
-
-    @media (--mq-desktop-lg) {
-      --s: 20rem;
-    }
-
-    @media (--mq-tablet) {
-      margin: 0;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      margin: 0 auto;
-      right: 0;
-      width: 14rem;
-      transform: translateY(-60%);
-    }
-
-    @media (--mq-tablet-sm) {
-      --s: 20rem;
-    }
   }
 </style>
 

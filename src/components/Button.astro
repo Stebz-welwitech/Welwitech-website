@@ -1,7 +1,7 @@
 ---
 type CommonProps = {
   class?: string;
-  color?: "primary" | "primary-alt";
+  color?: "primary" | "primary-alt" | "ghost";
   size?: "sm" | "md";
   arrow?: boolean;
   title: string;
@@ -147,6 +147,27 @@ const attrs =
       :global([data-theme="dark"]) & {
         --text-color: #fff;
         --bg-color: rgba(var(--rgb-brand-1), 0.25);
+      }
+    }
+
+    /* ghost — transparent with a hairline border, fills lavender on hover */
+    &:global(.btn-ghost) {
+      --text-color: var(--color-text);
+      --bg-color: transparent;
+      --hover-bg-color: var(--color-brand-3);
+      --hover-text-color: var(--color-text);
+
+      > span:after {
+        border-color: rgba(var(--rgb-text), 0.16);
+      }
+
+      :global([data-theme="dark"]) & {
+        --hover-bg-color: rgba(var(--rgb-brand-1), 0.18);
+        --hover-text-color: #fff;
+
+        > span:after {
+          border-color: rgba(var(--rgb-text), 0.22);
+        }
       }
     }
 

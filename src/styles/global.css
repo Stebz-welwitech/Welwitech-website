@@ -54,6 +54,21 @@
   --container-max-width: 72rem;
   --container-offset: 4rem;
 
+  /* radii — consistent rounded scale */
+  --radius-sm: 0.625rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
+  --radius-frame: 2.5rem;
+
+  /* vertical rhythm between sections */
+  --section-gap: 7rem;
+
+  /* surfaces, hairlines & soft elevation */
+  --surface-1: var(--color-white);
+  --hairline: rgba(var(--rgb-text), 0.08);
+  --shadow-soft: 0 4px 24px rgba(var(--rgb-text), 0.05);
+
   @media (--mq-desktop-sm) {
     --font-size-base: 18px;
     --container-offset: 3rem;
@@ -62,10 +77,13 @@
   @media (--mq-tablet) {
     --font-size-base: 16px;
     --container-offset: 2rem;
+    --section-gap: 5rem;
+    --radius-frame: 2rem;
   }
 
   @media (--mq-phone) {
     --container-offset: 1.5rem;
+    --section-gap: 4rem;
   }
 }
 

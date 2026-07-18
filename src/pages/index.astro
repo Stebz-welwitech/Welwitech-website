@@ -3,7 +3,6 @@ import Layout from "../layouts/Layout.astro";
 import HeroHome from "../components/HeroHome.astro";
 import TextMarquee from "../components/TextMarquee.astro";
 import GalleryText from "../components/GalleryText.astro";
-import ImageMarquee from "../components/ImageMarquee.astro";
 import Faqs from "../components/Faqs.astro";
 import StepsTimeline from "../components/StepsTimeline.astro";
 import Plans from "../components/Plans.astro";
@@ -14,15 +13,7 @@ import Team from "../components/Team.astro";
 import Testimonial from "../components/Testimonial.astro";
 import Guarantees from "../components/Guarantees.astro";
 import Contact from "../components/Contact.astro";
-
-import logo1 from "../assets/logoipsum-344.svg";
-import logo2 from "../assets/logoipsum-350.svg";
-import logo3 from "../assets/logoipsum-345.svg";
-import logo4 from "../assets/logoipsum-385.svg";
-import logo5 from "../assets/logoipsum-375.svg";
-import logo6 from "../assets/logoipsum-378.svg";
-import logo7 from "../assets/logoipsum-346.svg";
-import logo8 from "../assets/logoipsum-331.svg";
+import SaasShowcase from "../components/SaasShowcase.astro";
 ---
 
 <Layout title="Welwitech — Studio Digital Dubai & France | Création Site Web, Application Mobile, SaaS & IA" description="Studio digital spécialisé en création de sites web, applications mobiles, SaaS et intelligence artificielle. Équipe senior, tarifs transparents, livraison garantie. Dubai et France.">
@@ -42,20 +33,6 @@ import logo8 from "../assets/logoipsum-331.svg";
       { value: "14+", label: "Projets livrés" },
       { value: "0", label: "Projet abandonné" },
       { value: "48h", label: "Devis gratuit" },
-    ]}
-  />
-
-  <ImageMarquee
-    label="Ils nous font confiance"
-    images={[
-      { src: logo1.src, alt: "Client 1", width: 175, height: 89 },
-      { src: logo3.src, alt: "Client 2", width: 175, height: 89 },
-      { src: logo4.src, alt: "Client 3", width: 175, height: 89 },
-      { src: logo8.src, alt: "Client 4", width: 175, height: 89 },
-      { src: logo5.src, alt: "Client 5", width: 175, height: 89 },
-      { src: logo6.src, alt: "Client 6", width: 175, height: 89 },
-      { src: logo2.src, alt: "Client 7", width: 175, height: 89 },
-      { src: logo7.src, alt: "Client 8", width: 175, height: 89 },
     ]}
   />
 
@@ -174,6 +151,33 @@ import logo8 from "../assets/logoipsum-331.svg";
       "Web & SaaS",
       "Intelligence Artificielle",
       "Agents IA",
+    ]}
+  />
+
+  <SaasShowcase
+    title="Nos SaaS"
+    subtitle="On ne fait pas que livrer des produits pour nos clients. On construit aussi les nôtres."
+    items={[
+      {
+        badge: "Notre produit",
+        logo: { light: "/logo-settyn-black.png", dark: "/logo-settyn-white.png", alt: "Logo Settyn" },
+        name: "Settyn",
+        tagline: "Le setter IA qui vend pendant que vous créez",
+        description: "Une IA qui répond à vos DM Instagram, WhatsApp, Messenger et Telegram en moins de 30 secondes, qualifie vos prospects dans votre propre style d'écriture et book vos rendez-vous automatiquement. 24h/24, 7j/7.",
+        features: [
+          "Réponses en moins de 30 secondes",
+          "Qualification & relances automatiques",
+          "RDV bookés dans votre agenda",
+          "API officielles Meta, RGPD, serveurs UE",
+        ],
+        stats: [
+          { value: "+35 RDV", label: "par mois en moyenne" },
+          { value: "<30 sec", label: "de temps de réponse" },
+          { value: "24/7", label: "sans jamais dormir" },
+        ],
+        cta: { title: "Découvrir Settyn", url: "/saas/settyn" },
+        external: { title: "settyn.com", url: "https://settyn.com" },
+      },
     ]}
   />
 

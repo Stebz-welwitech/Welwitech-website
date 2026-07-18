@@ -1,0 +1,338 @@
+---
+import type { Link } from "../types";
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  items: {
+    badge?: string;
+    logo?: { light: string; dark: string; alt: string };
+    name: string;
+    tagline: string;
+    description: string;
+    features: string[];
+    stats?: { value: string; label: string }[];
+    cta: Link;
+    external?: Link;
+  }[];
+}
+
+const { title, subtitle, items } = Astro.props;
+---
+
+<section class="sy-saas" id="saas">
+  <div class="container">
+    <h2 class="heading" data-sy-reveal="words">{title}</h2>
+    {subtitle && <p class="subtitle u-text" data-sy-reveal="lines">{subtitle}</p>}
+
+    <div class="list">
+      {
+        items.map((item) => (
+          <article class="product">
+            <div class="product-content">
+              {item.badge && <span class="badge u-text">{item.badge}</span>}
+              <div class="product-head">
+                {item.logo && (
+                  <span class="product-logo">
+                    <img class="logo-light" src={item.logo.light} alt={item.logo.alt} width="49" height="64" loading="lazy" decoding="async" />
+                    <img class="logo-dark" src={item.logo.dark} alt={item.logo.alt} width="49" height="64" loading="lazy" decoding="async" />
+                  </span>
+                )}
+                <h3 class="product-name u-heading" data-sy-reveal="words">{item.name}</h3>
+              </div>
+              <p class="product-tagline u-text">{item.tagline}</p>
+              <p class="product-desc u-text" data-sy-reveal="lines">{item.description}</p>
+
+              <ul class="features">
+                {item.features.map((f) => (
+                  <li class="feature u-text">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+
+              <div class="ctas">
+                <a class="cta-main u-text" href={item.cta.url}>
+                  {item.cta.title}
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
+                </a>
+                {item.external && (
+                  <a class="cta-ext u-text" href={item.external.url} target="_blank" rel="noopener">
+                    {item.external.title}
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
+                  </a>
+                )}
+              </div>
+            </div>
+
+            {item.stats && (
+              <div class="product-stats">
+                {item.stats.map((s) => (
+                  <div class="stat">
+                    <span class="stat-value u-heading">{s.value}</span>
+                    <span class="stat-label u-text">{s.label}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .sy-saas {
+    margin: var(--section-gap) 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  .container {
+    @extend %u-container;
+  }
+
+  .heading {
+    @extend %u-heading;
+    --fs: clamp(1.8rem, 4vw, 3rem);
+    --fw: 300;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 1rem;
+  }
+
+  .subtitle {
+    --fs: var(--font-size-md);
+    color: var(--color-text-alt);
+    text-align: center;
+    max-width: 34em;
+    margin: 0 auto 3rem;
+    line-height: 1.6;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .product {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 3rem;
+    background: var(--color-white);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-soft);
+    padding: 3rem;
+    overflow: hidden;
+    transition:
+      transform 0.45s var(--ease-out-cubic),
+      box-shadow 0.45s var(--ease-out-cubic),
+      border-color 0.45s var(--ease-out-cubic);
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-brand-1), var(--color-brand-5));
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+      border-color: rgba(var(--rgb-brand-1), 0.25);
+      box-shadow: 0 22px 60px -28px rgba(var(--rgb-brand-1), 0.45);
+    }
+
+    @media (--mq-tablet) {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    @media (--mq-phone) {
+      padding: 1.5rem;
+    }
+  }
+
+  .badge {
+    --fs: var(--font-size-xs);
+    --fw: 500;
+    display: inline-block;
+    padding: 0.35em 1em;
+    border-radius: 100px;
+    background: rgba(var(--rgb-brand-1), 0.08);
+    color: rgb(var(--rgb-brand-1));
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 1.25rem;
+  }
+
+  .product-head {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .product-logo {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: auto;
+      height: 2.4rem;
+      object-fit: contain;
+    }
+
+    .logo-dark {
+      display: none;
+    }
+
+    :global([data-theme="dark"]) & {
+      .logo-light { display: none; }
+      .logo-dark { display: block; }
+    }
+  }
+
+  .product-name {
+    --fs: clamp(1.5rem, 3vw, 2.25rem);
+    --fw: 300;
+    --lh: 1.1;
+    margin: 0;
+  }
+
+  .product-tagline {
+    --fs: var(--font-size-md);
+    --fw: 500;
+    color: rgb(var(--rgb-brand-1));
+    margin-bottom: 1rem;
+  }
+
+  .product-desc {
+    --fs: var(--font-size-sm);
+    color: var(--color-text-alt);
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+    max-width: 34em;
+  }
+
+  .features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem 1.5rem;
+
+    @media (--mq-phone) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .feature {
+    --fs: var(--font-size-sm);
+    display: flex;
+    align-items: baseline;
+    gap: 0.5em;
+    color: var(--color-text);
+
+    svg {
+      flex-shrink: 0;
+      color: rgb(var(--rgb-brand-2));
+      transform: translateY(2px);
+    }
+  }
+
+  .ctas {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .cta-main {
+    --fs: var(--font-size-sm);
+    --fw: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.75em 1.75em;
+    border-radius: 100px;
+    background: rgb(var(--rgb-brand-1));
+    color: #fff;
+    text-decoration: none;
+    transition: box-shadow 0.3s var(--ease-out-cubic), transform 0.3s var(--ease-out-cubic);
+
+    svg {
+      transition: transform 0.4s var(--ease-out-expo);
+    }
+
+    &:hover {
+      box-shadow: 0 8px 24px rgba(var(--rgb-brand-1), 0.35);
+
+      svg {
+        transform: translateX(4px);
+      }
+    }
+  }
+
+  .cta-ext {
+    --fs: var(--font-size-sm);
+    --fw: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    color: var(--color-text-alt);
+    text-decoration: none;
+    transition: color 0.25s var(--ease-out-cubic);
+
+    &:hover {
+      color: rgb(var(--rgb-brand-1));
+    }
+  }
+
+  .product-stats {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+
+    @media (--mq-tablet) {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 1.5rem 2rem;
+    border-radius: var(--radius-md);
+    background: var(--color-brand-3);
+    border: 1px solid rgba(var(--rgb-brand-1), 0.08);
+
+    @media (--mq-tablet) {
+      flex: 1 1 10rem;
+    }
+  }
+
+  .stat-value {
+    --fs: clamp(1.4rem, 2.5vw, 1.9rem);
+    --fw: 300;
+    color: rgb(var(--rgb-brand-1));
+  }
+
+  .stat-label {
+    --fs: var(--font-size-xs);
+    color: var(--color-text-alt);
+  }
+</style>
